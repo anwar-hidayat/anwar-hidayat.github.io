@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel | Anwar Hidayat</title>
-    <!-- Gunakan versi CDN yang lebih stabil -->
-    <script src="https://cdn.jsdelivr.net@^3.0.0/dist/decap-cms.js"></script>
-  </head>
-  <body>
-    <script>
-      // Opsional: Tambahkan pesan log untuk debugging di konsol browser (F12)
-      console.log("Decap CMS sedang dimuat...");
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel</title>
+</head>
+<body>
+  <!-- Script CMS -->
+  <script src="https://cdn.jsdelivr.net@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Memaksa CMS membaca file JSON jika YML gagal
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "anwar-hidayat/anwar-hidayat.github.io",
+          branch: "main",
+          base_url: "https://anwar-hidayat.statistikian.workers.dev",
+          auth_endpoint: "auth"
+        },
+        display_url: "https://anwar-hidayat.github.io",
+        media_folder: "assets/images/posts",
+        collections: [
+          {
+            name: "blog",
+            label: "Artikel",
+            folder: "_posts",
+            create: true,
+            fields: [
+              { label: "Layout", name: "layout", widget: "hidden", default: "post" },
+              { label: "Judul", name: "title", widget: "string" },
+              { label: "Isi", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      }
+    });
+  </script>
+</body>
 </html>
