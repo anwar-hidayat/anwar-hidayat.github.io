@@ -1,41 +1,47 @@
-# Pengaturan Dasar Website
-title: "Blog Anwar Hidayat"
-description: "Official Website of Anwar Hidayat"
+# Pengaturan Dasar (Sesuaikan dengan Identitas Anda)
+title: "Anwar Hidayat"
+description: "Official Blog of Anwar Hidayat"
 url: "https://anwar-hidayat.github.io"
-baseurl: "" # Biarkan kosong jika menggunakan username.github.io
+baseurl: ""
 
-# Pengaturan Penulis (Penting untuk SEO Meta)
-author:
-  name: "Anwar Hidayat"
-  twitter: "@anwar1hidayat" # Opsional
+# Pengaturan Tema (WAJIB agar CSS tidak error)
+remote_theme: zerostaticio/jekyll-serif-theme
 
-# Struktur Link Artikel (SEO Friendly: slug judul tanpa tanggal di URL)
-permalink: /:title/
+# Konfigurasi SEO & Navigasi
+# Jekyll Serif menggunakan data ini untuk header dan footer
+logo: "/assets/images/logo.svg"
+email: "anwar1hidayat@gmail.com"
+twitter_username: "anwar1hidayat"
+github_username: "anwar-hidayat"
 
-# Pengaturan Markdown
-markdown: kramdown
-highlighter: rouge
+# Struktur URL Artikel (Sangat Bagus untuk SEO)
+permalink: /blog/:title/
 
-# Plugin Wajib (GitHub Pages mendukung ini secara bawaan)
+# Plugins yang didukung GitHub Pages
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
 
-# Pengaturan Paginasi (Menampilkan 5 artikel per halaman)
-paginate: 5
-paginate_path: "/page:num/"
+# Pengaturan Paginasi
+paginate: 6
+paginate_path: "/blog/page:num/"
 
-# Folder yang harus diproses dan dikecualikan
-include: [_posts, admin, assets]
+# Penanganan Folder Khusus
+include: [admin, _posts, assets]
 exclude:
-  - assets/css/style.scss
-  
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .jekyll-cache
+  - .jekyll-metadata
+
 # Pengaturan Gambar untuk Decap CMS
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
-      layout: "post"
+      layout: "post" # Pastikan di folder _layouts ada file post.html
