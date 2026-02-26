@@ -28,6 +28,3 @@ exclude:
   - services.md
   - contact.md
   - vendor
-
-include:
-  - admin
