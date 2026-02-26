@@ -1,47 +1,19 @@
-# Pengaturan Dasar (Sesuaikan dengan Identitas Anda)
-title: "Anwar Hidayat"
-description: "Official Blog of Anwar Hidayat"
+title: "Blog Anwar Hidayat"
+description: "Blog Artikel Dinamis SEO Friendly"
 url: "https://anwar-hidayat.github.io"
 baseurl: ""
 
-# Pengaturan Tema (WAJIB agar CSS tidak error)
+# Gunakan tema yang sangat stabil dan didukung resmi
 remote_theme: jekyll/minima
 
-# Konfigurasi SEO & Navigasi
-# Jekyll Serif menggunakan data ini untuk header dan footer
-logo: "/assets/images/logo.svg"
-email: "anwar1hidayat@gmail.com"
-twitter_username: "anwar1hidayat"
-github_username: "anwar-hidayat"
-
-# Struktur URL Artikel (Sangat Bagus untuk SEO)
-permalink: /blog/:title/
-
-# Plugins yang didukung GitHub Pages
+# Cukup tuliskan plugins SATU KALI seperti ini
+# Hapus jekyll-seo-tag dari daftar jika error berlanjut, 
+# karena tema Minima terkadang sudah membawanya.
 plugins:
-  - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
 
-# Pengaturan Paginasi
-paginate: 6
-paginate_path: "/blog/page:num/"
-
-# Penanganan Folder Khusus
+# Struktur Folder
 include: [admin, _posts, assets]
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - .jekyll-cache
-  - .jekyll-metadata
-
-# Pengaturan Gambar untuk Decap CMS
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post" # Pastikan di folder _layouts ada file post.html
+exclude: [Gemfile, Gemfile.lock, vendor]
