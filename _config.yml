@@ -1,6 +1,15 @@
 baseurl: '/'
 permalink: pretty
-title: 'Jekyll Serif'
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Tambahan konfigurasi SEO dasar
+title: "Anwar Hidayat"
+description: "Official Website of Anwar Hidayat"
+url: "https://anwar-hidayat.github.io" # Ganti dengan URL Anda
+author: "Anwar Hidayat"
 
 logo:
   mobile: "images/logo/logo-mobile.svg"
