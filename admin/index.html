@@ -3,39 +3,49 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel</title>
+  <title>Admin Panel | Anwar Hidayat</title>
 </head>
 <body>
-  <!-- Script CMS -->
-  <script src="https://cdn.jsdelivr.net@^3.0.0/dist/decap-cms.js"></script>
+  <!-- 1. Memanggil Library Decap CMS -->
+  <script src="https://cdn.jsdelivr.net"></script>
+
   <script>
-    // Memaksa CMS membaca file JSON jika YML gagal
-    CMS.init({
-      config: {
-        backend: {
-          name: "github",
-          repo: "anwar-hidayat/anwar-hidayat.github.io",
-          branch: "master",
-          base_url: "https://anwar-hidayat.statistikian.workers.dev",
-          auth_endpoint: "auth"
-        },
-        display_url: "https://anwar-hidayat.github.io",
-        media_folder: "assets/images/posts",
-        collections: [
-          {
-            name: "blog",
-            label: "Artikel",
-            folder: "_posts",
-            create: true,
-            fields: [
-              { label: "Layout", name: "layout", widget: "hidden", default: "post" },
-              { label: "Judul", name: "title", widget: "string" },
-              { label: "Isi", name: "body", widget: "markdown" }
+    // 2. Menunggu library selesai dimuat (Fix ReferenceError)
+    window.onload = () => {
+      if (typeof CMS !== 'undefined') {
+        CMS.init({
+          config: {
+            backend: {
+              name: "github",
+              repo: "anwar-hidayat/anwar-hidayat.github.io",
+              branch: "main",
+              base_url: "https://anwar-hidayat.statistikian.workers.dev", // GANTI DENGAN URL WORKER ANDA
+              auth_endpoint: "auth"
+            },
+            display_url: "https://anwar-hidayat.github.io",
+            media_folder: "assets/images/posts",
+            public_folder: "/assets/images/posts",
+            collections: [
+              {
+                name: "blog",
+                label: "Artikel",
+                folder: "_posts",
+                create: true,
+                slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+                fields: [
+                  { label: "Layout", name: "layout", widget: "hidden", default: "post" },
+                  { label: "Judul", name: "title", widget: "string" },
+                  { label: "Tanggal", name: "date", widget: "datetime" },
+                  { label: "Isi Konten", name: "body", widget: "markdown" }
+                ]
+              }
             ]
           }
-        ]
+        });
+      } else {
+        console.error("Gagal memuat library Decap CMS. Cek koneksi internet atau CDN.");
       }
-    });
+    };
   </script>
 </body>
 </html>
