@@ -21,7 +21,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-paginate
 
 # Pengaturan Paginasi (Menampilkan 5 artikel per halaman)
 paginate: 5
