@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Anwar Hidayat</title>
+  <style>body { background: #f3f4f6; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }</style>
+</head>
+<body>
+  <div id="nc-root">Memuat Sistem Admin... Jika ini tidak hilang, CDN diblokir ISP/Browser Anda.</div>
+
+  <!-- Gunakan CDN alternatif dari Cloudflare (Sangat Stabil di Indonesia) -->
+  <script src="https://cdnjs.cloudflare.com"></script>
+
+  <script>
+    window.onload = () => {
+      if (window.CMS) {
+        CMS.init({
+          config: {
+            backend: {
+              name: "github",
+              repo: "anwar-hidayat/anwar-hidayat.github.io",
+              branch: "master",
+              base_url: "https://anwar-hidayat.statistikian.workers.dev", // <--- PASTIKAN INI BENAR
+              auth_endpoint: "auth"
+            },
+            media_folder: "assets/images/posts",
+            public_folder: "/assets/images/posts",
+            collections: [{
+              name: "blog",
+              label: "Artikel",
+              folder: "_posts",
+              create: true,
+              fields: [
+                { label: "Layout", name: "layout", widget: "hidden", default: "post" },
+                { label: "Judul", name: "title", widget: "string" },
+                { label: "Isi", name: "body", widget: "markdown" }
+              ]
+            }]
+          }
+        });
+      }
+    };
+  </script>
+</body>
+</html>
