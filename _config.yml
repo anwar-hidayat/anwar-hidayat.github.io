@@ -1,19 +1,53 @@
 title: "Blog Anwar Hidayat"
 description: "Blog Artikel Dinamis SEO Friendly"
 url: "https://anwar-hidayat.github.io"
-baseurl: ""
+baseurl: '/'
+permalink: pretty
 
-# Gunakan tema yang sangat stabil dan didukung resmi
-remote_theme: jekyll/minima
+logo:
+  mobile: "images/logo/logo-mobile.svg"
+  mobile_height: "32px"
+  mobile_width: "32px"
+  desktop: "images/logo/logo.svg"
+  desktop_height: "32px"
+  desktop_width: "120px"
 
-# Cukup tuliskan plugins SATU KALI seperti ini
-# Hapus jekyll-seo-tag dari daftar jika error berlanjut, 
-# karena tema Minima terkadang sudah membawanya.
+home: 
+  limit_services: 6
+
+collections:
+  services:
+    output: true
+    sort_by: weight
+  team:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "services"
+    values:
+      layout: "service"
+  - scope:
+      path: ""
+      type: "team"
+    values:
+      layout: "team"
+
+sass:
+  style: compressed # possible values: nested expanded compact compressed
+
 plugins:
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-paginate
+  - jekyll-environment-variables
 
-# Struktur Folder
-include: [admin, _posts, assets]
-exclude: [Gemfile, Gemfile.lock, vendor]
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - LICENSE.md
+  - LICENSE
+  - README.md
