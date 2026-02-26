@@ -2,7 +2,8 @@ title: "Blog Anwar Hidayat"
 description: "Blog Artikel Dinamis SEO Friendly"
 url: "https://anwar-hidayat.github.io"
 baseurl: '/'
-permalink: pretty
+
+remote_theme: jekyll/minima
 
 logo:
   mobile: "images/logo/logo-mobile.svg"
