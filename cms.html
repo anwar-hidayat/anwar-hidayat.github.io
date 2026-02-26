@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel Lokal | Anwar Hidayat</title>
+  <title>Admin Panel | Anwar Hidayat</title>
 </head>
 <body>
-  <div id="nc-root">Memuat Sistem Admin dari Repositori Lokal...</div>
+  <!-- JANGAN isi apa pun di sini, biarkan kosong -->
 
-  <!-- Memanggil file dari repositori Anda sendiri (Anti Blokir ISP) -->
-  <script src="/assets/js/decap-cms.js"></script>
+  <!-- Gunakan CDN Cloudflare yang stabil -->
+  <script src="https://cdnjs.cloudflare.com"></script>
 
   <script>
-    window.onload = () => {
+    // Tunggu library termuat sempurna
+    window.addEventListener('load', () => {
       if (window.CMS) {
         CMS.init({
           config: {
@@ -20,10 +21,9 @@
               name: "github",
               repo: "anwar-hidayat/anwar-hidayat.github.io",
               branch: "master",
-              base_url: "https://anwar-hidayat.statistikian.workers.dev", // <--- PASTIKAN SUDAH DIGANTI
+              base_url: "https://anwar-hidayat.statistikian.workers.dev", // <--- PASTIKAN URL WORKER CLOUDFLARE ANDA BENAR
               auth_endpoint: "auth"
             },
-            display_url: "https://anwar-hidayat.github.io",
             media_folder: "assets/images/posts",
             public_folder: "/assets/images/posts",
             collections: [{
@@ -39,10 +39,7 @@
             }]
           }
         });
-      } else {
-        document.getElementById('nc-root').innerHTML = "Gagal memuat file lokal. Pastikan path /assets/js/decap-cms.js sudah benar.";
       }
-    };
+    });
   </script>
 </body>
-</html>
