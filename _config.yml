@@ -5,7 +5,7 @@ url: "https://anwar-hidayat.github.io"
 baseurl: ""
 
 # Pengaturan Tema (WAJIB agar CSS tidak error)
-remote_theme: zerostaticio/jekyll-serif-theme
+remote_theme: jekyll/minima
 
 # Konfigurasi SEO & Navigasi
 # Jekyll Serif menggunakan data ini untuk header dan footer
