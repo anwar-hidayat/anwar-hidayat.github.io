@@ -1,40 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
   <meta charset="utf-8">
-  <title>{% if page.title %}{{page.title}}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" href="{{ '/images/favicon-32x32.svg' | relative_url }}">
-  <!-- Google Fonts CDN -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Self host font -->
-  <!-- <link rel="preload" href="{{ '/assets/fonts/playfair-display.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin> -->
-  <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
-  
-  {% if page.description %}<meta name="description" content="{{ page.description }}" />{% endif %}
-  {% if page.meta_title %}<meta property="og:title" content="{{ page.meta_title }}"/>{% else %}<meta property="og:title" content="{{ page.title }}"/>{% endif %}
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="{{ url }}"/>
-  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}"/>{% endif %}
-  {% if page.description %}<meta property="og:description" content="{{ page.description }}"/>{% endif %}
-  <meta name="twitter:card" content="summary"/>
-  {% if site.data.seo.meta_twitter_site %}<meta name="twitter:site" content="{{ site.seo.meta_twitter_site }}"/>{% endif %}
-  {% if site.data.seo.meta_twitter_creator %}<meta name="twitter:creator" content="{{ site.seo.meta_twitter_creator }}"/>{% endif %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
-</head>
+  <link rel="stylesheet" href="{{ '/assets/css/style.scss' | relative_url }}">
+  <style>
+    /* CSS Navigasi Ala Astra */
+    :root { --astra-blue: #0274be; --astra-dark: #222; }
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    
+    .astra-header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      padding: 15px 0;
+    }
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .site-logo a {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--astra-dark);
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+    .astra-menu {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .astra-menu li { margin-left: 25px; }
+    .astra-menu li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+    .astra-menu li a:hover { color: var(--astra-blue); }
 
-<body class='page {{layout.bodyClass}}'>
-  {% include main-menu-mobile.html %}
-  <div id="wrapper" class="wrapper">
-    {% include header.html headerClass='header-extra' %}
-    {{content}}
-  </div>
-  {% include footer.html %}
-  {% include sub-footer.html %}
-  <script type="text/javascript" src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
-  {% include google-analytics.html %}
+    /* Responsive Menu */
+    @media (max-width: 600px) {
+      .header-container { flex-direction: column; gap: 15px; }
+      .astra-menu li { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="astra-header">
+    <div class="header-container">
+      <div class="site-logo">
+        <a href="/">{{ site.title }}</a>
+      </div>
+      <nav>
+        <ul class="astra-menu">
+          <li><a href="/">Beranda</a></li>
+          <li><a href="/about">Tentang</a></li>
+          <li><a href="/admin">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer style="text-align:center; padding:40px; color:#888; font-size:14px; border-top:1px solid #eee; margin-top:50px;">
+    &copy; {{ "now" | date: "%Y" }} {{ site.title }}. Powered by GitHub Pages.
+  </footer>
+
 </body>
 </html>
