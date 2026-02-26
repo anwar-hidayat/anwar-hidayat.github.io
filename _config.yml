@@ -36,7 +36,8 @@ exclude:
   - .sass-cache/
   - .jekyll-cache/
   - .jekyll-metadata
-
+  - assets/css/style.scss
+  
 # Pengaturan Gambar untuk Decap CMS
 defaults:
   - scope:
