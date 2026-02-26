@@ -21,6 +21,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-paginate
 
 # Pengaturan Paginasi (Menampilkan 5 artikel per halaman)
 paginate: 5
@@ -29,13 +30,6 @@ paginate_path: "/page:num/"
 # Folder yang harus diproses dan dikecualikan
 include: [_posts, admin, assets]
 exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - .sass-cache/
-  - .jekyll-cache/
-  - .jekyll-metadata
   - assets/css/style.scss
   
 # Pengaturan Gambar untuk Decap CMS
