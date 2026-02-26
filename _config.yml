@@ -1,54 +1,30 @@
-title: "Blog Anwar Hidayat"
+# 1. Identitas Website
 description: "Blog Artikel Dinamis SEO Friendly"
 url: "https://anwar-hidayat.github.io"
-baseurl: '/'
+baseurl: ""
 
-remote_theme: jekyll/minima
+# 2. Perbaikan Tema (Hapus remote_theme jika masih error)
+# Kita gunakan tema internal GitHub Pages agar stabil 100%
+theme: minima
 
-logo:
-  mobile: "images/logo/logo-mobile.svg"
-  mobile_height: "32px"
-  mobile_width: "32px"
-  desktop: "images/logo/logo.svg"
-  desktop_height: "32px"
-  desktop_width: "120px"
-
-home: 
-  limit_services: 6
-
-collections:
-  services:
-    output: true
-    sort_by: weight
-  team:
-    output: true
-
-defaults:
-  - scope:
-      path: ""
-      type: "services"
-    values:
-      layout: "service"
-  - scope:
-      path: ""
-      type: "team"
-    values:
-      layout: "team"
-
-sass:
-  style: compressed # possible values: nested expanded compact compressed
-
+# 3. Plugins (Tulis SATU KALI saja, tanpa list ganda)
 plugins:
-  - jekyll-environment-variables
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 
-exclude:
+# 4. Pengaturan Artikel
+permalink: /blog/:title/
+collections:
+  posts:
+    output: true
+
+# 5. Hilangkan File Konflik
+# File-file ini sering membawa 'Hash' tersembunyi yang bikin error
+exclude: 
   - Gemfile
   - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - LICENSE.md
-  - LICENSE
-  - README.md
+  - team.md
+  - services.md
+  - contact.md
+  - vendor
