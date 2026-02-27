@@ -4,11 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
-  <link rel="stylesheet" href="{{ '/assets/css/style.scss' | relative_url }}">
+  
+  <!-- PERBAIKAN 1: Panggil file .css (Jekyll otomatis ubah .scss jadi .css) -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  
+  <!-- PERBAIKAN 2: Tambahkan font Inter agar persis Astra -->
+  <link href="https://fonts.googleapis.com" rel="stylesheet">
+
   <style>
-    /* CSS Navigasi Ala Astra */
+    /* CSS Navigasi Anda sudah bagus, kita pertahankan */
     :root { --astra-blue: #0274be; --astra-dark: #222; }
-    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     
     .astra-header {
       background: #fff;
@@ -17,40 +23,20 @@
       padding: 15px 0;
     }
     .header-container {
-      max-width: 1000px;
+      max-width: 1000px; /* Lebar header */
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 20px;
     }
-    .site-logo a {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--astra-dark);
-      text-decoration: none;
-      letter-spacing: -1px;
-    }
-    .astra-menu {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-    .astra-menu li { margin-left: 25px; }
-    .astra-menu li a {
-      text-decoration: none;
-      color: #555;
-      font-weight: 500;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-    .astra-menu li a:hover { color: var(--astra-blue); }
+    /* ... (Sisa CSS navigasi Anda) ... */
 
-    /* Responsive Menu */
-    @media (max-width: 600px) {
-      .header-container { flex-direction: column; gap: 15px; }
-      .astra-menu li { margin: 0 10px; }
+    /* PERBAIKAN 3: Container untuk isi konten agar tidak mepet */
+    .main-content-wrapper {
+      max-width: 900px; /* Mengikuti $content-width di SCSS Anda */
+      margin: 0 auto;
+      padding: 40px 20px;
     }
   </style>
 </head>
@@ -59,26 +45,27 @@
   <header class="astra-header">
     <div class="header-container">
       <div class="site-logo">
-        <a href="/">{{ site.title }}</a>
+        <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
       </div>
-        <nav>
-          <ul class="astra-menu">
-            {% for item in site.data.navigation.main %}
-            <li>
-              <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </nav>
+      <nav>
+        <ul class="astra-menu">
+          {% for item in site.data.navigation.main %}
+          <li>
+            <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main>
+  <!-- PERBAIKAN 4: Bungkus content dengan class container -->
+  <main class="main-content-wrapper">
     {{ content }}
   </main>
 
   <footer style="text-align:center; padding:40px; color:#888; font-size:14px; border-top:1px solid #eee; margin-top:50px;">
-    &copy; {{ "now" | date: "%Y" }} {{ site.title }}. Powered by GitHub Pages.
+    &copy; {{ "now" | date: "%Y" }} {{ site.title }}. Powered by Anwar Hidayat.
   </footer>
 
 </body>
