@@ -6,7 +6,7 @@ title: Beranda - Anwar Hidayat
 <section class="astra-hero">
   <div class="hero-content">
     <h1>Selamat Datang di Blog Saya</h1>
-    <p>Berbagi wawasan tentang teknologi, penulisan, dan kreativitas.</p>
+    <p>Official Website from Anwar Hidayat.</p>
   </div>
 </section>
 
