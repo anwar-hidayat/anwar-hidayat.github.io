@@ -5,38 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
   
-  <!-- PERBAIKAN 1: Panggil file .css (Jekyll otomatis ubah .scss jadi .css) -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  
-  <!-- PERBAIKAN 2: Tambahkan font Inter agar persis Astra -->
   <link href="https://fonts.googleapis.com" rel="stylesheet">
 
   <style>
-    /* CSS Navigasi Anda sudah bagus, kita pertahankan */
-    :root { --astra-blue: #0274be; --astra-dark: #222; }
-    body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-    
+    /* CSS Murni Ala Astra */
+    :root { --astra-blue: #0274be; --astra-dark: #333; }
+    body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; color: #444; }
+
+    /* Header & Navigasi */
     .astra-header {
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f0;
       padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     .header-container {
-      max-width: 1000px; /* Lebar header */
+      max-width: 1000px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 20px;
     }
-    /* ... (Sisa CSS navigasi Anda) ... */
+    .site-logo a {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--astra-dark);
+      text-decoration: none;
+    }
+    .astra-menu {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .astra-menu li { margin-left: 20px; }
+    .astra-menu li a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+    .astra-menu li a:hover { color: var(--astra-blue); }
 
-    /* PERBAIKAN 3: Container untuk isi konten agar tidak mepet */
-    .main-content-wrapper {
-      max-width: 900px; /* Mengikuti $content-width di SCSS Anda */
-      margin: 0 auto;
-      padding: 40px 20px;
+    /* Layout Utama (Kontainer Tengah) */
+    .main-wrapper {
+      max-width: 800px; /* Membatasi lebar konten keseluruhan */
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    /* Pengaturan Gambar (MAKSIMAL 600PX) */
+    .main-wrapper img {
+      max-width: 600px; /* Sesuai permintaan Anda */
+      height: auto;
+      display: block;
+      margin: 30px auto; /* Gambar otomatis di tengah */
+      border-radius: 4px;
+    }
+
+    /* Content Styling */
+    .entry-content { line-height: 1.8; font-size: 18px; }
+
+    /* Footer */
+    footer { text-align: center; padding: 40px; border-top: 1px solid #eee; margin-top: 60px; font-size: 14px; color: #888; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header-container { flex-direction: column; text-align: center; gap: 10px; }
+      .astra-menu li { margin: 0 10px; }
+      .main-wrapper img { max-width: 100%; } /* Di HP tetap 100% agar tidak pecah */
     }
   </style>
 </head>
@@ -50,22 +92,21 @@
       <nav>
         <ul class="astra-menu">
           {% for item in site.data.navigation.main %}
-          <li>
-            <a href="{{ item.url | relative_url }}">{{ item.name }}</a>
-          </li>
+          <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
           {% endfor %}
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- PERBAIKAN 4: Bungkus content dengan class container -->
-  <main class="main-content-wrapper">
-    {{ content }}
+  <main class="main-wrapper">
+    <div class="entry-content">
+      {{ content }}
+    </div>
   </main>
 
-  <footer style="text-align:center; padding:40px; color:#888; font-size:14px; border-top:1px solid #eee; margin-top:50px;">
-    &copy; {{ "now" | date: "%Y" }} {{ site.title }}. Powered by Anwar Hidayat.
+  <footer>
+    &copy; {{ "now" | date: "%Y" }} {{ site.title }}. Made with Jekyll Astra.
   </footer>
 
 </body>
