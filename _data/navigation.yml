@@ -1,6 +1,21 @@
-- name: Home
-  url: /
-- name: Blog
-  url: /blog/
-- name: About
-  url: /about/
+main:
+  - name: Home
+    url: /
+    weight: 1
+  - name: Blog
+    url: /blog/
+    weight: 2
+  - name: About
+    url: /about/
+    weight: 3
+  - name: Contact
+    url: /contact/
+    weight: 4
+
+footer:
+  - name: "Home"
+    url: "/"
+    weight: 1
+  - name: "Contact"
+    url: "/contact/"
+    weight: 2
