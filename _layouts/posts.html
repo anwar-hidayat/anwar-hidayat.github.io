@@ -1,128 +1,98 @@
 ---
 layout: default
 ---
-<article class="astra-single-post">
-  <div class="post-header">
-    <div class="post-meta">
-      <span class="category">{{ page.categories | first | capitalize }}</span>
-      <span class="separator">/</span>
-      <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
+
+<div class="astra-single-container">
+  <article class="astra-article-content">
+    
+    <header class="entry-header">
+      <div class="entry-meta">
+        <span class="cat-links"><a href="/blog/">Blog</a></span>
+      </div>
+      <h1 class="entry-title">{{ page.title }}</h1>
+      <div class="entry-meta-bottom">
+        <span class="posted-on">{{ page.date | date: "%B %d, %Y" }}</span>
+      </div>
+    </header>
+
+    {% if page.image %}
+    <div class="post-thumb">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
     </div>
-    <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.author %}
-    <div class="post-author">Oleh: <strong>{{ page.author }}</strong></div>
     {% endif %}
-  </div>
 
-  {% if page.image %}
-  <div class="post-featured-image">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
-  </div>
-  {% endif %}
-
-  <div class="post-content">
-    {{ content }}
-  </div>
-
-  <footer class="post-footer">
-    <div class="post-tags">
-      {% for tag in page.tags %}
-      <span class="tag">#{{ tag }}</span>
-      {% endfor %}
+    <div class="entry-content">
+      {{ content }}
     </div>
-  </footer>
-</article>
+
+    <footer class="entry-footer">
+      <hr>
+      <p>Terima kasih telah membaca artikel ini.</p>
+    </footer>
+
+  </article>
+</div>
 
 <style>
-  /* CSS Single Post Ala Astra */
-  .astra-single-post {
-    max-width: 800px; /* Lebih ramping agar nyaman dibaca */
-    margin: 60px auto;
-    padding: 0 20px;
-    color: #3a3a3a;
-    line-height: 1.8;
+  /* Container Utama - Inilah yang membuat konten tidak mepet */
+  .astra-single-container {
+    max-width: 900px; /* Lebar maksimal konten */
+    margin: 60px auto; /* Membuat kontainer di tengah (atas-bawah 60px, kiri-kanan otomatis) */
+    padding: 0 40px;   /* Jarak aman dari pinggir layar di HP */
+    background: #fff;
   }
 
-  .post-header {
+  .astra-article-content {
+    line-height: 1.8;
+    color: #333;
+    font-size: 18px;
+  }
+
+  .entry-header {
     text-align: center;
     margin-bottom: 40px;
   }
 
-  .post-meta {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #888;
-    margin-bottom: 15px;
+  .entry-title {
+    font-size: 2.5rem;
+    color: #222;
+    margin: 10px 0;
+    font-weight: 700;
   }
 
-  .post-meta .category {
+  .entry-meta, .entry-meta-bottom {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .entry-meta a {
     color: #0274be;
+    text-decoration: none;
     font-weight: 600;
   }
 
-  .post-title {
-    font-size: 2.5rem;
-    color: #222;
-    margin: 0 0 20px 0;
-    line-height: 1.2;
-  }
-
-  .post-featured-image img {
+  .post-thumb img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  }
-
-  .post-content {
-    font-size: 18px;
-    color: #444;
-  }
-
-  /* Styling Elemen di Dalam Konten */
-  .post-content h2, .post-content h3 {
-    color: #222;
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-
-  .post-content p { margin-bottom: 25px; }
-
-  .post-content blockquote {
-    border-left: 4px solid #0274be;
-    padding-left: 20px;
-    margin-left: 0;
-    font-style: italic;
-    color: #666;
-    background: #f9f9f9;
-    padding: 20px;
-  }
-
-  .post-content img {
-    max-width: 100%;
     height: auto;
     border-radius: 4px;
+    margin-bottom: 30px;
   }
 
-  .post-footer {
-    margin-top: 50px;
-    padding-top: 30px;
-    border-top: 1px solid #eee;
+  /* Spasi untuk paragraf agar tidak rapat */
+  .entry-content p {
+    margin-bottom: 25px;
   }
 
-  .tag {
-    background: #f1f1f1;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 14px;
-    margin-right: 8px;
-    color: #666;
-  }
-
-  /* Responsive */
+  /* Responsif untuk HP */
   @media (max-width: 600px) {
-    .post-title { font-size: 1.8rem; }
-    .post-content { font-size: 16px; }
+    .astra-single-container {
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .entry-title {
+      font-size: 1.8rem;
+    }
   }
 </style>
