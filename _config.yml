@@ -1,6 +1,6 @@
 # 1. Identitas Website
 description: "Blog Artikel Dinamis SEO Friendly"
-url: "https://anwar-hidayat.github.io"
+url: "https://anwar-hidayat.github.io" #
 baseurl: ""
 
 # 2. Perbaikan Tema (Hapus remote_theme jika masih error)
