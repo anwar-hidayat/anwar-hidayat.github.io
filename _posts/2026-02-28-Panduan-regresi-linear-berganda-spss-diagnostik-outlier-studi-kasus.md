@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
-date: 2023-10-27
-categories: [Statistik, Tutorial]
-tags: [SPSS, Regresi, Olah Data, Skripsi, Statistik]
-author: Statistik Master
+title: "Panduan Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
+date: 2026-02-28
+categories: [SPSS]
+tags: [Regresi, Uji Asumsi]
+author: Anwar Hidayat
 ---
 
 # Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam & Diagnostik Asumsi
