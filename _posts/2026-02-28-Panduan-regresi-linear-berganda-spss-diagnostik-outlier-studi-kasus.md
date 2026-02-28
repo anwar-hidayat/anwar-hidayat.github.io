@@ -1,11 +1,4 @@
----
-layout: post
-title: "Panduan Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
-date: 2026-02-28
-categories: [SPSS]
-tags: [Regresi, Uji Asumsi]
-author: Anwar Hidayat
----
+
 
 # Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam & Diagnostik Asumsi
 
