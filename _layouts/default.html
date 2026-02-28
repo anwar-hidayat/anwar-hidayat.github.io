@@ -81,19 +81,19 @@
       .main-wrapper img { max-width: 100%; } /* Di HP tetap 100% agar tidak pecah */
     }
     </style>
-    <!-- Script MathJax Versi Stabil (Kembali ke Semula) -->
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com">
-    </script>
-    
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
-          inlineMath: [['$','$'], ['\\(','\\)']],
-          displayMath: [['$$','$$'], ['\\[','\\]']],
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
           processEscapes: true
-        }
+        },
+        "HTML-CSS": { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }
       });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com">
     </script>
 </head>
 <body>
