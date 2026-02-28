@@ -2,9 +2,9 @@
 layout: post
 title: "Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
 date: 2026-02-28
-categories: [Statistik, Tutorial]
-tags: [SPSS, Regresi, Olah Data, Skripsi, Statistik]
-author: Statistik Master
+categories: [SPSS]
+tags: [Statistik, Tutorial, Regresi, Olah Data, Skripsi, Statistik]
+author: Anwar Hidayat
 ---
 
 # Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam & Diagnostik Asumsi
@@ -23,9 +23,7 @@ Regresi Linear Berganda berasumsi bahwa hubungan antar variabel bersifat linear.
 
 Model populasi untuk regresi linear berganda dinyatakan dengan notasi matematis karakter spesial berikut:
 
-<p class="math-wrapper">
 $$ Y = \alpha + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{3} + \dots + \beta_{n}X_{n} + \epsilon $$
-</p>
 
 **Keterangan Simbol dan Makna Filosofisnya:**
 
@@ -74,6 +72,7 @@ Memastikan varians residu tetap konsisten untuk semua level pengamatan.
 Outlier seringkali menjadi penyebab utama mengapa model regresi tidak signifikan atau residu tidak normal. Cek tabel **Casewise Diagnostics** pada output SPSS Anda.
 
 
+
 | Case Number | Std. Residual | Nilai Teramati (Y) | Prediksi | Residual |
 | :--- | :--- | :--- | :--- | :--- |
 | 42 | **3.850** | 95.00 | 60.20 | 34.80 |
@@ -98,9 +97,7 @@ Outlier seringkali menjadi penyebab utama mengapa model regresi tidak signifikan
 
 Berdasarkan output tabel *Coefficients* final, maka notasi persamaan regresi linear berganda yang dihasilkan adalah:
 
-<p class="math-wrapper">
 $$ Y = 15.200 + 0.750X_{1} + 0.400X_{2} + \epsilon $$
-</p>
 
 Interpretasi dari notasi di atas menunjukkan bahwa setiap kenaikan satu unit pada variabel $X_{1}$ akan memberikan dampak kenaikan sebesar 0.750 pada variabel $Y$, dengan asumsi faktor lain tetap.
 
