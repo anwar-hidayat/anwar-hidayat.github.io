@@ -1,4 +1,11 @@
-
+---
+layout: post
+title: "Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
+date: 2023-10-27
+categories: [SPSS]
+tags: [Statistik, Tutorial, Regresi, Olah Data, Skripsi, Statistik]
+author: Anwar Hidayat
+---
 
 # Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam & Diagnostik Asumsi
 
@@ -160,17 +167,6 @@ $$Y = 15.200 + 0.750 X_1 + 0.400 X_2 + \epsilon$$
 
 ---
 
-## 7. Daftar Pustaka & Referensi Lanjutan
-
-Untuk memperdalam pemahaman mengenai Regresi Linear Berganda, Anda dapat merujuk pada sumber tepercaya berikut:
-
-*   **Statistikian**: [Panduan Lengkap Regresi Linear Berganda](https://www.statistikian.com) (Situs rujukan utama untuk penjelasan teknis asumsi klasik).
-*   **IBM SPSS Documentation**: [Linear Regression Procedures](https://www.ibm.com) (Dokumentasi resmi mengenai prosedur [Linear Regression](https://www.ibm.com) di IBM SPSS).
-*   **Ghozali, I. (2018).** *Aplikasi Analisis Multivariate dengan Program IBM SPSS 25*. Semarang: Universitas Diponegoro.
-*   **Gujarati, D. N. (2009).** *Basic Econometrics*. New York: McGraw-Hill.
-
----
-
 ### Konsultasi Olah Data & Bimbingan Statistik
 
 Kesulitan untuk analisis SPSS, Eviews, STATA, SmartPLS, AMOS, Minitab, R Studio, Excel? menangani data yang tidak normal? Hasil R-Square rendah atau variabel tidak signifikan padahal teori mendukung? Masalah asumsi klasik? Jangan biarkan skripsi atau riset Anda terhambat.
@@ -187,4 +183,15 @@ Range harga **Rp100.000 s/d Rp500.000** (tergantung beban kerja dan tingkat kesu
 
 **Hubungi Kami Sekarang:**
 [Klik untuk Chat WhatsApp: 081515699060](https://wa.me/6281515699060)
+
+---
+
+## 7. Daftar Pustaka & Referensi Lanjutan
+
+Untuk memperdalam pemahaman mengenai Regresi Linear Berganda, Anda dapat merujuk pada sumber tepercaya berikut:
+
+*   **Statistikian**: [Panduan Lengkap Regresi Linear Berganda](https://www.statistikian.com) (Situs rujukan utama untuk penjelasan teknis asumsi klasik).
+*   **IBM SPSS Documentation**: [Linear Regression Procedures](https://www.ibm.com) (Dokumentasi resmi mengenai prosedur [Linear Regression](https://www.ibm.com) di IBM SPSS).
+*   **Ghozali, I. (2018).** *Aplikasi Analisis Multivariate dengan Program IBM SPSS 25*. Semarang: Universitas Diponegoro.
+*   **Gujarati, D. N. (2009).** *Basic Econometrics*. New York: McGraw-Hill.
 
