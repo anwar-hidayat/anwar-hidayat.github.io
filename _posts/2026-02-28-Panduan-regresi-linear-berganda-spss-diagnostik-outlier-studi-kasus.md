@@ -1,153 +1,197 @@
 ---
 layout: post
 title: "Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
-date: 2024-05-20 10:00:00 +0700
-categories: [Statistik, Data Science]
-tags: [spss, regresi-linear, jasa-olah-data, tutorial-statistik, penelitian-skripsi]
+date: 2023-10-27
+categories: [Statistik, Tutorial]
+tags: [SPSS, Regresi, Olah Data, Skripsi, Statistik]
+author: Statistik Master
 ---
 
-# Menguasai Uji Regresi Linear Berganda dengan SPSS: Panduan Komprehensif dari Teori hingga Solusi Praktis
+# Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam & Diagnostik Asumsi
 
-Analisis regresi linear berganda bukan sekadar aktivitas "klik-klik" di aplikasi SPSS. Ini adalah sebuah seni pembuktian ilmiah di mana kita mencoba memodelkan realitas yang kompleks ke dalam sebuah persamaan matematis. Di dunia akademis maupun industri, regresi menjadi "pisau bedah" utama untuk memahami bagaimana berbagai variabel independen secara simultan memengaruhi variabel dependen.
+Dalam dunia penelitian kuantitatif, analisis **Regresi Linear Berganda (Multiple Linear Regression)** bukan sekadar alat untuk mencari pengaruh antar variabel. Ia adalah instrumen prediktif yang memungkinkan peneliti memahami kompleksitas fenomena di mana satu variabel dependen dipengaruhi oleh berbagai faktor secara simultan. Namun, banyak peneliti terjebak pada hasil akhir tanpa memperhatikan kualitas "mesin" di baliknya, yaitu asumsi statistik.
 
-Artikel ini disusun secara mendalam untuk membantu Anda memahami filosofi di balik angka-angka SPSS, cara menangani data yang "nakal" (outlier), hingga strategi penyelamatan model saat asumsi klasik tidak terpenuhi.
-
-## 1. Langkah Operasional SPSS: Pengaturan Diagnostik Lengkap
-
-Banyak peneliti pemula hanya menjalankan regresi standar tanpa mengaktifkan fitur diagnostik. Padahal, fitur ini krusial untuk mendeteksi masalah sejak dini. Berikut adalah prosedur yang direkomendasikan:
-
-1.  **Persiapan Data:** Pastikan data Anda sudah bersih di *Data View*. Pastikan tipe data adalah *Numeric* dengan *Measure* berupa *Scale*.
-2.  **Akses Menu:** Klik **Analyze** > **Regression** > **Linear**.
-3.  **Penyusunan Variabel:** Masukkan variabel Dependen ($Y$) dan semua variabel Independen ($X$) ke kotak masing-masing.
-4.  **Konfigurasi Statistics:**
-    *   Centang **Estimates**, **Model fit**, dan **Descriptives**.
-    *   Centang **Collinearity diagnostics** (Penting untuk mendeteksi Multikolinearitas melalui nilai VIF).
-    *   Centang **Durbin-Watson** (Wajib untuk data *time series* guna mendeteksi autokorelasi).
-    *   Centang **Casewise diagnostics** dan pilih **Outliers outside 3 standard deviations**. Ini akan langsung menandai baris data mana yang dianggap pencilan ekstrem.
-5.  **Konfigurasi Plots:**
-    *   Pindahkan `*ZPRED` (Predicted Value) ke sumbu **X**.
-    *   Pindahkan `*ZRESID` (Residual) ke sumbu **Y**.
-    *   Centang **Histogram** dan **Normal Probability Plot**. Grafik ini memberikan gambaran visual awal tentang normalitas dan heteroskedastisitas.
-6.  **Konfigurasi Save (Fitur Krusial):**
-    *   Di bagian *Residuals*, centang **Unstandardized**. Ini akan menghasilkan variabel `RES_1` yang nantinya kita gunakan untuk uji Kolmogorov-Smirnov atau uji Glejser.
-    *   Di bagian *Distances*, centang **Cook's distance**. Variabel `COO_1` ini adalah senjata utama kita untuk mendeteksi data yang merusak model (outlier).
-7.  **Eksekusi:** Klik **OK**.
+Panduan ini disusun untuk membawa Anda melampaui sekadar menekan tombol di SPSS. Kita akan membedah model ini dari akar teoretis, syarat kelayakan, hingga cara menangani kegagalan data yang sering terjadi di lapangan.
 
 ---
 
-> ### 📢 Kesulitan Olah Data? Hubungi Ahlinya!
-> Jika Anda mengalami kendala dalam mengolah data atau tidak punya waktu untuk mempelajari SPSS secara mendalam, **[Statistikan.com](https://www.statistikian.com)** siap membantu Anda. Kami menyediakan jasa analisis data profesional, cepat, dan terpercaya.
-> 
-> ![Banner Statistikan](https://www.statistikian.com)
-> *Dapatkan bantuan konsultasi statistik sekarang di [Statistikan.com](https://www.statistikian.com).*
+## 1. Landasan Teoretis dan Notasi Matematis
+
+Regresi Linear Berganda memperluas konsep regresi sederhana dengan melibatkan lebih dari satu variabel independen ($X$). Model ini berasumsi bahwa hubungan antar variabel bersifat linear, artinya perubahan pada variabel independen akan diikuti oleh perubahan proporsional pada variabel dependen.
+
+### Persamaan Regresi Linear Berganda
+
+Model populasi untuk regresi linear berganda dinyatakan dengan notasi berikut:
+
+$$Y = \alpha + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_3 + \dots + \beta_n X_n + \epsilon$$
+
+**Keterangan Simbol dan Makna Filosofisnya:**
+
+*   **$Y$ (Dependent Variable)**: Variabel yang menjadi fokus utama penelitian (variabel terikat). Ia mewakili hasil atau dampak yang ingin diprediksi atau dijelaskan.
+*   **$\alpha$ (Constant/Intercept)**: Titik potong pada sumbu $Y$. Secara teoretis, ini adalah nilai rata-rata $Y$ ketika semua variabel independen ($X$) bernilai nol. 
+*   **$\beta_1, \beta_2, \dots, \beta_n$ (Partial Regression Coefficients)**: Menunjukkan besarnya perubahan pada $Y$ untuk setiap kenaikan satu unit pada $X$ tertentu, dengan asumsi variabel independen lainnya dianggap tetap (*ceteris paribus*).
+*   **$X_1, X_2, \dots, X_n$ (Independent Variables)**: Variabel bebas yang dianggap sebagai penyebab atau prediktor bagi $Y$.
+*   **$\epsilon$ (Residual/Error Term)**: Mewakili "ketidaksempurnaan" manusia dalam memodelkan realitas; mencakup faktor luar model dan kesalahan pengukuran.
+
+### Konsultasi Olah Data & Bimbingan Statistik
+
+Kesulitan untuk analisis SPSS, Eviews, STATA, SmartPLS, AMOS, Minitab, R Studio, Excel? menangani data yang tidak normal? Hasil R-Square rendah atau variabel tidak signifikan padahal teori mendukung? Masalah asumsi klasik? Jangan biarkan skripsi atau riset Anda terhambat.
+
+Kami memberikan layanan jasa olah data profesional hingga tuntas dan agar anda benar-benar menguasai materi untuk sidang.
+
+**Layanan Kami:**
+*   Analisis Regresi Berganda, Path Analysis, dan SEM.
+*   Pembersihan Outlier, Transformasi Data dan Solusi masalah uji asumsi
+*   Interpretasi Mendalam.
+
+**Biaya Layanan:**
+Range harga **Rp100.000 s/d Rp500.000** (tergantung beban kerja dan tingkat kesulitan analisis).
+
+**Hubungi Kami Sekarang:**
+[Klik untuk Chat WhatsApp: 081515699060](https://wa.me/6281515699060)
 
 ---
 
-## 2. Studi Kasus Penelitian: Memahami Variabel dalam Konteks Riil
+## 2. Prosedur Operasional Menggunakan IBM SPSS
 
-Agar lebih mudah dimengerti, mari kita gunakan sebuah contoh kasus penelitian manajemen SDM:
-**"Analisis Pengaruh Beban Kerja ($X_1$), Lingkungan Kerja ($X_2$), dan Insentif ($X_3$) terhadap Stres Kerja Karyawan ($Y$)."**
+Analisis ini paling optimal dilakukan menggunakan perangkat lunak **IBM SPSS Statistics**. Perangkat ini menyediakan fitur diagnostik yang lengkap untuk memastikan model regresi Anda memenuhi standar akademik yang ketat.
 
-Dalam kasus ini, kita mengasumsikan:
-*   Jika Beban Kerja naik, Stres Kerja cenderung naik (Hubungan Positif).
-*   Jika Lingkungan Kerja membaik, Stres Kerja cenderung turun (Hubungan Negatif).
-*   Jika Insentif naik, Stres Kerja mungkin turun (Hubungan Negatif).
+[![IBM SPSS Logo](https://www.ibm.com)](https://www.ibm.com)
+*Klik logo di atas untuk mengunjungi situs resmi [IBM SPSS Statistics](https://www.ibm.com).*
 
-### Mengapa Kita Butuh Regresi Berganda di Sini?
-Jika kita hanya menggunakan regresi linear sederhana satu per satu, kita tidak bisa melihat "interaksi" antar variabel. Bisa saja Beban Kerja terlihat sangat berpengaruh, padahal sebenarnya pengaruhnya menjadi kecil jika faktor Insentif juga diperhitungkan. Regresi berganda mengontrol pengaruh variabel lain sehingga kita mendapatkan pengaruh murni (*ceteris paribus*).
-
-## 3. Bedah Tajam Hasil Output Utama (Uji F, t, dan R-Square)
-
-Setelah Anda menekan tombol OK, SPSS akan menyajikan tumpukan tabel. Jangan bingung, fokuslah pada tiga poin utama ini:
-
-### A. Tabel Model Summary (Kekuatan Prediksi)
-Di sini kita melihat **Adjusted R Square**. Misalkan nilainya adalah 0.725.
-*   **Interpretasi:** Artinya, 72,5% variasi Stres Kerja dapat dijelaskan oleh kombinasi Beban Kerja, Lingkungan Kerja, dan Insentif. Sisanya, sekitar 27,5%, dijelaskan oleh faktor di luar model (misalnya masalah keluarga, kepribadian, atau kemacetan jalan).
-*   **Catatan Ahli:** Mengapa tidak menggunakan *R Square* biasa? Karena *R Square* akan selalu naik setiap kali Anda menambah variabel independen, meskipun variabel itu sampah. *Adjusted R Square* adalah nilai yang sudah terkoreksi dan lebih jujur dalam menggambarkan model berganda.
-
-### B. Tabel ANOVA (Uji Kelayakan Model / Uji F)
-Uji F sering disebut sebagai uji simultan.
-*   **Hipotesis:** Apakah minimal ada satu variabel $X$ yang benar-benar berpengaruh signifikan terhadap $Y$?
-*   **Kriteria:** Jika nilai **Sig. < 0.05**, maka model regresi Anda "Fit". Artinya, kombinasi ketiga variabel tersebut memang valid digunakan untuk memprediksi Stres Kerja. Jika Sig. > 0.05, hentikan analisis; model Anda tidak layak atau data tidak mendukung teori.
-
-### C. Tabel Coefficients (Uji Parsial / Uji t)
-Tabel ini memberitahu kita siapa "pemain utama" dalam model tersebut.
-1.  **Variabel Beban Kerja ($X_1$):** Misal Sig. = 0.000 dan nilai B = 0.450. Artinya, setiap kenaikan satu satuan Beban Kerja, Stres Kerja naik sebesar 0.450 unit secara signifikan.
-2.  **Variabel Lingkungan ($X_2$):** Misal Sig. = 0.040 dan nilai B = -0.210. Lingkungan berpengaruh signifikan namun arahnya negatif (semakin baik lingkungan, stres berkurang).
-3.  **Variabel Insentif ($X_3$):** Misal Sig. = 0.650. Artinya, Insentif **tidak memiliki pengaruh signifikan** terhadap Stres Kerja dalam sampel penelitian ini. Meskipun secara teori berpengaruh, mungkin pada perusahaan tempat Anda meneliti, insentif tidak menjadi faktor pereda stres bagi mereka.
+### Langkah-Langkah di Software SPSS:
+1.  **Input**: Masukkan data ke dalam *Data View* dan definisikan label variabel di *Variable View*.
+2.  **Akses**: Pilih menu `Analyze` > `Regression` > `Linear`.
+3.  **Variabel**: Pindahkan variabel dependen ke kotak `Dependent` dan variabel independen ke kotak `Independent(s)`.
+4.  **Statistics**: Centang opsi `Estimates`, `Model fit`, `Collinearity diagnostics`, `Durbin-Watson`, dan `Casewise diagnostics`.
+5.  **Plots**: Masukkan `*ZPRED` ke sumbu **X** dan `*ZRESID` ke sumbu **Y** (Uji Heteroskedastisitas). Centang `Normal Probability Plot`.
+6.  **OK**.
 
 ---
 
-> ### 🚀 Solusi Cepat Analisis Statistik Anda
-> Jangan biarkan skripsi atau penelitian Anda terhambat karena hasil SPSS yang tidak signifikan. Konsultasikan data Anda dengan pakar di **[Statistikan.com](https://www.statistikian.com)**. Kami melayani berbagai jenis uji statistik dengan interpretasi yang mudah dipahami.
-> 
-> ![Jasa Analisis Data](https://www.statistikian.com)
-> *Kunjungi [Statistikan.com](https://www.statistikian.com) untuk solusi olah data terbaik.*
+## 3. Bedah Tuntas Uji Asumsi Klasik: Syarat Mutlak Validitas
+
+Sebuah model regresi dikatakan **BLUE** (*Best Linear Unbiased Estimator*) hanya jika memenuhi asumsi-asumsi klasik. Tanpa ini, hasil uji t dan uji F Anda tidak bermakna secara statistik.
+
+### A. Uji Normalitas: Mengukur Kewajaran Residu
+Asumsi ini menuntut agar nilai residu (bukan variabelnya) berdistribusi normal. 
+*   **Interpretasi Visual (P-P Plot)**: Titik-titik (residu) harus mengikuti atau menempel pada garis diagonal. Jika membentuk pola "S" yang menjauh dari garis, berarti data tidak normal.
+*   **Solusi**: Jika tidak normal, lakukan transformasi data ke bentuk Ln (Logaritma Natural) atau hapus data yang menjadi outlier ekstrem.
+
+### B. Uji Multikolinearitas: Menghindari Redundansi
+Multikolinearitas terjadi ketika variabel-variabel independen memiliki korelasi yang sangat kuat satu sama lain.
+*   **Kriteria**: Nilai **VIF < 10** dan nilai **Tolerance > 0.10**.
+*   **Solusi**: Jika VIF > 10, keluarkan salah satu variabel yang berkorelasi tinggi atau gabungkan melalui analisis faktor.
+
+### C. Uji Heteroskedastisitas: Konsistensi Varians
+Model regresi mensyaratkan adanya **Homoskedastisitas**, yaitu varians dari residu satu pengamatan ke pengamatan lain tetap konsisten.
+*   **Interpretasi Scatterplot**: Titik-titik harus menyebar secara acak di atas dan di bawah angka 0 pada sumbu Y tanpa membentuk pola (seperti corong atau gelombang).
+
+### D. Uji Autokorelasi: Independensi Data
+Biasanya muncul pada data *time series*. Diukur dengan nilai **Durbin-Watson (DW)**. Rentang aman biasanya antara 1.5 hingga 2.5. Penjelasan lebih lanjut mengenai teknis pengujian ini dapat dipelajari pada [Panduan Statistikian](https://www.statistikian.com).
 
 ---
 
-## 4. Analisis Outlier: Si Perusak Model dan Cara Mengatasinya
+## 4. Diagnostik Outlier: Mengidentifikasi "Data Perusak"
 
-Outlier atau data pencilan seringkali menjadi penyebab utama model regresi tidak signifikan atau asumsi klasik gagal. Outlier adalah titik data yang sangat jauh dari pola data lainnya.
+Outlier adalah data yang memiliki karakteristik ekstrem dan mampu menarik garis regresi menjauh dari tren mayoritas data. Keberadaannya seringkali merusak nilai $R^2$.
 
-### Cara Mendeteksi Outlier Secara Akurat
-Gunakan variabel `COO_1` (Cook's Distance) yang sudah kita buat di langkah awal.
-*   **Metode Visual:** Gunakan *Boxplot* atau *Scatterplot* untuk melihat data yang melompat jauh.
-*   **Metode Cook's Distance:** Menurut beberapa pakar (seperti Cook & Weisberg), nilai Cook's Distance yang melebihi **1.0** menunjukkan bahwa observasi tersebut sangat berpengaruh dan berpotensi merusak estimasi parameter.
-*   **Metode Casewise Diagnostics:** Jika SPSS memunculkan tabel ini, perhatikan kolom *Std. Residual*. Jika ada nilai di atas 3 atau di bawah -3, itu adalah kandidat kuat outlier.
+**Cara Mendeteksi di SPSS:**
+Lihat tabel **Casewise Diagnostics**. Fokus pada kolom **Std. Residual**.
 
-### Solusi Masalah Outlier
-Jangan terburu-buru menghapus data. Lakukan langkah ini:
-1.  **Cek Input:** Pastikan tidak ada kesalahan ketik (misal: usia karyawan tertulis 250 tahun, padahal maksudnya 25). Jika salah ketik, perbaiki.
-2.  **Hapus (Trimming):** Jika data tersebut memang benar adanya namun sangat ekstrem dan tidak mewakili populasi umum, Anda diizinkan secara ilmiah untuk menghapusnya. Jelaskan dalam bab 4 skripsi Anda bahwa data dihapus untuk menjaga objektivitas model.
-3.  **Winsorizing:** Mengganti nilai ekstrem dengan nilai tertinggi berikutnya yang masih dalam batas wajar.
-4.  **Transformasi:** Seringkali data terlihat seperti outlier karena distribusinya tidak normal (menceng). Melakukan transformasi logaritma (LN) seringkali bisa menarik data pencilan ini kembali ke dalam kelompok utama.
 
-## 5. Strategi Penyelamatan Jika Gagal Uji Asumsi Klasik
 
-Dunia nyata tidak selalu linear dan normal. Jika model Anda gagal dalam uji asumsi, berikut adalah panduan perbaikannya:
+| Case Number | Std. Residual | Variabel Y | Predicted Value | Residual |
+| :--- | :--- | :--- | :--- | :--- |
+| 42 | **3.850** | 95.00 | 60.20 | 34.80 |
 
-### A. Masalah Normalitas
-**Penyebab:** Data memiliki variasi yang terlalu lebar atau terkonsentrasi di satu kutub.
-*   **Solusi Utama:** Transformasi data ke bentuk **Logaritma Natural (LN)**. Di SPSS: `Transform > Compute Variable > LN_Y = LN(Y)`. Regresikan kembali menggunakan variabel LN tersebut. Biasanya, data yang tadinya menceng akan menjadi lebih simetris.
-
-### B. Masalah Multikolinearitas
-**Penyebab:** Variabel independen Anda saling berkorelasi terlalu kuat (VIF > 10). Misal Anda memasukkan "Gaji Bulanan" dan "Pendapatan Per Tahun" sebagai dua variabel berbeda—keduanya hampir pasti identik.
-*   **Solusi:** Buang salah satu variabel yang memiliki nilai VIF tertinggi. Atau, gabungkan variabel-variabel tersebut melalui analisis faktor terlebih dahulu.
-
-### C. Masalah Heteroskedastisitas
-**Penyebab:** Ketidaksamaan varian residual di seluruh rentang nilai prediksi. Biasanya terlihat dari grafik scatterplot yang membentuk pola "kipas".
-*   **Solusi:** Gunakan metode **WLS (Weighted Least Squares)**. Caranya: buat variabel bobot (weight) berdasarkan residual, lalu lakukan regresi kembali dengan menyertakan variabel bobot tersebut di kotak *WLS Weight*.
-*   **Alternatif:** Gunakan **Robust Standard Errors** jika Anda menggunakan software yang mendukung (seperti STATA) atau lakukan transformasi LN pada variabel dependen.
-
-### D. Masalah Autokorelasi (Data Time Series)
-**Penyebab:** Data saat ini dipengaruhi oleh data sebelumnya (misal: harga saham hari ini pasti dipengaruhi harga kemarin).
-*   **Solusi:** Gunakan metode **Cochrane-Orcutt** atau **Prais-Winsten**. Teknik ini akan menghitung nilai *rho* untuk mengoreksi korelasi antar residual sehingga nilai t dan F kembali valid.
-
-## 6. Pentingnya Signifikansi Teoretis vs Signifikansi Statistik
-
-Sebagai catatan penutup, banyak peneliti sangat stres jika nilai Sig. > 0.05 (tidak signifikan). Padahal, dalam penelitian sosial, hasil tidak signifikan juga merupakan sebuah penemuan!
-
-Mungkin saja di lokasi penelitian Anda, variabel **Insentif** benar-benar tidak berpengaruh terhadap **Stres Kerja** karena karyawan di sana sudah memiliki gaji yang sangat tinggi, sehingga tambahan insentif tidak lagi memengaruhi kondisi psikologis mereka. Tugas peneliti adalah menjelaskan **mengapa** itu tidak signifikan berdasarkan observasi lapangan, bukan memaksakan data agar signifikan dengan cara-cara yang tidak etis.
+**Interpretasi**: Karena nilai Std. Residual **> 3**, maka responden nomor 42 adalah outlier. Menghapus data ini akan meningkatkan signifikansi dan akurasi model secara instan.
 
 ---
 
-## Kesimpulan
+## 5. Studi Kasus Riil: Analisis Perilaku Konsumen dan Strategi Perbaikan
 
-Uji Regresi Linear Berganda adalah metode yang powerful namun menuntut ketelitian tinggi. Anda harus memulai dari penataan data yang benar, melakukan diagnostik asumsi klasik secara jujur, mendeteksi gangguan *outlier*, hingga mampu memberikan interpretasi yang logis berdasarkan studi kasus. Ingatlah bahwa model yang baik adalah model yang tidak hanya memiliki $R^2$ tinggi, tetapi juga model yang parameternya stabil dan tidak melanggar asumsi dasar statistik (BLUE).
+**Kasus**: Pengaruh Biaya Iklan ($X_1$) dan Jumlah Promo ($X_2$) terhadap Omzet Penjualan ($Y$).
+
+**Masalah**: Hasil awal menunjukkan $R^2$ hanya 0.25 (sangat lemah) dan Biaya Iklan tidak signifikan. Secara teori, ini tidak logis karena iklan seharusnya meningkatkan omzet.
+
+**Analisis Tajam**:
+Setelah diperiksa, ditemukan 3 data outlier pada periode tertentu di mana biaya iklan tinggi tetapi sistem pembayaran perusahaan mengalami gangguan teknis (penjualan rendah). Selain itu, sebaran data Iklan bersifat heteroskedastik karena perbedaan skala budget yang jomplang antar wilayah.
+
+**Tindakan**:
+1.  Peneliti menghapus 3 data outlier tersebut.
+2.  Melakukan transformasi **Ln** pada variabel Omzet Penjualan.
+
+**Hasil Final**:
+Setelah perbaikan, model menunjukkan hasil yang sangat tajam. $R^2$ naik menjadi 0.82 (Pengaruh 82%) dan Biaya Iklan menjadi signifikan pada taraf 1%.
+
+### Tabel Coefficients (Uji t)
+
+
+
+| Model | Unstandardized B | Std. Error | t | Sig. |
+| :--- | :--- | :--- | :--- | :--- |
+| (Constant) | 15.200 | 2.100 | 7.238 | .000 |
+| Biaya Iklan (X1) | 0.750 | 0.110 | 6.818 | **.001** |
+| Jumlah Promo (X2) | 0.400 | 0.100 | 4.000 | **.005** |
+
+### Konsultasi Olah Data & Bimbingan Statistik
+
+Kesulitan untuk analisis SPSS, Eviews, STATA, SmartPLS, AMOS, Minitab, R Studio, Excel? menangani data yang tidak normal? Hasil R-Square rendah atau variabel tidak signifikan padahal teori mendukung? Masalah asumsi klasik? Jangan biarkan skripsi atau riset Anda terhambat.
+
+Kami memberikan layanan jasa olah data profesional hingga tuntas dan agar anda benar-benar menguasai materi untuk sidang.
+
+**Layanan Kami:**
+*   Analisis Regresi Berganda, Path Analysis, dan SEM.
+*   Pembersihan Outlier, Transformasi Data dan Solusi masalah uji asumsi
+*   Interpretasi Mendalam.
+
+**Biaya Layanan:**
+Range harga **Rp100.000 s/d Rp500.000** (tergantung beban kerja dan tingkat kesulitan analisis).
+
+**Hubungi Kami Sekarang:**
+[Klik untuk Chat WhatsApp: 081515699060](https://wa.me/6281515699060)
 
 ---
 
-### 📩 Butuh Bantuan Olah Data Profesional?
-Jika Anda masih bingung, mendapatkan hasil yang aneh, atau hasil olah data Anda tetap tidak normal setelah mengikuti langkah di atas, tim pakar kami siap memberikan solusi tuntas.
+## 6. Penyusunan Persamaan Regresi Final (Notasi)
 
-**Hubungi Statistikan.com via WhatsApp:**
-[**Klik di Sini: Chat via WhatsApp 081515699060**](https://api.whatsapp.com)
+Berdasarkan hasil analisis tabel *Coefficients* final, notasi persamaan regresi linear bergandanya adalah:
+
+$$Y = 15.200 + 0.750 X_1 + 0.400 X_2 + \epsilon$$
+
+**Interpretasi Persamaan:**
+1.  **Konstanta (15.200)**: Nilai dasar Omzet tanpa pengaruh Iklan dan Promo.
+2.  **Koefisien $\beta_1$ (0.750)**: Setiap kenaikan 1 unit Biaya Iklan akan menaikkan Omzet sebesar 0.750 unit.
+3.  **Koefisien $\beta_2$ (0.400)**: Setiap kenaikan 1 unit Promo akan menaikkan Omzet sebesar 0.400 unit.
 
 ---
 
-**Referensi untuk Daftar Pustaka Anda:**
-*   **Ghozali, I. (2018).** *Aplikasi Analisis Multivariate dengan Program IBM SPSS 25*. Semarang: Badan Penerbit Universitas Diponegoro.
-*   **Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E. (2019).** *Multivariate Data Analysis*. Cengage Learning.
-*   **Statistikan.com.** *Tutorial Regresi Linear Berganda dan Solusi Asumsi Klasik*. Diakses dari [https://www.statistikian.com](https://www.statistikian.com)
-*   **Sugiyono. (2017).** *Statistika untuk Penelitian*. Bandung: Alfabeta.
+## 7. Daftar Pustaka & Referensi Lanjutan
+
+Untuk memperdalam pemahaman mengenai Regresi Linear Berganda, Anda dapat merujuk pada sumber tepercaya berikut:
+
+*   **Statistikian**: [Panduan Lengkap Regresi Linear Berganda](https://www.statistikian.com) (Situs rujukan utama untuk penjelasan teknis asumsi klasik).
+*   **IBM SPSS Documentation**: [Linear Regression Procedures](https://www.ibm.com) (Dokumentasi resmi mengenai prosedur [Linear Regression](https://www.ibm.com) di IBM SPSS).
+*   **Ghozali, I. (2018).** *Aplikasi Analisis Multivariate dengan Program IBM SPSS 25*. Semarang: Universitas Diponegoro.
+*   **Gujarati, D. N. (2009).** *Basic Econometrics*. New York: McGraw-Hill.
+
+---
+
+### Konsultasi Olah Data & Bimbingan Statistik
+
+Kesulitan untuk analisis SPSS, Eviews, STATA, SmartPLS, AMOS, Minitab, R Studio, Excel? menangani data yang tidak normal? Hasil R-Square rendah atau variabel tidak signifikan padahal teori mendukung? Masalah asumsi klasik? Jangan biarkan skripsi atau riset Anda terhambat.
+
+Kami memberikan layanan jasa olah data profesional hingga tuntas dan agar anda benar-benar menguasai materi untuk sidang.
+
+**Layanan Kami:**
+*   Analisis Regresi Berganda, Path Analysis, dan SEM.
+*   Pembersihan Outlier, Transformasi Data dan Solusi masalah uji asumsi
+*   Interpretasi Mendalam.
+
+**Biaya Layanan:**
+Range harga **Rp100.000 s/d Rp500.000** (tergantung beban kerja dan tingkat kesulitan analisis).
+
+**Hubungi Kami Sekarang:**
+[Klik untuk Chat WhatsApp: 081515699060](https://wa.me/6281515699060)
+
