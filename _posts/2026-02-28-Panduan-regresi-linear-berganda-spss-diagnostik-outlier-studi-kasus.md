@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Panduan Master Regresi Linear Berganda SPSS: Analisis Mendalam, Diagnostik Outlier, & Studi Kasus Riil"
-date: 2026-03-01
+date: 2026-02-28
 categories: [Statistik, Tutorial]
 tags: [SPSS, Regresi, Olah Data, Skripsi, Statistik]
 author: Statistik Master
@@ -74,7 +74,6 @@ Memastikan varians residu tetap konsisten untuk semua level pengamatan.
 Outlier seringkali menjadi penyebab utama mengapa model regresi tidak signifikan atau residu tidak normal. Cek tabel **Casewise Diagnostics** pada output SPSS Anda.
 
 
-
 | Case Number | Std. Residual | Nilai Teramati (Y) | Prediksi | Residual |
 | :--- | :--- | :--- | :--- | :--- |
 | 42 | **3.850** | 95.00 | 60.20 | 34.80 |
@@ -111,13 +110,13 @@ Interpretasi dari notasi di atas menunjukkan bahwa setiap kenaikan satu unit pad
 
 *   **Statistikian**: [Panduan Regresi Linear Berganda](https://www.statistikian.com) (Rujukan teknis utama untuk prosedur asumsi klasik di Indonesia).
 *   **IBM SPSS Documentation**: [Linear Regression Analysis](https://www.ibm.com) (Dokumentasi resmi prosedur operasional regresi di software IBM SPSS).
-*   **Ghozali, I. (2018).** *Aplikasi Analisis Multivariate dengan Program IBM SPSS*. Semarang: Badan Penerbit Universitas Diponegoro.
+*   **Ghozali, I. (2018).** *Aplikasi Analisis Multivariate dengan Program IBM SPSS 25*. Semarang: Badan Penerbit Universitas Diponegoro.
 *   **Gujarati, D. N. (2009).** *Basic Econometrics*. New York: McGraw-Hill.
 
 <section class="promo-section">
 <h3 style="margin-top: 0;">Konsultasi Olah Data & Bimbingan Statistik</h3>
 <p>Kesulitan untuk analisis <strong>SPSS, Eviews, STATA, SmartPLS, AMOS, Minitab, R Studio, Excel</strong>? Menangani data yang tidak normal? Hasil R-Square rendah atau variabel tidak signifikan padahal teori mendukung? Masalah asumsi klasik? Jangan biarkan skripsi atau riset Anda terhambat.</p>
-<p>Kami memberikan layanan jasa olah data profesional hingga tuntas dan memastikan Anda benar-benar menguasai materi untuk sidang.</p>
+<p>Kami memberikan layanan jasa olah data profesional hingga tuntas dan memastikan Anda benar-benar menguasai materi untuk sidang. Kesuksesan riset Anda adalah prioritas kami.</p>
 <ul style="list-style-type: square;">
 <li>Analisis Regresi Berganda, Path Analysis, dan SEM.</li>
 <li>Pembersihan Outlier, Transformasi Data, dan Solusi masalah uji asumsi.</li>
