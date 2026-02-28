@@ -81,23 +81,20 @@
       .main-wrapper img { max-width: 100%; } /* Di HP tetap 100% agar tidak pecah */
     }
     </style>
-    <!-- MathJax v3 Konfigurasi Terkuat untuk Jekyll -->
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']],
-          processEscapes: true,
-          packages: {'[+]': ['base', 'ams', 'noerrors', 'noundefined']}
-        },
-        options: {
-          ignoreHtmlClass: 'tex2jax_ignore',
-          processHtmlClass: 'tex2jax_process'
-        },
-        loader: {load: ['[tex]/ams']}
-      };
+    <!-- Script MathJax Versi Stabil (Kembali ke Semula) -->
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com">
     </script>
-    <script src="https://cdn.jsdelivr.net" id="MathJax-script" async></script>
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true
+        }
+      });
+    </script>
 </head>
 <body>
 
