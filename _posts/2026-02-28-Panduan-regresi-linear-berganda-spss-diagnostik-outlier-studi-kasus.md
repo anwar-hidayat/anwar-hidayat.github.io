@@ -44,9 +44,8 @@ Analisis ini paling optimal dilakukan menggunakan **IBM SPSS Statistics**. Berik
 1.  **Input Data**: Masukkan data ke dalam *Data View*. Pastikan skala data adalah interval atau rasio (metrik).
 2.  **Akses Menu**: Pilih menu **Analyze** > **Regression** > **Linear**.
 3.  **Penempatan Variabel**: Masukkan variabel dependen ke kotak *Dependent* dan semua variabel independen ke kotak *Independent(s)*.
-4.  **Konfigurasi Statistik**: Klik tombol *Statistics*, centang **Estimates**, **Model fit**, **Collinearity diagnostics** (untuk mendeteksi Multikolinearitas), **Durbin-Watson** (untuk Autokorelasi), dan **Casewise diagnostics** (untuk deteksi Outlier).
+4.  **Konfigurasi Statistik**: Klik tombol *Statistics*, centang **Estimates**, **Model fit**, **Collinearity diagnostics** (VIF), **Durbin-Watson** (Autokorelasi), dan **Casewise diagnostics** (Outlier).
 5.  **Plots Diagnostik**: Klik tombol *Plots*, pindahkan `*ZPRED` ke sumbu X dan `*ZRESID` ke sumbu Y. Centang opsi **Normal Probability Plot**.
-6.  **Eksekusi**: Klik **OK**.
 
 ---
 
@@ -73,6 +72,7 @@ Memastikan varians residu tetap konsisten untuk semua level pengamatan.
 ## 4. Diagnostik Outlier (Data Pencilan)
 
 Outlier seringkali menjadi penyebab utama mengapa model regresi tidak signifikan atau residu tidak normal. Cek tabel **Casewise Diagnostics** pada output SPSS Anda.
+
 
 
 | Case Number | Std. Residual | Nilai Teramati (Y) | Prediksi | Residual |
