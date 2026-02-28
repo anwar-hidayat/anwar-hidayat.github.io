@@ -30,7 +30,5 @@ exclude:
   - vendor
 
 # 6. Mathjax
-markdown: kramdown
 kramdown:
   math_engine: mathjax
-
