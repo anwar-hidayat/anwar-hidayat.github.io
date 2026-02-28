@@ -81,6 +81,20 @@
       .main-wrapper img { max-width: 100%; } /* Di HP tetap 100% agar tidak pecah */
     }
   </style>
+    <!-- Script untuk Aktivasi MathJax (Notasi Matematika) -->
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com">
+    </script>
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true
+        }
+      });
+    </script>
 </head>
 <body>
 
