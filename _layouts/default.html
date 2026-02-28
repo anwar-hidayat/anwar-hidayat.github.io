@@ -80,23 +80,24 @@
       .astra-menu li { margin: 0 10px; }
       .main-wrapper img { max-width: 100%; } /* Di HP tetap 100% agar tidak pecah */
     }
-  </style>
-  <!-- Script MathJax Terbaru & Kompatibel Jekyll -->
-  <script src="https://polyfill.io"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net"></script>
-  
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
-  </script>
+    </style>
+    <!-- MathJax v3 Konfigurasi Terkuat untuk Jekyll -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          packages: {'[+]': ['base', 'ams', 'noerrors', 'noundefined']}
+        },
+        options: {
+          ignoreHtmlClass: 'tex2jax_ignore',
+          processHtmlClass: 'tex2jax_process'
+        },
+        loader: {load: ['[tex]/ams']}
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net" id="MathJax-script" async></script>
 </head>
 <body>
 
