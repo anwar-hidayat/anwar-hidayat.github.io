@@ -1,3 +1,2 @@
 User-agent: *
-Disallow:
-Sitemap: https://statistikian.net/sitemap.xml
+Disallow: /
