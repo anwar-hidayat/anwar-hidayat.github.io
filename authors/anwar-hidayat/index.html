@@ -9,4 +9,82 @@
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script></body></html>
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 50px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060</p></a></div></body></html>
