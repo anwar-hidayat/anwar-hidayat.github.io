@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+    <!-- Latar Belakang Kotak dengan Sudut Melengkung -->
+    <rect width="64" height="64" rx="14" fill="#2c3e50"/>
+    
+    <!-- Aksen Grafik Batang di Latar Belakang (Opsional, Efek Transparan) -->
+    <rect x="14" y="36" width="8" height="16" fill="#4a5568" rx="2"/>
+    <rect x="28" y="26" width="8" height="26" fill="#718096" rx="2"/>
+    <rect x="42" y="16" width="8" height="36" fill="#0056b3" rx="2"/>
+
+    <!-- Huruf Utama "S" (Simbol Statistikian) -->
+    <text x="50%" y="45" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold" fill="#ffffff" text-anchor="middle">S</text>
+</svg>

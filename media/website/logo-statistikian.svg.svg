@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 60" width="250" height="60">
+    <!-- Ikon Grafik Batang -->
+    <rect x="15" y="30" width="8" height="20" fill="#a0aec0" rx="1.5"/>
+    <rect x="29" y="18" width="8" height="32" fill="#4a5568" rx="1.5"/>
+    <rect x="43" y="6" width="8" height="44" fill="#0056b3" rx="1.5"/>
+    
+    <!-- Garis Dasar (Baseline) -->
+    <path d="M10,54 L58,54" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Teks Utama -->
+    <text x="65" y="36" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50">Statistikian</text>
+    
+    <!-- Teks Tagline -->
+    <text x="66" y="50" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#718096" letter-spacing="1.5">DATA ANALYSIS</text>
+</svg>
