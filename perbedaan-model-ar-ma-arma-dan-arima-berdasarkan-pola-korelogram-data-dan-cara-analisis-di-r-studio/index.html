@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio - Statistikian Net</title><meta name="robots" content="noindex,nofollow"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="alternate" type="application/atom+xml" href="https://statistikian.net/feed.xml" title="Statistikian Net - RSS"><link rel="alternate" type="application/json" href="https://statistikian.net/feed.json" title="Statistikian Net - JSON"><link rel="shortcut icon" href="https://statistikian.net/media/website/favicon-statistikian.svg" type="image/x-icon"><link rel="stylesheet" href="https://statistikian.net/assets/css/style.css?v&#x3D;77f1c0543ff7613fcdaefde325a09174"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/"},"headline":"Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio","datePublished":"2026-09-05T20:49+07:00","dateModified":"2026-09-05T20:49+07:00","image":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250},"description":"Panduan teknis memahami perbedaan model AR, MA, ARMA, dan ARIMA berdasarkan pola korelogram data. Pelajari cara analisis dan interpretasi ACF PACF di R-Studio.","author":{"@type":"Person","name":"Anwar Hidayat","url":"https://statistikian.net/authors/anwar-hidayat/"},"publisher":{"@type":"Organization","name":"Anwar Hidayat","logo":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><div class="left-bar"><div class="left-bar__inner"><header class="header"><a class="logo" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle__box"><span class="navbar__toggle__inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://statistikian.net/" target="_self" aria-label="Home"><span>Home</span></a></li><li><a href="https://statistikian.com" target="_self" aria-label="statistikian.com"><span>statistikian.com</span></a></li><li><a href="https://statistikian.net/tags/" target="_self" aria-label="Artikel By Aplikasi"><span>Artikel By Aplikasi</span></a></li><li><a href="https://statistikian.net/#" target="_self" aria-label="About"><span>About</span></a></li></ul></nav><a class="logo logo--atbottom" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a></header></div></div><main class="main post"><article class="content content--attop"><header class="hero content__header"><div class="main__inner"><h1>Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</h1></div></header><div class="content__meta content__meta--attop"><div class="content__meta--attop__inner"><div class="content__maintag"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#tag"/></svg> Published in <a href="https://statistikian.net/tags/r-studio/" class="metadata__maintag">R Studio</a></div><div class="content__date"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#date"/></svg> <time datetime="2026-09-05T20:49">Sep 5, 2026</time></div></div></div><div class="main__inner"><div class="content__meta"><div class="content__author"><div><a href="https://statistikian.net/authors/anwar-hidayat/" class="content__author__name">Anwar Hidayat</a><p>Anwar Hidayat</p></div></div></div><div class="content__entry"><article><p style="text-align: justify;">Saat melakukan peramalan deret waktu atau <em>time series forecasting</em>, rintangan terbesar yang sering membuat analis data frustrasi adalah gagal mengidentifikasi <strong>Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</strong>. Gejala masalah ini memuncak saat Anda mengeksekusi fungsi <code>acf()</code> dan <code>pacf()</code> pada *console* R, lalu dihadapkan pada grafik batang vertikal (korelogram) yang polanya ambigu—sulit dibedakan apakah ia memotong tajam (<em>cut-off</em>) atau melandai pelan (<em>tails-off</em>). Kesalahan pembacaan visual ini secara berantai menyebabkan spesifikasi ordo (p, d, q) yang keliru, sehingga R-Studio memunculkan pesan <em>error</em> optimasi non-finite, parameter tidak konvergen, atau sisaan (<em>residuals</em>) yang gagal memenuhi asumsi <em>white noise</em>.</p><p style="text-align: justify;">Menentukan ordo autokorelatif yang salah ibarat memberikan resep obat yang keliru berbekal hasil rontgen yang buram. Banyak peneliti atau analis kuantitatif yang akhirnya memaksakan penggunaan <em>package</em> otomatis tanpa memahami perilaku stokastik data dasarnya. Akibatnya, saat model dipaksa memprediksi data uji (<em>out-of-sample</em>), nilai <em>Mean Absolute Percentage Error</em> (MAPE) membengkak tak terkendali. Membedakan *Auto-Regressive* (AR), *Moving Average* (MA), model campurannya (ARMA), hingga bentuk integrasinya (ARIMA) mutlak membutuhkan ketajaman dalam membaca jejak autokorelasi parsial dan fungsi autokorelasi.</p><div style="background-color: #f8f9fa; color: #24292e; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #e36209; overflow-x: auto; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #6f42c1; border-bottom: 1px solid #e1e4e8; padding-bottom: 5px;"># Konsol R-Studio: Gejala Salah Spesifikasi Model</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;">&gt; # Menjalankan model tanpa mengecek stationeritas &amp; korelogram yang benar
+&gt; fit_salah &lt;- arima(data_ts, order=c(2,0,2))
+<span style="color: #cb2431;">Error in optim(init[mask], armafn, method = optim.method, hessian = TRUE, : 
+  non-finite finite-difference value [2]</span>
+
+&gt; Box.test(residuals(fit_salah), type="Ljung-Box")
+<span style="color: #b31d28;">	Box-Ljung test
+data:  residuals(fit_salah)
+X-squared = 45.21, df = 1, p-value = 1.7e-11 
+# [MASALAH: p-value &lt; 0.05, Residual masih mengandung autokorelasi!]</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Fondasi Teori Model Runtun Waktu Box-Jenkins</h2><p style="text-align: justify;">Metodologi Box-Jenkins adalah tulang punggung dari analisis deret waktu univariat modern. Model <strong>Auto-Regressive (AR)</strong> mengasumsikan bahwa nilai variabel pada masa kini (Yt) sangat dipengaruhi oleh nilai variabel itu sendiri pada masa lalu (Yt-1, Yt-2, dst.). Sebaliknya, model <strong>Moving Average (MA)</strong> bersandar pada filosofi bahwa nilai masa kini dipengaruhi oleh guncangan atau kejutan galat acak (<em>error terms</em> atau <em>white noise</em>) dari masa lalu. Penggabungan keduanya menghasilkan model ARMA untuk data yang stasioner (Box &amp; Jenkins, 1970).</p><p style="text-align: justify;">Di dunia nyata, sangat jarang menemukan data finansial atau ekonomi yang langsung stasioner—yakni memiliki rata-rata dan varians yang konstan sepanjang waktu. Di sinilah huruf "I" dalam <strong>ARIMA</strong> (<em>Integrated</em>) masuk. Integrasi merujuk pada proses diferensiasi (<em>differencing</em>) tingkat <em>d</em> untuk memaksa data yang memiliki tren agar menjadi stasioner sebelum proses AR dan MA diestimasi.</p><p style="text-align: justify;">Kunci utama untuk mengidentifikasi model mana yang tepat terletak pada korelogram, yaitu plot <em>Autocorrelation Function</em> (ACF) dan <em>Partial Autocorrelation Function</em> (PACF). Secara teoretis, model AR(p) murni akan menunjukkan plot ACF yang menurun secara eksponensial atau bergelombang (<em>tails off</em>), sementara plot PACF-nya akan terpotong drastis (<em>cuts off</em>) setelah *lag* ke-p. Karakteristik ini bersifat cermin kebalikan untuk model MA(q).</p><p style="text-align: justify;">Bagi Anda yang ingin menggali lebih dalam mengenai derivasi matematis dan pembuktian asumsi ekonometrika stasioneritas sebelum melangkah ke tahap eksekusi <em>troubleshooting</em> koding, kami sangat menyarankan Anda membaca rujukan teoretis komprehensif kami di <a href="https://www.statistikian.com" target="_blank" style="color: #0366d6; font-weight: bold; text-decoration: none;" rel="noopener">statistikian.com</a>. Memisahkan pemahaman teori dasar dan praktik klinis pengkodean akan menajamkan insting analisis Anda.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Langkah Teknis Eksekusi Analisis ACF PACF di R-Studio</h2><p style="text-align: justify;"><strong>1. Uji Stasioneritas (Augmented Dickey-Fuller).</strong> Sebelum membaca korelogram, pastikan data stasioner. Gunakan fungsi <code>adf.test()</code> dari *package* <code>tseries</code>. Jika <em>p-value</em> &gt; 0.05, data tidak stasioner. Anda wajib melakukan diferensiasi menggunakan perintah <code>diff(data, differences = 1)</code>. Langkah ini menentukan nilai <strong>d</strong> pada ARIMA(p,d,q).</p><p style="text-align: justify;"><strong>2. Plot ACF untuk Identifikasi Ordo MA (q).</strong> Setelah data stasioner, jalankan <code>acf(data_diff)</code>. Perhatikan batasan garis putus-putus biru (interval kepercayaan 95%). Jika grafik memotong batas (<em>cuts off</em>) pada lag ke-1 atau ke-2, lalu *lag* berikutnya tiba-tiba jatuh ke dalam area garis biru, maka itu adalah sinyal model MA(1) atau MA(2).</p><p style="text-align: justify;"><strong>3. Plot PACF untuk Identifikasi Ordo AR (p).</strong> Jalankan <code>pacf(data_diff)</code>. Jika grafik PACF memotong tajam di lag ke-p, sedangkan plot ACF-nya tadi melandai pelan (bisa berbentuk peluruhan eksponensial atau gelombang sinus), maka data tersebut mengikuti proses AR(p).</p><p style="text-align: justify;"><strong>4. Identifikasi ARMA (Keduanya Melandai).</strong> Kasus tersulit adalah ketika plot ACF dan PACF sama-sama melandai pelan (<em>tails off</em>). Ini menandakan campuran <strong>ARMA(p,q)</strong>. Pada titik ini, identifikasi visual tidak lagi akurat. Anda harus melakukan uji coba kombinasi ordo dengan melihat kriteria informasi seperti AIC atau BIC terkecil (Hyndman &amp; Athanasopoulos, 2018).</p><p style="text-align: justify;"><strong>5. Eksekusi Model dan Evaluasi Residual.</strong> Gunakan fungsi <code>Arima()</code> dari *package* <code>forecast</code> alih-alih <code>arima()</code> bawaan <em>base</em> R karena lebih stabil secara algoritmik. Setelah terestimasi, wajib lakukan uji <em>Ljung-Box</em> pada residual. Residual harus berdistribusi normal dan tidak memiliki sisa autokorelasi.</p><div style="background-color: #f8f9fa; color: #24292e; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #28a745; overflow-x: auto; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #6f42c1; border-bottom: 1px solid #e1e4e8; padding-bottom: 5px;"># Solusi R-Studio: Tahapan ARIMA yang Benar</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;">library(forecast)
+library(tseries)
+
+&gt; # 1. Uji Stasioneritas &amp; Diferensiasi
+&gt; ts_diff &lt;- diff(data_ts)
+&gt; adf.test(ts_diff) # p-value = 0.01 (Stasioner)
+
+&gt; # 2. Cek Korelogram
+&gt; par(mfrow=c(1,2))
+&gt; acf(ts_diff, main="ACF (Tails off)")
+&gt; pacf(ts_diff, main="PACF (Cuts off di lag 1)") 
+&gt; # Kesimpulan visual: AR(1) pada data diferensiasi tingkat 1 -&gt; ARIMA(1,1,0)
+
+&gt; # 3. Estimasi Model yang Benar
+&gt; fit_benar &lt;- Arima(data_ts, order=c(1,1,0), include.drift=TRUE)
+&gt; checkresiduals(fit_benar)
+<span style="color: #22863a;">	Ljung-Box test
+p-value = 0.4532 
+# [SOLUSI BERHASIL: p-value &gt; 0.05, Residual bersifat White Noise!]</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Pembahasan Ilmiah: Anatomi ACF, PACF, dan Wold's Decomposition</h2><p style="text-align: justify;">Pemahaman mengapa plot PACF terpotong pada model Auto-Regressive (AR) tidak bisa dilepaskan dari konsep regresi berganda. Autokorelasi Parsial (PACF) pada *lag* ke-k mengukur tingkat korelasi antara observasi saat ini (Yt) dan masa lalu (Yt-k) setelah membuang efek linear dari *lag* perantara (Yt-1 hingga Yt-k+1). Jika proses sejati (<em>true data generating process</em>) adalah AR(1), maka informasi Yt-2 terhadap Yt sebenarnya hanya "dititipkan" melalui Yt-1. Ketika efek Yt-1 dibuang dalam kalkulasi PACF, korelasi Yt dengan Yt-2 menjadi nol murni. Inilah mengapa grafik PACF <em>cuts off</em> tajam (Shumway &amp; Stoffer, 2017).</p><p style="text-align: justify;">Sebaliknya, plot ACF pada model AR(1) dengan koefisien phi positif akan melandai perlahan seperti eksponensial yang meluruh. Hal ini terjadi karena guncangan pada periode t-1 terus menjalar ke periode t, lalu sisa guncangan itu menjalar lagi ke t+1 dengan kekuatan sebesar koefisien berpangkat. Penjalaran tak terbatas inilah yang menciptakan pola <em>tails off</em> pada grafik <em>Autocorrelation Function</em>.</p><p style="text-align: justify;">Di sisi lain, model <em>Moving Average</em> (MA) merepresentasikan memori jangka pendek murni. Berdasarkan Teorema Dekomposisi Wold (<em>Wold's Representation Theorem</em>), setiap deret waktu yang kovarians-stasioner dapat direpresentasikan sebagai jumlahan tak hingga dari <em>white noise error terms</em>. Dalam model MA(q), proses tersebut dengan sengaja diputus (<em>truncated</em>) pada *lag* ke-q. Akibatnya, memori sistem hanya bertahan sejauh q periode. Itulah mengapa plot ACF akan langsung jatuh ke angka nol (<em>cuts off</em>) tepat setelah <em>lag</em> ke-q.</p><p style="text-align: justify;">Lalu mengapa PACF dari model MA melandai perlahan? Ingat syarat "Invertibilitas". Agar model MA memiliki makna matematis dan dapat diestimasi, ia harus bisa diinversi menjadi proses AR berorde tak hingga (AR(∞)). Karena representasi AR-nya tidak berujung, maka korelasi parsialnya tidak pernah benar-benar memotong ke angka nol dalam satu titik, melainkan menyusut perlahan secara perlahan, menciptakan pola <em>tails off</em> pada grafik PACF.</p><p style="text-align: justify;">Bencana analitik mulai terjadi ketika peneliti menghadapi model <strong>ARMA campuran</strong>. Dalam model ARMA(1,1), baik memori dari nilai masa lalu maupun memori dari guncangan (<em>errors</em>) masa lalu bekerja secara simultan. Persamaan simultan ini menggagalkan keistimewaan <em>cuts off</em> pada kedua plot korelogram. ACF tidak terpotong karena adanya komponen AR, dan PACF tidak terpotong karena adanya komponen MA. Keduanya akan melandai (<em>tails off</em>).</p><p style="text-align: justify;">Dalam praktiknya, mengidentifikasi ordo p dan q pada situasi di mana keduanya <em>tails off</em> menggunakan pandangan mata adalah hal yang mustahil (Brockwell &amp; Davis, 2016). Solusi saintifik dari R-Studio adalah menggunakan fungsi <code>auto.arima()</code>. Algoritma otomatis dari fungsi ini (yang mengacu pada algoritma Hyndman-Khandakar) tidak membaca plot, melainkan melakukan estimasi <em>Maximum Likelihood</em> secara iteratif.</p><p style="text-align: justify;">Algoritma ini menghitung penalti parameter menggunakan metrik *Akaike Information Criterion* (AIC) atau *Bayesian Information Criterion* (BIC). Model dengan nilai AIC terkecil dinobatkan sebagai arsitektur yang paling seimbang dalam menjelaskan varians data tanpa mengalami <em>overfitting</em>. Walaupun <code>auto.arima()</code> sangat canggih, sebagai analis, Anda tetap harus memverifikasi bahwa diagnostik residual akhirnya bebas dari korelasi serial melalui <em>Ljung-Box Test</em>.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Kesimpulan</h2><p style="text-align: justify;">Menguasai identifikasi <strong>Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</strong> adalah pondasi esensial sebelum melakukan <em>forecasting</em> presisi tinggi. Aturan emas visualnya sederhana: AR diidentifikasi dari PACF yang terpotong tajam, MA diidentifikasi dari ACF yang terpotong tajam. Jika data belum stasioner (diketahui lewat uji ADF), diferensiasi harus dilakukan yang memunculkan orde "I" dalam ARIMA. Saat kedua grafik hanya melandai secara bertahap, hindari tebakan mata dan beralihlah ke perbandingan objektif menggunakan nilai kriteria informasi (AIC/BIC). Dengan menerapkan struktur pembacaan diagnostik korelogram dan validasi residual <em>Ljung-Box</em> yang ketat, model prediktif yang Anda kembangkan akan memiliki validitas ekonometrika yang kokoh.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Daftar Pustaka</h2><ul style="line-height: 1.8; text-align: justify; padding-left: 20px;"><li>Box, G. E. P., &amp; Jenkins, G. M. (1970). <em>Time Series Analysis: Forecasting and Control</em>. Holden-Day.</li><li>Brockwell, P. J., &amp; Davis, R. A. (2016). <em>Introduction to Time Series and Forecasting</em> (3rd ed.). Springer.</li><li>Hyndman, R. J., &amp; Athanasopoulos, G. (2018). <em>Forecasting: Principles and Practice</em> (2nd ed.). OTexts.</li><li>Shumway, R. H., &amp; Stoffer, D. S. (2017). <em>Time Series Analysis and Its Applications: With R Examples</em> (4th ed.). Springer.</li></ul></article></div><footer class="content__footer"><div class="content__last-updated">This article was updated on <time datetime="2026-09-05T20:49">Sep 5, 2026</time></div><div class="content__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstatistikian.net%2Fperbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio%2F" class="js-share facebook tltp tltp--top" aria-label="Facebook" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://api.whatsapp.com/send?text=Perbedaan%20Model%20AR%2C%20MA%2C%20ARMA%2C%20dan%20ARIMA%20Berdasarkan%20Pola%20Korelogram%20Data%20dan%20cara%20analisis%20di%20R-Studio https%3A%2F%2Fstatistikian.net%2Fperbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio%2F" class="js-share whatsapp tltp tltp--top" title="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></footer></div></article><div class="content__section post__related"><div class="main__inner"><h3 class="content__section__title">Related post</h3><div class="post__related__wrap"><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T19:57">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/panduan-membaca-output-arellano-bond-dynamic-panel-data-di-stata/">Panduan Membaca Output Arellano-Bond Dynamic Panel Data di STATA</a></h2><p>Panduan Membaca Output Arellano-Bond Dynamic Panel Data di STATA Pernahkah Anda bingung&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-01T03:11">Sep 1, 2026 </time><a href="https://statistikian.net/tags/smartpls/" class="c-card-tag">SmartPLS</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></h2><p>Saat pertama kali mengeklik tombol "Calculate &gt; PLS-SEM Algorithm" di SmartPLS 4,&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-01T02:32">Sep 1, 2026 </time><a href="https://statistikian.net/tags/eviews/" class="c-card-tag">Eviews</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/tutorial-lengkap-uji-asumsi-klasik-data-panel-menggunakan-eviews/">Tutorial Lengkap Uji Asumsi Klasik Data Panel Menggunakan Eviews</a></h2><p>Saat melakukan analisis regresi data panel pada Eviews, kendala klasik yang paling&hellip;</p></header></article></div></div></div><div class="content__section banner"><div class="main__inner"><style>.banner-statistik {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 760px;
+    height: 250px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Menggelapkan gambar agar teks terbaca jelas */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .banner-statistik:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #facc15;
+    line-height: 1.2;
+  }
+
+  .banner-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .banner-btn {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Pengaturan Khusus Layar Mobile (Lebar Maksimal 300px) */
+  @media screen and (max-width: 768px) {
+    .banner-statistik {
+      max-width: 300px;
+      height: 250px;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .banner-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }</style><a href="https://wa.me/6281515699060?text=Halo%2C%20saya%20butuh%20bantuan%20analisis%20statistik" target="_blank" rel="noopener noreferrer" class="banner-statistik"><div class="banner-title">Butuh Bantuan Analisis Statistik?</div><div class="banner-text">Jangan ragu bertanya pada kami, biaya <strong>100 sd 300 IDR</strong>.<br>Tim kami siap membantu dengan aplikasi SPSS, Eviews, STATA, SmartPLS, Lisrel, AMOS, R-Studio, Minitab dan Excel.<br><em>Berpengalaman sejak 2012.</em> <strong>.... KLIK DISINI !</strong></div><div class="banner-btn">WhatsApp: 081515699060</div></a></div></div></main><div class="right-bar"><div class="right-bar__inner"><div class="sidebar"><section class="box featured"><h3 class="box__title">Featured Posts</h3><ul class="featured__container"><li class="featured__item"><div><a href="https://statistikian.net/sebab-dan-cara-mengatasi-masalah-model-not-positive-definite-dan-under-identified-pada-cb-sem-lisrel/" class="featured__title">Sebab dan Cara Mengatasi Masalah Model Not Positive Definite dan Under-Identified Pada CB SEM Lisrel</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/" class="featured__title">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/" class="featured__title">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/" class="featured__title">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-dan-hansen-untuk-mengevaluasi-overidentifying-restrictions-dan-solusinya-pada-stata/" class="featured__title">Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions dan Solusinya pada STATA</a></div></li></ul></section><section class="box tags"><h3 class="box__title">Recommended Topics</h3><ul class="tags__list"><li class="tags__item"><a href="https://statistikian.net/tags/eviews/" class="btn btn--gray">Eviews</a></li><li class="tags__item"><a href="https://statistikian.net/tags/jasp/" class="btn btn--gray">JASP</a></li><li class="tags__item"><a href="https://statistikian.net/tags/lisrel/" class="btn btn--gray">Lisrel</a></li><li class="tags__item"><a href="https://statistikian.net/tags/r-studio/" class="btn btn--gray">R Studio</a></li><li class="tags__item"><a href="https://statistikian.net/tags/smartpls/" class="btn btn--gray">SmartPLS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/spss/" class="btn btn--gray">SPSS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/stata/" class="btn btn--gray">STATA</a></li></ul></section><div class="box copyright">Powered by Anwar Hidayat - Alright Reserved</div></div></div></div></div><script defer="defer" src="https://statistikian.net/assets/js/scripts.min.js?v&#x3D;b2d91bcadbf5db401b76eb5bb3092eb7"></script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 60px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060.<strong>.... KLIK DISINI !</strong></p></a></div><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 13 paragraf
+    if (paragraphs.length >= 13) {
+        const ctaHTML = `
+	<!-- CTA 1 BOX (WhatsApp) -->
+	<div style="background-color: #f0f7ff; padding: 25px; text-align: center; border: 2px dashed #0056b3; border-radius: 8px; margin: 35px 0;">
+		<p style="font-size: 16px; font-weight: bold; margin-bottom: 20px; color: #333; line-height: 1.5; text-align: center;">Sudah mencoba langkah di atas tapi model data Anda masih error atau deadline sidang makin dekat? Konsultasikan langsung masalah olah data Anda bersama tim ahli kami via WhatsApp.</p>
+		<a href="https://wa.me/6281515699060" target="_blank" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" rel="noopener">WhatsApp 081515699060</a>
+	</div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-12 (index 12)
+        paragraphs[11].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 21 paragraf
+    if (paragraphs.length >= 21) {
+        const ctaHTML = `
+            <!-- CTA BOX Instagram -->
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 30px; border-radius: 10px; margin: 40px 0; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); text-align: center;">
+                <h3 style="margin-top: 0; font-size: 24px; margin-bottom: 15px; color: white; text-align: center;">Dapatkan Update &amp; Tips Olah Data dan Lihat Testimoni!</h3>
+                <p style="font-size: 16px; margin-bottom: 25px; line-height: 1.6; text-align: center;">Dapatkan Update &amp; Tips Olah Data atau Testimoni Klien Kami! Ingin panduan visual yang ringkas dan tips cepat seputar pengujian STATA, EViews, SPSS, dll serta metodologi penelitian lainnya? Ikuti Instagram kami untuk konten edukatif yang di-update secara berkala. Anda juga bisa lihat testimoni klien kami yang sudah menggunakan jasa analisis statistik tim kami.</p>
+                <a href="https://www.instagram.com/statistikian" target="_blank" style="background-color: white; color: #dc2743; padding: 14px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" rel="noopener">
+                    <!-- Icon Instagram SVG --> 
+                    <svg style="width: 22px; height: 22px; margin-right: 10px; fill: currentColor;" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg> Follow @statistikian 
+                </a>
+            </div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-20 (index 20)
+        paragraphs[19].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script></body></html>

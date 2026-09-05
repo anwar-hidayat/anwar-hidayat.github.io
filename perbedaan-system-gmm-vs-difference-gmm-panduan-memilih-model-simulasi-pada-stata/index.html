@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Perbedaan System GMM vs Difference GMM: Panduan Memilih Model (Simulasi pada STATA) - Statistikian Net</title><meta name="robots" content="noindex,nofollow"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="alternate" type="application/atom+xml" href="https://statistikian.net/feed.xml" title="Statistikian Net - RSS"><link rel="alternate" type="application/json" href="https://statistikian.net/feed.json" title="Statistikian Net - JSON"><link rel="shortcut icon" href="https://statistikian.net/media/website/favicon-statistikian.svg" type="image/x-icon"><link rel="stylesheet" href="https://statistikian.net/assets/css/style.css?v&#x3D;77f1c0543ff7613fcdaefde325a09174"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://statistikian.net/perbedaan-system-gmm-vs-difference-gmm-panduan-memilih-model-simulasi-pada-stata/"},"headline":"Perbedaan System GMM vs Difference GMM: Panduan Memilih Model (Simulasi pada STATA)","datePublished":"2026-09-05T20:34+07:00","dateModified":"2026-09-05T20:34+07:00","image":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250},"description":"Panduan lengkap perbedaan System GMM vs Difference GMM di STATA. Temukan solusi tepat dalam memilih model data panel dinamis untuk atasi bias endogenitas Anda.","author":{"@type":"Person","name":"Anwar Hidayat","url":"https://statistikian.net/authors/anwar-hidayat/"},"publisher":{"@type":"Organization","name":"Anwar Hidayat","logo":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><div class="left-bar"><div class="left-bar__inner"><header class="header"><a class="logo" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle__box"><span class="navbar__toggle__inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://statistikian.net/" target="_self" aria-label="Home"><span>Home</span></a></li><li><a href="https://statistikian.com" target="_self" aria-label="statistikian.com"><span>statistikian.com</span></a></li><li><a href="https://statistikian.net/tags/" target="_self" aria-label="Artikel By Aplikasi"><span>Artikel By Aplikasi</span></a></li><li><a href="https://statistikian.net/#" target="_self" aria-label="About"><span>About</span></a></li></ul></nav><a class="logo logo--atbottom" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a></header></div></div><main class="main post"><article class="content content--attop"><header class="hero content__header"><div class="main__inner"><h1>Perbedaan System GMM vs Difference GMM: Panduan Memilih Model (Simulasi pada STATA)</h1></div></header><div class="content__meta content__meta--attop"><div class="content__meta--attop__inner"><div class="content__maintag"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#tag"/></svg> Published in <a href="https://statistikian.net/tags/stata/" class="metadata__maintag">STATA</a></div><div class="content__date"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#date"/></svg> <time datetime="2026-09-05T20:34">Sep 5, 2026</time></div></div></div><div class="main__inner"><div class="content__meta"><div class="content__author"><div><a href="https://statistikian.net/authors/anwar-hidayat/" class="content__author__name">Anwar Hidayat</a><p>Anwar Hidayat</p></div></div></div><div class="content__entry"><article><p style="text-align: justify;">Ketika menganalisis data panel dinamis menggunakan STATA, peneliti sering dihadapkan pada dilema metodologis yang membingungkan terkait <strong>perbedaan System GMM vs Difference GMM</strong>. Gejala masalah paling umum muncul ketika Anda mengeksekusi <em>Difference GMM</em> (Arellano-Bond), namun STATA menghasilkan koefisien lag variabel dependen yang tidak signifikan, nilai standar error yang membengkak luar biasa, atau peringatan terjadinya <em>weak instruments</em>. Lebih parahnya lagi, jika Anda membandingkannya, nilai koefisien estimator regresi Anda mungkin meleset jauh dari batas kewajaran yang telah ditetapkan oleh model dasar, mengindikasikan bahwa model tersebut gagal menangkap dinamika empiris yang sebenarnya dari data Anda.</p><p style="text-align: justify;">Kebingungan dalam memilih antara kedua model ini bukanlah sekadar urusan mengetikkan sintaks program yang berbeda, melainkan isu spesifikasi fatal yang bermuara pada karakteristik persistensi data yang Anda gunakan. Jika variabel observasi Anda memiliki sifat persisten yang tinggi dari waktu ke waktu (seperti data makroekonomi inflasi, tingkat pengangguran, atau pertumbuhan PDB), memaksakan penggunaan <em>Difference GMM</em> sama halnya dengan menghapus sebagian besar variasi informasi berharga. Keputusan metodologis yang keliru ini akan membuahkan hasil regresi yang bias menuju nol (bias asimtotik). Oleh karena itu, mengenali sinyal kegagalan model dan memahami kapan saat yang tepat untuk beralih ke <em>System GMM</em> adalah kunci keselamatan validitas penelitian kuantitatif Anda.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #e53e3e; overflow-x: auto;"><p style="margin: 0 0 15px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #444; padding-bottom: 10px;">. xtabond2 Y L.Y X1 X2, gmm(L.Y) iv(X1 X2) noleveleq robust</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #34495e;">Dynamic panel-data estimation, one-step difference GMM
+Group variable: id                             Number of obs      =       450
+Time variable : year                           Number of groups   =        50
+
+------------------------------------------------------------------------------
+             |               Robust
+           Y |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           Y |
+         L1. |   </span><span style="color: #f48771; font-weight: bold;"><span style="color: #34495e;">.1245672   .2584109     0.48   0.630    -.3819088    .6310432  </span>&lt;-- [MASALAH: Lag Y Tidak Signifikan &amp; Std Error Raksasa!]</span>
+<span style="color: #34495e;">          X1 |   .4521098   .0845123     5.35   0.000     .2864687    .6177509
+          X2 |  -.0938451   .0412854    -2.27   0.023    -.1747630   -.0129272
+------------------------------------------------------------------------------
+Arellano-Bond test for AR(1) in first differences: z = -2.85  Pr &gt; z =  0.004
+Arellano-Bond test for AR(2) in first differences: z = -0.54  Pr &gt; z =  0.589</span>
+<span style="color: #f48771; font-weight: bold;">Sargan test of overid. restrictions: chi2(45) =  58.45  Prob &gt; chi2 =  0.089</span>
+
+<span style="color: #169179;">Catatan: Gejala Weak Instruments pada data yang sangat persisten.
+            </span></pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Kerangka Teoretis Data Panel Dinamis dan GMM</h2><p style="text-align: justify;">Pemodelan data panel dinamis ditandai dengan hadirnya nilai masa lalu (lag) dari variabel dependen sebagai salah satu variabel independen (penjelas) di sisi kanan persamaan. Keberadaan variabel lag ini secara otomatis melanggar asumsi dasar <em>Ordinary Least Squares</em> (OLS) maupun <em>Fixed Effects</em> (FE) klasik. Sebagaimana dibuktikan oleh Nickell (1981), korelasi alamiah antara lag variabel dependen dengan efek spesifik individu (unobserved heterogenity) menghasilkan bias yang substansial, yang kemudian populer disebut sebagai <em>Nickell Bias</em>. Bias pada FE ini sifatnya menekan nilai koefisien ke bawah (downward bias), sementara estimasi OLS akan menarik koefisien ke atas (upward bias).</p><p style="text-align: justify;">Untuk menetralisir bias laten tersebut, Arellano dan Bond (1991) merumuskan sebuah pendekatan revolusioner yang dikenal sebagai <strong>Difference GMM</strong>. Mekanisme utama metode ini adalah melakukan transformasi diferensiasi tingkat pertama (first-difference) pada seluruh persamaan matematis guna mengeliminasi efek spesifik individu (fixed effects) secara permanen. Setelah efek tetap tersebut dihilangkan, metode ini menggunakan nilai level dari variabel pada periode masa lalu (lagged levels) sebagai variabel instrumen untuk memproksi variabel yang telah didiferensiasi tersebut.</p><p style="text-align: justify;">Meskipun elegan secara matematis, <em>Difference GMM</em> memiliki cacat bawaan yang fatal ketika berhadapan dengan runtut waktu (time series) yang mendekati kondisi akar unit (unit root) atau persisten murni. Blundell dan Bond (1998) mendemonstrasikan bahwa ketika variabel sangat persisten, inovasi masa lalunya tidak banyak memberikan informasi mengenai perubahannya di masa depan. Akibatnya, instrumen lagged levels kehilangan daya jelajahnya dan menjadi instrumen yang lemah (weak instruments), menyebabkan standar error yang sangat lebar dan estimasi parameter yang membias ke arah model <em>Fixed Effects</em>.</p><p style="text-align: justify;">Sebagai jawaban atas kelemahan tersebut, Arellano dan Bover (1995) serta Blundell dan Bond (1998) memperkenalkan <strong>System GMM</strong>. Pendekatan hibrida ini merakit dua persamaan secara simultan: persamaan dalam bentuk diferensiasi (diinstrumenkan dengan variabel tingkat level) dan persamaan dalam bentuk level asli (diinstrumenkan dengan variabel dalam bentuk diferensiasi). Bagi Anda yang menginginkan pendalaman derivasi matematis dari matriks instrumen ini dan prasyarat dasar ekonometrikanya, Anda dapat membaca literatur ekstensif kami di laman <a href="https://www.statistikian.com" target="_blank" style="color: #0056b3; font-weight: bold; text-decoration: none;" rel="noopener">statistikian.com</a> sebagai otoritas referensi teori statistik Anda.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Panduan Eksekusi dan Pemilihan Model di STATA</h2><p style="text-align: justify;"><strong>1. Bangun Batas Estimasi (Bounding the Coefficient):</strong> Langkah paling pertama yang wajib Anda lakukan bukan langsung menjalankan GMM, melainkan membuat batas koridor (bounds) menggunakan OLS dan Fixed Effects. Jalankan regresi OLS standar dan regresi FE pada model dinamis Anda. Menurut Bond (2002), nilai koefisien lag dependen variabel (Y_t-1) dari hasil GMM yang valid secara teoretis harus jatuh tepat di antara estimasi FE (batas bawah) dan OLS (batas atas).</p><p style="text-align: justify;"><strong>2. Evaluasi Tingkat Persistensi Data:</strong> Cek nilai koefisien lag dependen (AR 1) pada hasil regresi OLS Anda. Apabila koefisien AR(1) tersebut menunjukkan angka yang mendekati 1 (biasanya di atas 0.80), itu adalah alarm peringatan bahwa data Anda sangat persisten. Dalam skenario data persisten, Anda harus segera membuang niat menggunakan <em>Difference GMM</em> dan beralih secara definitif menggunakan <em>System GMM</em>.</p><p style="text-align: justify;"><strong>3. Gunakan Modul Xtabond2:</strong> Dibandingkan perintah bawaan STATA (<code>xtabond</code> atau <code>xtdpdsys</code>), komunitas ekonometrika global sangat merekomendasikan instalasi modul <code>xtabond2</code> yang ditulis oleh David Roodman (2009). Sintaks ini jauh lebih fleksibel dalam mengontrol jumlah instrumen. Untuk <em>Difference GMM</em>, tambahkan opsi <code>noleveleq</code>. Sedangkan untuk mengeksekusi <em>System GMM</em>, cukup biarkan tanpa opsi tersebut dan pastikan Anda menggunakan pembobot <code>twostep</code> berserta koreksi <code>robust</code>.</p><p style="text-align: justify;"><strong>4. Batasi Instrumen (Collapse Option):</strong> Salah satu momok terbesar <em>System GMM</em> adalah ledakan jumlah instrumen (instrument proliferation), khususnya jika jumlah periode waktu (T) Anda cukup panjang. Jumlah instrumen yang melebihi jumlah grup (observasi cross-section) akan melumpuhkan uji Hansen J. Gunakan opsi <code>collapse</code> pada perintah <code>xtabond2</code> di STATA untuk memampatkan matriks instrumen menjadi satu baris per variabel lag (Roodman, 2009).</p><p style="text-align: justify;"><strong>5. Evaluasi Diagnostik Mutlak (AR2 dan Hansen):</strong> Sebuah model <em>System GMM</em> hanya sah jika lolos dua gerbang uji diagnostik mutlak. Pertama, uji Arellano-Bond untuk autokorelasi orde kedua (AR2) <strong>tidak boleh signifikan</strong> (p-value &gt; 0.05). Kedua, uji Hansen J untuk <em>overidentifying restrictions</em> juga <strong>tidak boleh signifikan</strong> (p-value &gt; 0.05), yang membuktikan instrumen Anda tidak berkorelasi dengan galat. Namun berhati-hatilah, nilai Hansen p-value sebesar 1.000 bulat adalah tanda bahaya terjadinya <em>overfitting</em> instrumen.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #2f855a; overflow-x: auto;"><p style="margin: 0 0 15px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #444; padding-bottom: 10px;">. xtabond2 Y L.Y X1 X2, gmm(L.Y, collapse) iv(X1 X2) twostep robust</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #34495e;">Dynamic panel-data estimation, two-step system GMM
+Group variable: id                             Number of obs      =       450
+Time variable : year                           Number of groups   =        50
+Number of instruments = 12                    </span> <span style="color: #4ade80; font-weight: bold;">[Instrumen &lt; Jumlah Grup: AMAN]</span>
+<span style="color: #34495e;">
+------------------------------------------------------------------------------
+             |              WC-Robust
+           Y |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           Y |
+         L1. |   </span><span style="color: #4ade80; font-weight: bold;"><span style="color: #34495e;">.8541294   .0654128    13.06   0.000     .7259227    .9823361  </span>&lt;-- [SOLUSI: Koefisien Valid &amp; Di Antara OLS-FE]</span>
+<span style="color: #34495e;">          X1 |   .3829102   .0521457     7.34   0.000     .2807065    .4851139
+          X2 |  -.1048291   .0210984    -4.97   0.000    -.1461812   -.0634770
+------------------------------------------------------------------------------
+Arellano-Bond test for AR(1) in first differences: z = -3.21  Pr &gt; z =  0.001</span>
+<span style="color: #4ade80; font-weight: bold;">Arellano-Bond test for AR(2) in first differences: z =  0.42  Pr &gt; z =  0.674</span>
+<span style="color: #4ade80; font-weight: bold;">Hansen test of overid. restrictions: chi2(9) =  10.25  Prob &gt; chi2 =  0.330</span>
+<span style="color: #34495e;">            </span></pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Pembahasan Ilmiah: Membedah Anatomi Matriks Pembobot dan Spesifikasi GMM</h2><p style="text-align: justify;">Perdebatan akademik mengenai <strong>perbedaan System GMM vs Difference GMM</strong> tidak dapat dilepaskan dari pemahaman mendalam tentang struktur pembentukan matriks instrumen. Pada <em>Difference GMM</em>, setiap tambahan satu periode waktu (T) akan menghasilkan set instrumen historis yang semakin panjang. Proses diferensiasi (first difference) sangat superior untuk menghilangkan <em>unobserved heterogeneity</em>, tetapi proses pengurangan variabel t dengan variabel t-1 ini memiliki kelemahan fatal mekanis. Jika variabel respon tersebut berperilaku layaknya *random walk* (di mana nilai hari ini murni merupakan nilai kemarin ditambah kejutan acak), maka transformasinya semata-mata hanya menyisakan derau atau sinyal kejut acak (white noise).</p><p style="text-align: justify;">Kondisi *white noise* ini mengakibatkan instrumen yang ditarik dari bentuk level (misalnya Y_t-2) tidak memiliki korelasi yang bermakna dengan persamaan diferensiasi. Dalam ekonometrika, kegagalan menemukan korelasi kuat pada proksi ini disebut krisis instrumen lemah (weak instruments problem). Estimator GMM yang beroperasi di bawah rezim instrumen lemah akan membias parah (Arellano &amp; Bover, 1995). Varians dari koefisien membesar tak terkendali, sehingga pengujian hipotesis t-statistik sering gagal menolak hipotesis nol, menciptakan kesimpulan palsu bahwa variabel tersebut tidak berpengaruh.</p><p style="text-align: justify;"><em>System GMM</em> muncul sebagai penyelamat dengan memperkenalkan asumsi fundamental baru. Asumsi tambahan ini mensyaratkan bahwa deviasi awal kondisi variabel tidak berkorelasi dengan efek spesifik invidunya (Blundell &amp; Bond, 1998). Jika asumsi <em>initial condition</em> ini terpenuhi, peneliti secara sah diizinkan untuk membangun set persamaan tambahan yang menggunakan data dalam bentuk level aslinya. Alih-alih menggunakan lag level sebagai instrumen, persamaan kedua ini menggunakan lag dari data diferensiasi (first differences) sebagai proksi.</p><p style="text-align: justify;">Penggabungan sistem persamaan diferensiasi dan persamaan level ini menciptakan sistem matriks bertumpuk (stacked). Melalui pendekatan sistem (System GMM), variasi data silang tempat (cross-sectional variance) yang tadinya dibuang habis-habisan oleh <em>Difference GMM</em> berhasil diselamatkan dan didaur ulang menjadi penambah daya ledak instrumen. Hasilnya terbukti secara empiris: <em>System GMM</em> menghasilkan efisiensi asimtotik yang jauh lebih tajam dengan rentang standar error yang lebih menyempit dan parameter penaksir yang lebih stabil (Bond, 2002).</p><p style="text-align: justify;">Kendati menawarkan efisiensi tinggi, pengoperasian <em>System GMM</em> sangat rapuh terhadap fenomena <em>instrument proliferation</em> (perkembangbiakan instrumen). Roodman (2009) menegaskan bahwa instrumen pada GMM tumbuh secara kuadratik seiring bertambahnya panel waktu (T). Ketika jumlah instrumen melampaui jumlah observasi <em>cross-section</em> (N), matriks instrumen berisiko melakukan <em>overfitting</em> terhadap variabel endogen. Dampaknya mengerikan: algoritma <em>Hansen J-Test</em> sebagai benteng pertahanan terakhir dari endogenitas kehilangan daya tolaknya (power of test), mendiktekan seolah-olah model tersebut sempurna padahal sejatinya runtuh (ditandai dengan nilai p-value Hansen sebesar 1.00).</p><p style="text-align: justify;">Untuk menangkal ledakan instrumen ini, sintaks komputasi masa kini menyediakan dua mekanisme pengereman. Opsi pertama adalah membatasi kedalaman <em>lag limit</em>, misalnya dengan membatasi instrumen maksimal hanya sampai lag ke-2 atau ke-3 (menggunakan fungsi <code>laglimits(2 3)</code> pada STATA). Opsi kedua adalah prosedur <code>collapse</code>, yang memampatkan seluruh blok diagonal matriks instrumen Arellano-Bond menjadi vektor tunggal yang ramping (Roodman, 2009). Implementasi ini memastikan <em>degrees of freedom</em> regresi tetap aman di bawah kendali N individu Anda.</p><p style="text-align: justify;">Tantangan teknis berikutnya terletak pada estimasi <em>Two-Step</em> GMM. Secara teori, metode <em>Two-Step</em> jauh lebih superior dibanding <em>One-Step</em> karena menggunakan matriks varians-kovarians residual optimal yang kebal dari heteroskedastisitas struktural. Sayangnya, untuk sampel observasi terbatas (finite samples), taksiran <em>Two-Step standard error</em> cenderung mengalami <em>downward bias</em> yang ekstrem, membuat koefisien terlihat signifikan padahal aslinya tidak. Solusi dari kelemahan asimtotik komputasi ini diselesaikan secara paripurna oleh koreksi derajat bebas dari Windmeijer (2005), yang langsung terintegrasi secara otomatis saat Anda menggunakan opsi <code>robust</code> bersamaan dengan <code>twostep</code> di dalam modul <code>xtabond2</code> STATA.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Kesimpulan</h2><p style="text-align: justify;">Keputusan meracik pemodelan data panel dinamis bermuara pada sifat persisten data itu sendiri. <strong>Perbedaan System GMM vs Difference GMM</strong> terletak pada cara mereka menangani efisiensi hilangnya efek tetap. <em>Difference GMM</em> sangat layak digunakan manakala data Anda memiliki T yang pendek, N besar, dan variabel respon tidak stasioner atau berfluktuasi tajam menjauhi kondisi *random walk*. Namun, tatkala Anda mengelola data makroekonomi atau finansial persisten yang memiliki rekam jejak koefisien AR(1) di atas 0.8, <em>System GMM</em> adalah penangkal mutlak (holy grail) yang wajib Anda gunakan. Pastikan selalu memberlakukan pembatasan instrumen melalui opsi <code>collapse</code> pada STATA untuk mencegah p-value uji Hansen meroket tidak terkendali (overfitting), serta selalu aktifkan koreksi robust Windmeijer untuk mempertahankan keakuratan uji t-statistik Anda.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Daftar Pustaka</h2><ul style="line-height: 1.8; text-align: justify; padding-left: 20px;"><li>Arellano, M., &amp; Bond, S. (1991). Some tests of specification for panel data: Monte Carlo evidence and an application to employment equations. <em>The Review of Economic Studies</em>, 58(2), 277-297.</li><li>Arellano, M., &amp; Bover, O. (1995). Another look at the instrumental variable estimation of error-components models. <em>Journal of Econometrics</em>, 68(1), 29-51.</li><li>Blundell, R., &amp; Bond, S. (1998). Initial conditions and moment restrictions in dynamic panel data models. <em>Journal of Econometrics</em>, 87(1), 115-143.</li><li>Bond, S. R. (2002). Dynamic panel data models: A guide to micro data methods and practice. <em>Portuguese Economic Journal</em>, 1(2), 141-162.</li><li>Nickell, S. (1981). Biases in dynamic models with fixed effects. <em>Econometrica: Journal of the Econometric Society</em>, 49(6), 1417-1426.</li><li>Roodman, D. (2009). How to do xtabond2: An introduction to difference and system GMM in Stata. <em>The Stata Journal</em>, 9(1), 86-136.</li><li>Windmeijer, F. (2005). A finite sample correction for the variance of linear efficient two-step GMM estimators. <em>Journal of Econometrics</em>, 126(1), 25-51.</li></ul></article></div><footer class="content__footer"><div class="content__last-updated">This article was updated on <time datetime="2026-09-05T20:34">Sep 5, 2026</time></div><div class="content__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstatistikian.net%2Fperbedaan-system-gmm-vs-difference-gmm-panduan-memilih-model-simulasi-pada-stata%2F" class="js-share facebook tltp tltp--top" aria-label="Facebook" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://api.whatsapp.com/send?text=Perbedaan%20System%20GMM%20vs%20Difference%20GMM%3A%20Panduan%20Memilih%20Model%20(Simulasi%20pada%20STATA) https%3A%2F%2Fstatistikian.net%2Fperbedaan-system-gmm-vs-difference-gmm-panduan-memilih-model-simulasi-pada-stata%2F" class="js-share whatsapp tltp tltp--top" title="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></footer></div></article><div class="content__section post__related"><div class="main__inner"><h3 class="content__section__title">Related post</h3><div class="post__related__wrap"><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:41">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/langkah-uji-asumsi-autokorelasi-ar1-dan-ar2-pada-gmm-stata-dan-solusi-jika-ada-pelanggaran/">Langkah Uji Asumsi Autokorelasi AR(1) dan AR(2) pada GMM STATA dan Solusi Jika Ada Pelanggaran</a></h2><p>Bagi peneliti yang mengolah data panel dinamis, momen evaluasi diagnostik adalah fase&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:18">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></h2><p>Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:08">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/solusi-mengatasi-endogenitas-model-menggunakan-gmm-stata/">Solusi Mengatasi Endogenitas Model Menggunakan GMM STATA</a></h2><p>Momen paling memfrustasikan bagi seorang peneliti kuantitatif adalah ketika variabel independen kunci&hellip;</p></header></article></div></div></div><div class="content__section banner"><div class="main__inner"><style>.banner-statistik {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 760px;
+    height: 250px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Menggelapkan gambar agar teks terbaca jelas */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .banner-statistik:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #facc15;
+    line-height: 1.2;
+  }
+
+  .banner-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .banner-btn {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Pengaturan Khusus Layar Mobile (Lebar Maksimal 300px) */
+  @media screen and (max-width: 768px) {
+    .banner-statistik {
+      max-width: 300px;
+      height: 250px;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .banner-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }</style><a href="https://wa.me/6281515699060?text=Halo%2C%20saya%20butuh%20bantuan%20analisis%20statistik" target="_blank" rel="noopener noreferrer" class="banner-statistik"><div class="banner-title">Butuh Bantuan Analisis Statistik?</div><div class="banner-text">Jangan ragu bertanya pada kami, biaya <strong>100 sd 300 IDR</strong>.<br>Tim kami siap membantu dengan aplikasi SPSS, Eviews, STATA, SmartPLS, Lisrel, AMOS, R-Studio, Minitab dan Excel.<br><em>Berpengalaman sejak 2012.</em> <strong>.... KLIK DISINI !</strong></div><div class="banner-btn">WhatsApp: 081515699060</div></a></div></div></main><div class="right-bar"><div class="right-bar__inner"><div class="sidebar"><section class="box featured"><h3 class="box__title">Featured Posts</h3><ul class="featured__container"><li class="featured__item"><div><a href="https://statistikian.net/sebab-dan-cara-mengatasi-masalah-model-not-positive-definite-dan-under-identified-pada-cb-sem-lisrel/" class="featured__title">Sebab dan Cara Mengatasi Masalah Model Not Positive Definite dan Under-Identified Pada CB SEM Lisrel</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/" class="featured__title">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/" class="featured__title">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/" class="featured__title">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-dan-hansen-untuk-mengevaluasi-overidentifying-restrictions-dan-solusinya-pada-stata/" class="featured__title">Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions dan Solusinya pada STATA</a></div></li></ul></section><section class="box tags"><h3 class="box__title">Recommended Topics</h3><ul class="tags__list"><li class="tags__item"><a href="https://statistikian.net/tags/eviews/" class="btn btn--gray">Eviews</a></li><li class="tags__item"><a href="https://statistikian.net/tags/jasp/" class="btn btn--gray">JASP</a></li><li class="tags__item"><a href="https://statistikian.net/tags/lisrel/" class="btn btn--gray">Lisrel</a></li><li class="tags__item"><a href="https://statistikian.net/tags/r-studio/" class="btn btn--gray">R Studio</a></li><li class="tags__item"><a href="https://statistikian.net/tags/smartpls/" class="btn btn--gray">SmartPLS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/spss/" class="btn btn--gray">SPSS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/stata/" class="btn btn--gray">STATA</a></li></ul></section><div class="box copyright">Powered by Anwar Hidayat - Alright Reserved</div></div></div></div></div><script defer="defer" src="https://statistikian.net/assets/js/scripts.min.js?v&#x3D;b2d91bcadbf5db401b76eb5bb3092eb7"></script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 60px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060.<strong>.... KLIK DISINI !</strong></p></a></div><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 13 paragraf
+    if (paragraphs.length >= 13) {
+        const ctaHTML = `
+	<!-- CTA 1 BOX (WhatsApp) -->
+	<div style="background-color: #f0f7ff; padding: 25px; text-align: center; border: 2px dashed #0056b3; border-radius: 8px; margin: 35px 0;">
+		<p style="font-size: 16px; font-weight: bold; margin-bottom: 20px; color: #333; line-height: 1.5; text-align: center;">Sudah mencoba langkah di atas tapi model data Anda masih error atau deadline sidang makin dekat? Konsultasikan langsung masalah olah data Anda bersama tim ahli kami via WhatsApp.</p>
+		<a href="https://wa.me/6281515699060" target="_blank" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" rel="noopener">WhatsApp 081515699060</a>
+	</div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-12 (index 12)
+        paragraphs[11].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 21 paragraf
+    if (paragraphs.length >= 21) {
+        const ctaHTML = `
+            <!-- CTA BOX Instagram -->
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 30px; border-radius: 10px; margin: 40px 0; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); text-align: center;">
+                <h3 style="margin-top: 0; font-size: 24px; margin-bottom: 15px; color: white; text-align: center;">Dapatkan Update &amp; Tips Olah Data dan Lihat Testimoni!</h3>
+                <p style="font-size: 16px; margin-bottom: 25px; line-height: 1.6; text-align: center;">Dapatkan Update &amp; Tips Olah Data atau Testimoni Klien Kami! Ingin panduan visual yang ringkas dan tips cepat seputar pengujian STATA, EViews, SPSS, dll serta metodologi penelitian lainnya? Ikuti Instagram kami untuk konten edukatif yang di-update secara berkala. Anda juga bisa lihat testimoni klien kami yang sudah menggunakan jasa analisis statistik tim kami.</p>
+                <a href="https://www.instagram.com/statistikian" target="_blank" style="background-color: white; color: #dc2743; padding: 14px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" rel="noopener">
+                    <!-- Icon Instagram SVG --> 
+                    <svg style="width: 22px; height: 22px; margin-right: 10px; fill: currentColor;" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg> Follow @statistikian 
+                </a>
+            </div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-20 (index 20)
+        paragraphs[19].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script></body></html>
