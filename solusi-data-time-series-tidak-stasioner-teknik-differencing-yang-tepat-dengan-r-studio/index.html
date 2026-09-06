@@ -1,0 +1,248 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solusi Data Time Series Tidak Stasioner: Teknik Differencing yang Tepat dengan R-Studio - Statistikian Net</title><meta name="description" content="Temukan cara atau solusi data time series tidak stasioner dengan teknik differencing di R-Studio. Panduan langkah teknis, kode R, dan analisis pakar terpercaya."><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://statistikian.net/solusi-data-time-series-tidak-stasioner-teknik-differencing-yang-tepat-dengan-r-studio/"><link rel="alternate" type="application/atom+xml" href="https://statistikian.net/feed.xml" title="Statistikian Net - RSS"><link rel="alternate" type="application/json" href="https://statistikian.net/feed.json" title="Statistikian Net - JSON"><link rel="shortcut icon" href="https://statistikian.net/media/website/favicon-statistikian.svg" type="image/x-icon"><link rel="stylesheet" href="https://statistikian.net/assets/css/style.css?v&#x3D;f5bf14394894a7f3d49ce26d5330f826"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://statistikian.net/solusi-data-time-series-tidak-stasioner-teknik-differencing-yang-tepat-dengan-r-studio/"},"headline":"Solusi Data Time Series Tidak Stasioner: Teknik Differencing yang Tepat dengan R-Studio","datePublished":"2026-09-06T21:39+07:00","dateModified":"2026-09-06T21:39+07:00","image":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250},"description":"Temukan cara atau solusi data time series tidak stasioner dengan teknik differencing di R-Studio. Panduan langkah teknis, kode R, dan analisis pakar terpercaya.","author":{"@type":"Person","name":"Anwar Hidayat","url":"https://statistikian.net/authors/anwar-hidayat/"},"publisher":{"@type":"Organization","name":"Anwar Hidayat","logo":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-NEYCRECVPF"></script><script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NEYCRECVPF');</script></head><body class="post-template"><div class="container"><div class="left-bar"><div class="left-bar__inner"><header class="header"><a class="logo" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle__box"><span class="navbar__toggle__inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://statistikian.net/" target="_self" aria-label="Home"><span>Home</span></a></li><li><a href="https://statistikian.net/jasa-olah-data-and-analisis-statistik-profesional-bergaransi-or-statistikiannet/" target="_self" aria-label="Jasa Analisis Statistik"><span>Jasa Analisis Statistik</span></a></li><li><a href="https://statistikian.com" target="_self" aria-label="statistikian.com"><span>statistikian.com</span></a></li><li><a href="https://statistikian.net/tags/" target="_self" aria-label="Artikel By Aplikasi"><span>Artikel By Aplikasi</span></a></li><li><a href="https://statistikian.net/about-us/" target="_self" aria-label="About Us"><span>About Us</span></a></li><li><a href="https://statistikian.net/contact-us/" target="_self" aria-label="Contact Us"><span>Contact Us</span></a></li><li><a href="https://statistikian.net/disclaimer/" target="_self" aria-label="Disclaimer"><span>Disclaimer</span></a></li><li><a href="https://statistikian.net/privacy-policy-kebijakan-privasi/" target="_self" aria-label="Privacy Policy"><span>Privacy Policy</span></a></li></ul></nav><a class="logo logo--atbottom" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a></header></div></div><main class="main post"><article class="content"><div class="content__meta content__meta--attop"><div class="content__meta--attop__inner"><div class="content__maintag"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#tag"/></svg> Published in <a href="https://statistikian.net/tags/r-studio/" class="metadata__maintag">R Studio</a></div></div></div><div class="main__inner"><div class="content__meta"><div class="content__author"><div><a href="https://statistikian.net/authors/anwar-hidayat/" class="content__author__name">Anwar Hidayat</a><p>Anwar Hidayat</p></div></div><div class="content__date"><time datetime="2026-09-06T21:39">Sep 6, 2026</time></div></div><header class="content__header"><h1 class="content__title">Solusi Data Time Series Tidak Stasioner: Teknik Differencing yang Tepat dengan R-Studio</h1></header><div class="content__entry"><div class="article-container" style="text-align: justify;"><p>Model <i>Autoregressive Integrated Moving Average</i> (ARIMA) atau analisis ekonometrika sering kali menghasilkan estimasi palsu (<i>spurious regression</i>) ketika digunakan pada data yang mengalami tren tidak stasioner. Gejala utama masalah ini ditandai dengan nilai <i>R-squared</i> yang sangat tinggi (di atas 0,90) namun nilai <i>Durbin-Watson statistic</i> sangat rendah (di bawah 1,0), atau munculnya peringatan <i>system error</i> dalam R-Studio seperti <code>non-stationary AR part from ARIMA model</code> saat menjalankan pemodelan deret waktu. Jika Anda menghadapi kendala ini, penerapan <strong>solusi data time series tidak stasioner</strong> melalui pendekatan uji akar unit (<i>unit root test</i>) dan transformasi pembedaan (<i>differencing</i>) menjadi langkah wajib untuk mengembalikan integritas estimasi statistik.</p><p>Data deret waktu (<i>time series</i>) di sektor ekonomi, bisnis, maupun meteorologi umumnya memiliki komponen tren, varians yang berubah dari waktu ke waktu, serta rata-rata (<i>mean</i>) yang tidak konstan. Ketika data berfluktuasi tanpa kembali ke titik rata-rata historisnya, asumsi dasar pemodelan statistik klasik langsung terlanggar. Mengabaikan ketidakstasioneran ini akan mengakibatkan estimasi koefisien menjadi tidak konsisten, <i>standard error</i> bias, serta pengujian hipotesis (seperti uji <i>t</i> dan uji <i>F</i>) memberikan kesimpulan yang salah secara ilmiah.</p><div class="svg-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 800 420" width="100%" height="auto"><rect width="800" height="420" fill="#FAFAFA" rx="8" stroke="#E0E0E0" stroke-width="2"></rect><text x="400" y="35" fill="#000000" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">DIAGRAM PERMASALAHAN: DATA TIME SERIES TIDAK STASIONER</text><rect x="50" y="70" width="210" height="90" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="6"></rect><text x="155" y="95" fill="#000000" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Data Time Series Mentah</text><text x="155" y="120" fill="#000000" font-family="Arial" font-size="12" text-anchor="middle">Input Variabel Obs (Yt)</text><text x="155" y="140" fill="#000000" font-family="Arial" font-size="12" text-anchor="middle">Skala Level I(0)</text><path d="M 260 115 L 290 115" stroke="#000000" stroke-width="2" marker-end="url(#arrow)"></path><rect x="295" y="70" width="220" height="90" fill="#FFF5F5" stroke="#D32F2F" stroke-width="2" rx="6"></rect><text x="405" y="95" fill="#D32F2F" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Gejala Ketidakstasioneran</text><text x="405" y="120" fill="#D32F2F" font-family="Arial" font-size="12" text-anchor="middle">Tren Menonjol / Random Walk</text><text x="405" y="140" fill="#D32F2F" font-family="Arial" font-size="12" text-anchor="middle">Mean &amp; Varians Berubah-ubah</text><path d="M 515 115 L 545 115" stroke="#D32F2F" stroke-width="2"></path><rect x="550" y="70" width="200" height="90" fill="#FFF5F5" stroke="#D32F2F" stroke-width="2" rx="6"></rect><text x="650" y="95" fill="#D32F2F" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Dampak Error Model</text><text x="650" y="118" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">Spurious Regression</text><text x="650" y="133" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">R² Sangat Tinggi (&gt; 0.90)</text><text x="650" y="148" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">DW Stat Low (&lt; 1.0)</text><rect x="50" y="190" width="700" height="130" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1" rx="6"></rect><text x="70" y="215" fill="#D32F2F" font-family="Arial" font-size="12" font-weight="bold">Kurva Data Tidak Stasioner (Memiliki Tren Naik - Error)</text><path d="M 70 300 Q 200 280 350 250 T 700 210" fill="none" stroke="#D32F2F" stroke-width="2.5" stroke-dasharray="4"></path><text x="70" y="245" fill="#000000" font-family="Arial" font-size="12" font-weight="bold">Target Stasioneritas (Fluktuasi Konstan di Sekitar Mean)</text><path d="M 70 280 L 120 270 L 170 290 L 220 275 L 270 285 L 320 270 L 370 288 L 420 272 L 470 285 L 520 275 L 570 288 L 620 270 L 670 282" fill="none" stroke="#000000" stroke-width="1.5"></path><rect x="50" y="340" width="700" height="55" fill="#EBF3FA" stroke="#002B49" stroke-width="2" rx="6"></rect><text x="400" y="362" fill="#002B49" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">SOLUSI METODOLOGIS DAN CATATAN TEKNIS</text><text x="400" y="382" fill="#002B49" font-family="Arial" font-size="12" text-anchor="middle">Catatan: Lakukan Uji Akar Unit (ADF Test) dan Transformasi Differencing d=1 untuk Mengeliminasi Tren.</text><defs><marker id="arrow" viewbox="0 0 10 10" refx="5" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#000000"></path></marker></defs></svg></div><h2>Konsep Dasar Stasioneritas dan Akar Unit</h2><p>Secara teoretis, suatu proses deret waktu dikatakan stasioner jika sifat-sifat statistiknya, yaitu rata-rata (<i>mean</i>), varians (<i>variance</i>), dan autokovarians (<i>autocovariance</i>), bersifat konstan sepanjang waktu (<i>time-invariant</i>). Gujarati dan Porter (2009) menegaskan bahwa stokastik stasioner merupakan prasyarat mutlak dalam analisis <i>time series</i> agar model yang dibentuk memiliki daya prediksi yang valid dan stabil untuk periode masa depan.</p><p>Menurut Box dan Jenkins (1976), sebagian besar data ekonomi dan bisnis dunia nyata dikategorikan sebagai <i>non-stationary processes</i> yang tergolong dalam <i>integrated process</i> ordo <i>d</i>, dinotasikan sebagai I(<i>d</i>). Data yang tidak stasioner pada tingkat level I(0) membutuhkan operasi pembedaan (<i>differencing</i>) sebanyak <i>d</i> kali hingga menjadi stasioner I(<i>d</i>) sebelum dapat dimasukkan ke dalam komponen <i>autoregressive</i> (AR) dan <i>moving average</i> (MA).</p><p>Pengujian stasioneritas secara formal dihitung menggunakan pengujian akar unit (<i>unit root test</i>), seperti <i>Augmented Dickey-Fuller</i> (ADF) <i>test</i> atau <i>Phillips-Perron</i> (PP) <i>test</i>. Untuk mempelajari konsep dasar teoretis dan formulasi matematis dari <a href="https://www.statistikian.com/2014/03/uji-dickey-fuller-stasioneritas-data.html" target="_blank" rel="noopener">uji Dickey-Fuller dan stasioneritas data</a>, Anda dapat membaca artikel landasan teori lengkap di statistikian.com. Pemahaman dasar ini sangat penting agar pertimbangan matematis di balik pemilihan tingkat pembedaan tidak keliru.</p><p>Hamilton (1994) menyatakan bahwa kegagalan mengidentifikasi akar unit pada data deret waktu akan menyebabkan efek kejut (<i>shocks</i>) bersifat permanen (<i>permanent memory</i>), bukan sementara (<i>transitory memory</i>). Oleh sebab itu, transformasi data melalui <i>differencing</i> bertujuan menghapus komponen tren deterministik maupun stokastik dan menyisakan komponen variasi yang bersifat <i>white noise</i>.</p><h2>Langkah Teknis Perbaikan Data Tidak Stasioner di R-Studio</h2><p>Untuk menyelesaikan masalah ketidakstasioneran secara sistematis, berikut adalah prosedur kerja praktis menggunakan lingkungan pemrograman R-Studio beserta pustaka pendukung utama seperti <code>tseries</code> dan <code>forecast</code>.</p><p><strong>Langkah 1: Persiapan Lingkungan Kerja dan Import Data</strong><br>Persiapkan pustaka yang dibutuhkan dan buat objek <i>time series</i> dalam R. Pembuatan objek <i>time series</i> dilakukan menggunakan fungsi <code>ts()</code> dengan menentukan frekuensi data yang tepat.</p><pre><code># Memuat pustaka yang diperlukan
+library(tseries)
+library(forecast)
+
+# Membuat contoh data time series tidak stasioner
+set.seed(123)
+data_raw &lt;- cumsum(rnorm(100, mean = 0.5, sd = 2)) # Random walk dengan drift
+ts_data &lt;- ts(data_raw, start = c(2020, 1), frequency = 12)
+
+# Plot data awal
+plot(ts_data, main = "Plot Time Series Data Level I(0)", 
+     ylab = "Nilai Observasi", xlab = "Waktu", col = "black", stroke = 2)
+</code></pre><p><strong>Langkah 2: Uji Akar Unit Awal dengan Augmented Dickey-Fuller (ADF) Test</strong><br>Pengujian formal dilakukan pada tingkat level I(0) menggunakan fungsi <code>adf.test()</code>. Hipotesis nol (H0) menyatakan bahwa data memiliki akar unit (tidak stasioner), sedangkan hipotesis alternatif (H1) menyatakan data stasioner.</p><pre><code># Pelaksanaan Uji ADF pada skala Level
+adf_level &lt;- adf.test(ts_data)
+print(adf_level)
+</code></pre><p>Alasan ilmiah: Jika nilai <i>p-value</i> &gt; 0,05, maka H0 gagal ditolak. Hal ini membuktikan secara empiris bahwa data awal mengalami ketidakstasioneran dan memerlukan transformasi lanjutan.</p><p><strong>Langkah 3: Menentukan Derajat Differencing Secara Otomatis</strong><br>Sebelum melakukan diferensiasi manual, gunakan fungsi <code>ndiffs()</code> dari pustaka <code>forecast</code> untuk mengestimasi jumlah pembedaan yang diperlukan secara objektif. Enders (2014) menyarankan penggunaan uji otomatis berbasis KPSS atau ADF untuk mengonfirmasi jumlah diferensiasi optimal.</p><pre><code># Menentukan jumlah diferensiasi yang dibutuhkan
+d_required &lt;- ndiffs(ts_data, test = "adf")
+cat("Jumlah differencing yang direkomendasikan (d):", d_required, "\n")
+</code></pre><p><strong>Langkah 4: Eksekusi Transformasi First Differencing</strong><br>Transformasi pembedaan tingkat pertama (<i>first differencing</i>, <i>d</i> = 1) dilakukan dengan menghitung selisih antara observasi pada periode <i>t</i> dengan periode sebelumnya (<i>t</i> - 1). Di R-Studio, gunakan fungsi <code>diff()</code>.</p><pre><code># Melakukan First Differencing (d = 1)
+ts_diff1 &lt;- diff(ts_data, differences = 1)
+
+# Plot data hasil differencing
+plot(ts_diff1, main = "Plot Data Setelah First Differencing I(1)", 
+     ylab = "Nilai Selisih (Delta)", xlab = "Waktu", col = "#002B49")
+abline(h = 0, col = "red", lty = 2)
+</code></pre><p><strong>Langkah 5: Evaluasi Ulang Stasioneritas Hasil Differencing</strong><br>Lakukan uji ADF kembali pada variabel <code>ts_diff1</code> untuk memastikan bahwa komponen akar unit telah berhasil dihilangkan.</p><pre><code># Uji ADF pada data hasil First Differencing
+adf_diff1 &lt;- adf.test(ts_diff1)
+print(adf_diff1)
+</code></pre><p>Alasan ilmiah: Apabila nilai <i>p-value</i> &lt; 0,05, H0 ditolak. Ini menunjukkan bahwa data telah menjadi stasioner pada tingkat ordo integrasi pertama I(1) dan siap digunakan untuk pemodelan ARIMA.</p><p><strong>Langkah 6: Pemeriksaan Plot Autocorrelation (ACF) dan Partial Autocorrelation (PACF)</strong><br>Evaluasi struktur autokorelasi pada data stasioner untuk mengidentifikasi calon nilai ordo <i>p</i> (AR) dan <i>q</i> (MA) menggunakan fungsi <code>acf()</code> dan <code>pacf()</code>.</p><pre><code># Menampilkan plot ACF dan PACF side-by-side
+par(mfrow = c(1, 2))
+acf(ts_diff1, main = "ACF Data Stasioner")
+pacf(ts_diff1, main = "PACF Data Stasioner")
+par(mfrow = c(1, 1))
+</code></pre><p><strong>Langkah 7: Estimasi Model ARIMA Berbasis Data Stasioner</strong><br>Gunakan fungsi <code>auto.arima()</code> dengan menetapkan parameter diferensiasi sesuai hasil analisis sebelumnya untuk mendapatkan model optimal berdasarkan kriteria Information Criterion (AIC/BIC).</p><pre><code># Estimasi model ARIMA optimal
+fit_arima &lt;- auto.arima(ts_data, d = d_required, seasonal = FALSE, stepwise = FALSE)
+summary(fit_arima)
+</code></pre><p><strong>Langkah 8: Diagnostik Residual Model</strong><br>Langkah terakhir adalah memastikan residual dari model yang dibentuk telah terbebas dari autokorelasi dan berperilaku sebagai <i>white noise</i> menggunakan uji Ljung-Box via fungsi <code>checkresiduals()</code> atau <code>Box.test()</code>.</p><pre><code># Uji diagnostik residual Ljung-Box
+checkresiduals(fit_arima)
+</code></pre><div class="svg-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 800 450" width="100%" height="auto"><rect width="800" height="450" fill="#FAFAFA" rx="8" stroke="#E0E0E0" stroke-width="2"></rect><text x="400" y="35" fill="#000000" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">ALUR SOLUSI TEKNIS: DIFFERENCING &amp; UJI AKAR UNIT DI R-STUDIO</text><rect x="40" y="70" width="200" height="85" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="6"></rect><text x="140" y="92" fill="#000000" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">1. Uji ADF Level I(0)</text><text x="140" y="112" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">Hasil: p-value &gt; 0.05</text><text x="140" y="128" fill="#D32F2F" font-family="Arial" font-size="11" font-weight="bold" text-anchor="middle">(Tidak Stasioner / Error)</text><path d="M 240 112 L 275 112" stroke="#000000" stroke-width="2" marker-end="url(#arrow2)"></path><rect x="280" y="70" width="240" height="85" fill="#EBF3FA" stroke="#002B49" stroke-width="2" rx="6"></rect><text x="400" y="92" fill="#002B49" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">2. Solusi: First Differencing</text><text x="400" y="112" fill="#002B49" font-family="Arial" font-size="12" text-anchor="middle">Eksekusi Kode: diff(ts_data, d=1)</text><text x="400" y="130" fill="#002B49" font-family="Arial" font-size="11" text-anchor="middle">Pengurangan Tren Y(t) - Y(t-1)</text><path d="M 520 112 L 555 112" stroke="#000000" stroke-width="2" marker-end="url(#arrow2)"></path><rect x="560" y="70" width="200" height="85" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="6"></rect><text x="660" y="92" fill="#000000" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">3. Uji ADF Ulang I(1)</text><text x="660" y="112" fill="#000000" font-family="Arial" font-size="11" text-anchor="middle">Hasil: p-value &lt; 0.05</text><text x="660" y="128" fill="#000000" font-family="Arial" font-size="11" font-weight="bold" text-anchor="middle">(Stasioner / Valid)</text><path d="M 660 155 L 660 190 L 400 190 L 400 215" fill="none" stroke="#000000" stroke-width="2" marker-end="url(#arrow2)"></path><rect x="250" y="220" width="300" height="70" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="6"></rect><text x="400" y="245" fill="#000000" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Pemodelan ARIMA(p, 1, q) Valid</text><text x="400" y="268" fill="#000000" font-family="Arial" font-size="12" text-anchor="middle">Estimasi Bebas Spurious Regression</text><rect x="40" y="315" width="340" height="100" fill="#FFF5F5" stroke="#D32F2F" stroke-width="2" rx="6"></rect><text x="210" y="338" fill="#D32F2F" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">PERINGATAN: OVER-DIFFERENCING</text><text x="210" y="360" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">Jangan Lakukan d &gt;= 2 Jika d=1 Sudah Stasioner!</text><text x="210" y="378" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">Risiko: Menginduksi Struktur MA Buatan &amp;</text><text x="210" y="394" fill="#D32F2F" font-family="Arial" font-size="11" text-anchor="middle">Meningkatkan Varians Sampel secara Unnecessary.</text><rect x="420" y="315" width="340" height="100" fill="#EBF3FA" stroke="#002B49" stroke-width="2" rx="6"></rect><text x="590" y="338" fill="#002B49" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">CATATAN DAN SOLUSI TINGKAT LANJUT</text><text x="590" y="360" fill="#002B49" font-family="Arial" font-size="11" text-anchor="middle">Gunakan Uji KPSS sebagai Konfirmasi Silang Uji ADF.</text><text x="590" y="378" fill="#002B49" font-family="Arial" font-size="11" text-anchor="middle">Gunakan Seasonal Differencing D=1 Jika Data Berpola</text><text x="590" y="394" fill="#002B49" font-family="Arial" font-size="11" text-anchor="middle">Musiman (Bulanan S=12 atau Triwulanan S=4).</text><defs><marker id="arrow2" viewbox="0 0 10 10" refx="5" refy="5" markerwidth="6" markerheight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#000000"></path></marker></defs></svg></div><h2>Pembahasan Ilmiah: Implikasi Metodologis dan Risiko Pemodelan</h2><p>Penentuan derajat <i>differencing</i> yang tepat menuntut kecermatan tinggi dari peneliti. Tsay (2010) memperingatkan bahaya <i>over-differencing</i>, yaitu kondisi ketika operasi pembedaan dilakukan secara berlebihan pada data yang sebenarnya telah mencapai stasioneritas pada tingkat ordo yang lebih rendah.</p><p><i>Over-differencing</i> dapat menginduksi struktur <i>Moving Average</i> (MA) buatan pada deret waktu, meningkatkan varians sampel, serta menghilangkan informasi hubungan jangka panjang (<i>long-run equilibrium</i>) yang sangat berharga dalam analisis ekonometrika. Kondisi ini membuat parameter model menjadi redundan dan mengurangi akurasi ramalan.</p><p>Sebaliknya, kondisi <i>under-differencing</i> membiarkan komponen akar unit tetap berada di dalam sistem pemodelan. Akibatnya, fenomena <i>spurious regression</i> dan masalah varians tak berhingga (<i>infinite variance</i>) tetap berlangsung. Hyndman dan Athanasopoulos (2021) menekankan bahwa kombinasi uji statistik formal (seperti kombinasi ADF <i>test</i> dan KPSS <i>test</i>) bersama pemeriksaan visual plot ACF/PACF merupakan strategi terbaik untuk menghindari kesalahan komputasi tersebut.</p><p>Uji Kwiatkowski-Phillips-Schmidt-Shin (KPSS) sering digunakan sebagai konfirmasi silang terhadap uji ADF. Berbeda dengan uji ADF yang hipotesis nolnya menyatakan data tidak stasioner, uji KPSS memiliki hipotesis nol bahwa data bersifat stasioner (<i>trend stationary</i>). Penggunaan kedua uji ini secara bersamaan membantu mengonfirmasi status stasioneritas data secara lebih robust (Kwiatkowski et al., 1992).</p><p>Apabila data memiliki pola musiman (<i>seasonal pattern</i>), teknik <i>differencing</i> biasa perlu dikombinasikan dengan pembedaan musiman (<i>seasonal differencing</i>). Menurut Wooldridge (2013), untuk data bulanan dengan periode <i>S</i> = 12, pembedaan musiman dilakukan dengan menghitung selisih antara nilai observasi pada periode <i>t</i> dengan periode <i>t</i> - 12 (dinotasikan sebagai <i>D</i> = 1).</p><p>Selain <i>differencing</i>, penanganan ketidakstasioneran yang disebabkan oleh tren deterministik (<i>trend stationary process</i>) dapat dilakukan melalui teknik <i>detrending</i>, yaitu meregresikan data terhadap variabel tren waktu t. Namun, Nelson dan Plosser (1982) dalam studi monumental mereka menemukan bahwa sebagian besar variabel makroekonomi dan bisnis terbukti tergolong <i>difference stationary process</i> (DSP), sehingga transformasi <i>differencing</i> jauh lebih relevan dibandingkan sekadar <i>detrending</i> linear.</p><p>Dalam konteks analisis data multivariat, jika dua atau lebih variabel <i>time series</i> tidak stasioner pada skala level I(0) namun saling memiliki hubungan jangka panjang yang stasioner pada kombinasi linearnya, maka diferensiasi tidak boleh dilakukan secara parsial tanpa melakukan uji kointegrasi (<i>cointegration test</i>). Johansen (1991) menjelaskan bahwa dalam kondisi terkointegrasi, pemodelan <i>Vector Error Correction Model</i> (VECM) menjadi opsi yang jauh lebih tepat dibandingkan membedakan data secara langsung pada model <i>Vector Autoregressive</i> (VAR) standar.</p><h2>Kesimpulan</h2><p>Masalah data <i>time series</i> yang tidak stasioner merupakan tantangan umum dalam pemodelan kuantitatif yang jika diabaikan dapat merusak keabsahan analisis statistik. Melalui penerapan teknik <i>differencing</i> yang tepat di R-Studio, komponen tren stokastik dan akar unit dapat dieliminasi sehingga data mencapai kondisi stasioner I(1) atau I(<i>d</i>). Prosedur diagnostik berbasis uji ADF, evaluasi otomatis ordo pembedaan dengan <code>ndiffs()</code>, serta konfirmasi residual <i>white noise</i> memastikan model ARIMA yang dihasilkan terbebas dari regresi palsu (<i>spurious regression</i>) dan memiliki akurasi peramalan yang optimal secara ilmiah.</p><h2>Daftar Pustaka</h2><div class="bibliography"><p>Box, G. E. P., &amp; Jenkins, G. M. (1976). <i>Time Series Analysis: Forecasting and Control</i>. San Francisco: Holden-Day.</p><p>Dickey, D. A., &amp; Fuller, W. A. (1979). Distribution of the Estimators for Autoregressive Time Series With a Unit Root. <i>Journal of the American Statistical Association</i>, 74(366a), 427-431.</p><p>Enders, W. (2014). <i>Applied Econometric Time Series</i> (4th ed.). New York: John Wiley &amp; Sons.</p><p>Gujarati, D. N., &amp; Porter, D. C. (2009). <i>Basic Econometrics</i> (5th ed.). New York: McGraw-Hill.</p><p>Hamilton, J. D. (1994). <i>Time Series Analysis</i>. Princeton: Princeton University Press.</p><p>Hyndman, R. J., &amp; Athanasopoulos, G. (2021). <i>Forecasting: Principles and Practice</i> (3rd ed.). Melbourne: OTexts.</p><p>Johansen, S. (1991). Estimation and Hypothesis Testing of Cointegration Vectors in Gaussian Vector Autoregressive Models. <i>Econometrica</i>, 59(6), 1551-1580.</p><p>Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., &amp; Shin, Y. (1992). Testing the Null Hypothesis of Stationarity Against the Alternative of a Unit Root. <i>Journal of Econometrics</i>, 54(1-3), 159-178.</p><p>Nelson, C. R., &amp; Plosser, C. R. (1982). Trends and Random Walks in Macroeconomic Time Series: Some Evidence and Implications. <i>Journal of Monetary Economics</i>, 10(2), 139-162.</p><p>Tsay, R. S. (2010). <i>Analysis of Financial Time Series</i> (3rd ed.). Hoboken: John Wiley &amp; Sons.</p><p>Wooldridge, J. M. (2013). <i>Introductory Econometrics: A Modern Approach</i> (5th ed.). Mason: South-Western Cengage Learning.</p></div></div></div><footer class="content__footer"><div class="content__last-updated">This article was updated on <time datetime="2026-09-06T21:39">Sep 6, 2026</time></div><div class="content__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstatistikian.net%2Fsolusi-data-time-series-tidak-stasioner-teknik-differencing-yang-tepat-dengan-r-studio%2F" class="js-share facebook tltp tltp--top" aria-label="Facebook" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://api.whatsapp.com/send?text=Solusi%20Data%20Time%20Series%20Tidak%20Stasioner%3A%20Teknik%20Differencing%20yang%20Tepat%20dengan%20R-Studio https%3A%2F%2Fstatistikian.net%2Fsolusi-data-time-series-tidak-stasioner-teknik-differencing-yang-tepat-dengan-r-studio%2F" class="js-share whatsapp tltp tltp--top" title="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></footer></div></article><div class="content__section post__related"><div class="main__inner"><h3 class="content__section__title">Related post</h3><div class="post__related__wrap"><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-06T22:17">Sep 6, 2026 </time><a href="https://statistikian.net/tags/r-studio/" class="c-card-tag">R Studio</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/kapan-harus-menggunakan-k-means-clustering-vs-hierarchical-clustering-simulasi-pada-r-studio/">Kapan Harus Menggunakan K-Means Clustering vs Hierarchical Clustering? Simulasi pada R-Studio</a></h2><p>Banyak praktisi data dan peneliti mengalami kendala serius saat melakukan pengelompokan data&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:49">Sep 5, 2026 </time><a href="https://statistikian.net/tags/r-studio/" class="c-card-tag">R Studio</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></h2><p>Saat melakukan peramalan deret waktu atau time series forecasting, rintangan terbesar yang&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-01T02:32">Sep 1, 2026 </time><a href="https://statistikian.net/tags/eviews/" class="c-card-tag">Eviews</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/tutorial-lengkap-uji-asumsi-klasik-data-panel-menggunakan-eviews/">Tutorial Lengkap Uji Asumsi Klasik Data Panel Menggunakan Eviews</a></h2><p>Saat melakukan analisis regresi data panel pada Eviews, kendala klasik yang paling&hellip;</p></header></article></div></div></div><div class="content__section banner"><div class="main__inner"><style>.banner-statistik {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 760px;
+    height: 250px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Menggelapkan gambar agar teks terbaca jelas */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .banner-statistik:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #facc15;
+    line-height: 1.2;
+  }
+
+  .banner-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .banner-btn {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Pengaturan Khusus Layar Mobile (Lebar Maksimal 300px) */
+  @media screen and (max-width: 768px) {
+    .banner-statistik {
+      max-width: 300px;
+      height: 250px;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .banner-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }</style><a href="https://wa.me/6281515699060?text=Halo%2C%20saya%20butuh%20bantuan%20analisis%20statistik" target="_blank" rel="noopener noreferrer" class="banner-statistik"><div class="banner-title">Butuh Bantuan Analisis Statistik?</div><div class="banner-text">Jangan ragu bertanya pada kami, biaya <strong>100 sd 300 IDR</strong>.<br>Tim kami siap membantu dengan aplikasi SPSS, Eviews, STATA, SmartPLS, Lisrel, AMOS, R-Studio, Minitab dan Excel.<br><em>Berpengalaman sejak 2012.</em> <strong>.... KLIK DISINI !</strong></div><div class="banner-btn">WhatsApp: 081515699060</div></a></div></div></main><div class="right-bar"><div class="right-bar__inner"><div class="sidebar"><section class="box featured"><h3 class="box__title">Featured Posts</h3><ul class="featured__container"><li class="featured__item"><div><a href="https://statistikian.net/cara-peramalan-forecasting-arima-di-eviews-supaya-bisa-beberapa-periode-kedepan-misalnya-6-bulan-kedepan/" class="featured__title">Cara Peramalan (Forecasting) ARIMA di Eviews Supaya Bisa Beberapa Periode Kedepan Misalnya 6 Bulan Kedepan</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/cara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata/" class="featured__title">Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/sebab-dan-cara-mengatasi-masalah-model-not-positive-definite-dan-under-identified-pada-cb-sem-lisrel/" class="featured__title">Sebab dan Cara Mengatasi Masalah Model Not Positive Definite dan Under-Identified Pada CB SEM Lisrel</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/" class="featured__title">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/" class="featured__title">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/tutorial-lengkap-uji-asumsi-klasik-data-panel-menggunakan-eviews/" class="featured__title">Tutorial Lengkap Uji Asumsi Klasik Data Panel Menggunakan Eviews</a></div></li></ul></section><section class="box tags"><h3 class="box__title">Recommended Topics</h3><ul class="tags__list"><li class="tags__item"><a href="https://statistikian.net/tags/amos/" class="btn btn--gray">AMOS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/eviews/" class="btn btn--gray">Eviews</a></li><li class="tags__item"><a href="https://statistikian.net/tags/jasp/" class="btn btn--gray">JASP</a></li><li class="tags__item"><a href="https://statistikian.net/tags/lisrel/" class="btn btn--gray">Lisrel</a></li><li class="tags__item"><a href="https://statistikian.net/tags/minitab/" class="btn btn--gray">Minitab</a></li><li class="tags__item"><a href="https://statistikian.net/tags/r-studio/" class="btn btn--gray">R Studio</a></li><li class="tags__item"><a href="https://statistikian.net/tags/smartpls/" class="btn btn--gray">SmartPLS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/spss/" class="btn btn--gray">SPSS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/stata/" class="btn btn--gray">STATA</a></li></ul></section><div class="box copyright">Powered by Anwar Hidayat - Alright Reserved</div></div></div></div></div><script defer="defer" src="https://statistikian.net/assets/js/scripts.min.js?v&#x3D;b2d91bcadbf5db401b76eb5bb3092eb7"></script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 60px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060.<strong>.... KLIK DISINI !</strong></p></a></div><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 13 paragraf
+    if (paragraphs.length >= 13) {
+        const ctaHTML = `
+	<!-- CTA 1 BOX (WhatsApp) -->
+	<div style="background-color: #f0f7ff; padding: 25px; text-align: center; border: 2px dashed #0056b3; border-radius: 8px; margin: 35px 0;">
+		<p style="font-size: 16px; font-weight: bold; margin-bottom: 20px; color: #333; line-height: 1.5; text-align: center;">Sudah mencoba langkah di atas tapi model data Anda masih error atau deadline sidang makin dekat? Konsultasikan langsung masalah olah data Anda bersama tim ahli kami via WhatsApp.</p>
+		<a href="https://wa.me/6281515699060" target="_blank" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" rel="noopener">WhatsApp 081515699060</a>
+	</div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-12 (index 12)
+        paragraphs[11].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 21 paragraf
+    if (paragraphs.length >= 21) {
+        const ctaHTML = `
+            <!-- CTA BOX Instagram -->
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 30px; border-radius: 10px; margin: 40px 0; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); text-align: center;">
+                <h3 style="margin-top: 0; font-size: 24px; margin-bottom: 15px; color: white; text-align: center;">Dapatkan Update &amp; Tips Olah Data dan Lihat Testimoni!</h3>
+                <p style="font-size: 16px; margin-bottom: 25px; line-height: 1.6; text-align: center;">Dapatkan Update &amp; Tips Olah Data atau Testimoni Klien Kami! Ingin panduan visual yang ringkas dan tips cepat seputar pengujian STATA, EViews, SPSS, dll serta metodologi penelitian lainnya? Ikuti Instagram kami untuk konten edukatif yang di-update secara berkala. Anda juga bisa lihat testimoni klien kami yang sudah menggunakan jasa analisis statistik tim kami.</p>
+                <a href="https://www.instagram.com/statistikian" target="_blank" style="background-color: white; color: #dc2743; padding: 14px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" rel="noopener">
+                    <!-- Icon Instagram SVG --> 
+                    <svg style="width: 22px; height: 22px; margin-right: 10px; fill: currentColor;" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg> Follow @statistikian 
+                </a>
+            </div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-20 (index 20)
+        paragraphs[19].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script></body></html>
