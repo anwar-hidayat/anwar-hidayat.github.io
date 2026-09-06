@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solusi Nilai Goodness of Fit (RMSEA, CFI, TLI, dll) Tidak Memenuhi Kriteria Batas - Statistikian Net</title><meta name="description" content="Pelajari cara atau solusi nilai Goodness of Fit seperti RMSEA, CFI, TLI, dll tidak memenuhi kriteria batas di AMOS. Panduan respesifikasi model secara ilmiah."><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://statistikian.net/solusi-nilai-goodness-of-fit-rmsea-cfi-tli-dll-tidak-memenuhi-kriteria-batas/"><link rel="alternate" type="application/atom+xml" href="https://statistikian.net/feed.xml" title="Statistikian Net - RSS"><link rel="alternate" type="application/json" href="https://statistikian.net/feed.json" title="Statistikian Net - JSON"><link rel="shortcut icon" href="https://statistikian.net/media/website/favicon-statistikian.svg" type="image/x-icon"><link rel="stylesheet" href="https://statistikian.net/assets/css/style.css?v&#x3D;f5bf14394894a7f3d49ce26d5330f826"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://statistikian.net/solusi-nilai-goodness-of-fit-rmsea-cfi-tli-dll-tidak-memenuhi-kriteria-batas/"},"headline":"Solusi Nilai Goodness of Fit (RMSEA, CFI, TLI, dll) Tidak Memenuhi Kriteria Batas","datePublished":"2026-09-06T20:53+07:00","dateModified":"2026-09-06T20:53+07:00","image":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250},"description":"Pelajari cara atau solusi nilai Goodness of Fit seperti RMSEA, CFI, TLI, dll tidak memenuhi kriteria batas di AMOS. Panduan respesifikasi model secara ilmiah.","author":{"@type":"Person","name":"Anwar Hidayat","url":"https://statistikian.net/authors/anwar-hidayat/"},"publisher":{"@type":"Organization","name":"Anwar Hidayat","logo":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-NEYCRECVPF"></script><script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NEYCRECVPF');</script></head><body class="post-template"><div class="container"><div class="left-bar"><div class="left-bar__inner"><header class="header"><a class="logo" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle__box"><span class="navbar__toggle__inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://statistikian.net/" target="_self" aria-label="Home"><span>Home</span></a></li><li><a href="https://statistikian.net/jasa-olah-data-and-analisis-statistik-profesional-bergaransi-or-statistikiannet/" target="_self" aria-label="Jasa Analisis Statistik"><span>Jasa Analisis Statistik</span></a></li><li><a href="https://statistikian.com" target="_self" aria-label="statistikian.com"><span>statistikian.com</span></a></li><li><a href="https://statistikian.net/tags/" target="_self" aria-label="Artikel By Aplikasi"><span>Artikel By Aplikasi</span></a></li><li><a href="https://statistikian.net/about-us/" target="_self" aria-label="About Us"><span>About Us</span></a></li><li><a href="https://statistikian.net/contact-us/" target="_self" aria-label="Contact Us"><span>Contact Us</span></a></li><li><a href="https://statistikian.net/disclaimer/" target="_self" aria-label="Disclaimer"><span>Disclaimer</span></a></li><li><a href="https://statistikian.net/privacy-policy-kebijakan-privasi/" target="_self" aria-label="Privacy Policy"><span>Privacy Policy</span></a></li></ul></nav><a class="logo logo--atbottom" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a></header></div></div><main class="main post"><article class="content"><div class="content__meta content__meta--attop"><div class="content__meta--attop__inner"><div class="content__maintag"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#tag"/></svg> Published in <a href="https://statistikian.net/tags/amos/" class="metadata__maintag">AMOS</a></div></div></div><div class="main__inner"><div class="content__meta"><div class="content__author"><div><a href="https://statistikian.net/authors/anwar-hidayat/" class="content__author__name">Anwar Hidayat</a><p>Anwar Hidayat</p></div></div><div class="content__date"><time datetime="2026-09-06T20:53">Sep 6, 2026</time></div></div><header class="content__header"><h1 class="content__title">Solusi Nilai Goodness of Fit (RMSEA, CFI, TLI, dll) Tidak Memenuhi Kriteria Batas</h1></header><div class="content__entry"><article><p style="text-align: justify;">Saat melakukan analisis <em>Structural Equation Modeling</em> (SEM), momen yang paling menegangkan bagi seorang analis data adalah mengamati hasil <em>output</em> evaluasi kelayakan model. Seringkali, peneliti menghadapi situasi di mana <strong>solusi nilai Goodness of Fit tidak memenuhi kriteria batas dengan AMOS</strong>. Gejala masalah ini ditandai dengan angka yang berada di luar ambang kelayakan standar; misalnya nilai <em>Root Mean Square Error of Approximation</em> (RMSEA) yang lebih besar dari 0,08, atau nilai <em>Comparative Fit Index</em> (CFI) dan <em>Tucker-Lewis Index</em> (TLI) yang anjlok di bawah batas minimal 0,90. Angka-angka yang tidak ideal ini mengirimkan pesan teknis bahwa matriks kovarians yang diestimasi oleh model konseptual Anda memiliki penyimpangan yang signifikan dibandingkan dengan matriks kovarians dari data empiris lapangan.</p><p style="text-align: justify;">Kegagalan dalam mencapai kriteria kecocokan model ini membawa konsekuensi fatal: seluruh pengujian hipotesis struktural (pengaruh antar variabel laten) menjadi tidak valid untuk disimpulkan. Berhadapan dengan jalan buntu ini, banyak peneliti pemula yang merasa frustrasi dan terkadang tergiur mengambil jalan pintas dengan memanipulasi data yang menyalahi kaidah statistik. Padahal, perangkat lunak AMOS telah dirancang dengan algoritma diagnostik yang canggih untuk memberikan petunjuk perbaikan. Dengan pemahaman teknis yang benar, Anda dapat melakukan respesifikasi model penelitian Anda tanpa harus mengorbankan integritas data maupun merombak total kerangka berpikir yang sudah dibangun.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #d73a49; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.2);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #333; padding-bottom: 5px;">Output AMOS: Model Fit Summary (Kondisi Tidak Fit)</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #34495e;">CMIN
+Model           NPAR    CMIN      DF    P       CMIN/DF
+Default model   42      456.782   124   0.000   3.684
+
+Baseline Comparisons
+Model           NFI     RFI       IFI   TLI     CFI
+Default model   0.812   0.785     0.845 </span><span style="color: #f44336; font-weight: bold;">0.811   0.843</span>
+
+<span style="color: #34495e;">RMSEA
+Model    </span>       <span style="color: #f44336; font-weight: bold;">RMSEA</span>   <span style="color: #34495e;">LO 90     HI 90 PCLOSE</span>
+<span style="color: #34495e;">Default model</span>   <span style="color: #f44336; font-weight: bold;">0.104</span>   <span style="color: #34495e;">0.092     0.116 0.000</span>
+
+<span style="color: #f44336; font-style: italic;">* Keterangan: Nilai RMSEA &gt; 0.08 dan TLI/CFI &lt; 0.90 mengindikasikan 
+bahwa matriks prediksi model jauh dari matriks empiris (Poor Fit). *</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Konsep Dasar Teori Kecocokan Model (Model Fit)</h2><p style="text-align: justify;">Konsep <em>Goodness of Fit</em> (GOF) dalam analisis SEM merupakan serangkaian ukuran statistik yang dirancang untuk mengevaluasi seberapa baik sebuah model teoretis yang diusulkan mampu merepresentasikan atau mereproduksi struktur matriks dari data observasi sesungguhnya. Menurut Kline (2015), pencarian kecocokan model yang baik bukanlah upaya untuk membuktikan bahwa model teoretis tersebut merepresentasikan kebenaran mutlak yang sempurna. Sebaliknya, tujuan uji kelayakan ini adalah sekadar memastikan bahwa formulasi model yang diajukan cukup masuk akal, empiris, dan secara statistik tidak memiliki perbedaan yang ekstrem dengan realitas data sampel.</p><p style="text-align: justify;">Dalam literatur statistika multivariat, indeks kelayakan model umumnya diklasifikasikan ke dalam tiga kategori besar, yakni <em>absolute fit indices</em>, <em>incremental fit indices</em>, dan <em>parsimony fit indices</em> (Hair et al., 2019). Indeks seperti RMSEA serta GFI (<em>Goodness of Fit Index</em>) masuk dalam payung ukuran absolut yang menilai kecocokan murni berdasarkan fungsi minimum perbedaan residual. Di sisi lain, pengukuran seperti CFI, TLI, dan NFI termasuk dalam evaluasi inkremental yang kerjanya selalu membandingkan proporsi peningkatan kelayakan model pengujian terhadap model nol (<em>baseline model</em>).</p><p style="text-align: justify;">Untuk memahami secara lebih komprehensif mengenai filosofi kalkulasi, turunan rumus, serta hierarki dari masing-masing indeks evaluasi tersebut, pembaca sangat disarankan untuk mempelajari kajian teori fundamental di <a href="https://www.statistikian.com" target="_blank" style="color: #0366d6; font-weight: bold; text-decoration: none;" rel="noopener">konsep dasar Goodness of Fit SEM</a>. Penguasaan atas teori dasar pembentuk nilai-nilai indeks ini sangat esensial agar prosedur perbaikan yang dilakukan pada perangkat lunak tidak hanya sekadar tindakan mekanis mengejar nilai batas, melainkan tindakan metodologis yang dapat dipertanggungjawabkan rasionalitasnya.</p><p style="text-align: justify;">Byrne (2016) menegaskan bahwa batas kriteria ketat seperti ketentuan CFI di atas 0,90 atau syarat RMSEA di bawah 0,08 sejatinya adalah sekadar <em>rule of thumb</em> atau panduan praktis, bukan sebuah hukum fisika yang kaku. Namun demikian, realitas dari konvensi publikasi ilmiah saat ini mensyaratkan pencapaian batas-batas konvensional ini. Kegagalan memenuhinya merupakan alasan utama pengulas jurnal untuk menolak naskah penelitian. Oleh karena itu, keterampilan menelusuri sumber kesalahan matriks dan melakukan respesifikasi model menjadi kompetensi analitis yang wajib dimiliki.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Langkah Teknis Memperbaiki Model Fit Melalui Modification Indices</h2><p style="text-align: justify;">Langkah pertama yang paling krusial sebelum mengubah alur jalur analisis adalah memvalidasi kualitas <em>Standardized Regression Weights</em> atau nilai bobot <em>loading factor</em> dari setiap instrumen pertanyaan. Pastikan semua indikator yang mengukur variabel laten Anda secara konsisten memiliki bobot muatan di atas 0,50 atau pada kondisi ideal berada di atas 0,70. Jika Anda mendapati adanya item indikator dengan kontribusi yang sangat kerdil (misalnya 0,25 atau 0,30), item tersebut menyumbang varians kesalahan dalam jumlah yang masif pada kerangka model keseluruhan dan sangat direkomendasikan untuk dibuang atau di-drop dari struktur model (Hair et al., 2019).</p><p style="text-align: justify;">Langkah kedua bertumpu pada pendayagunaan menu analisis bawaan AMOS, yakni <em>Modification Indices</em> (MI). Untuk memunculkan fitur ini, Anda harus masuk ke jendela <em>Analysis Properties</em> di AMOS, menavigasi ke tab <em>Output</em>, dan memberikan tanda centang pada opsi <em>Modification Indices</em>. Pastikan batas <em>threshold</em> untuk MI dibiarkan pada angka bawaan yaitu 4.000 agar AMOS hanya merekomendasikan modifikasi jalur yang signifikansinya kuat.</p><p style="text-align: justify;">Setelah pengaturan diaktifkan dan model dihitung ulang melalui tombol <em>Calculate Estimates</em>, telusuri bagian laporan <em>output</em> tekstual (<em>text output</em>) dan temukan tabel <em>Modification Indices</em>. Mata Anda harus tertuju secara eksklusif pada bagian tabel yang menjabarkan kolom <em>Covariances</em> antara variabel observasi kesalahan atau <em>Measurement Error</em> (yang biasanya disimbolkan dengan notasi e1, e2, e3, dan seterusnya).</p><p style="text-align: justify;">Dalam tabel kovarians MI ini, AMOS menyajikan perkiraan kuantitatif tentang seberapa besar proyeksi penurunan nilai rasio <em>Chi-Square</em> apabila Anda memutuskan untuk menggambar garis korelasi dua arah (panah lengkung) di antara dua notasi <em>error</em> tersebut. Tugas Anda adalah mengidentifikasi pasangan <em>error</em> mana yang memiliki angka indeks <em>Modification Indices</em> absolut paling tinggi.</p><p style="text-align: justify;">Aturan analitis yang tidak boleh dilanggar dalam tahapan ini adalah batasan wilayah konstruk. Anda secara ilmiah <strong>hanya diizinkan mengkorelasikan istilah <em>error</em> apabila kedua <em>error</em> tersebut bernaung di bawah satu payung variabel laten atau konstruk yang sama</strong> (Byrne, 2016). Sebagai contoh, jika e1 dan e2 adalah bagian dari pembentuk konstruk Kepuasan Pelanggan, maka mengkorelasikannya diperbolehkan. Sebaliknya, mengkorelasikan <em>error</em> dari konstruk endogen dengan <em>error</em> dari konstruk eksogen adalah kecacatan metodologi tingkat fatal.</p><p style="text-align: justify;">Setelah menemukan nilai MI tertinggi pada konstruk yang sama, kembalilah ke lembar kanvas gambar (<em>path diagram</em>) AMOS Anda. Gunakan alat gambar <em>Draw Covariances</em> (ikon panah lengkung berkepala ganda) untuk menghubungkan kedua bulat kecil <em>error</em> yang direkomendasikan tadi. Simpan perubahan, kemudian operasikan kembali komputasi estimasi data Anda.</p><p style="text-align: justify;">Perbaikan model fit ini harus dieksekusi secara iteratif dan berurutan satu demi satu. Hindari melakukan pengelompokan korelasi banyak garis <em>error</em> secara acak dalam satu kali percobaan perhitungan. Mengubah atau menambah satu parameter kovarians akan memicu perhitungan ulang matriks yang secara otomatis menggeser tatanan nilai MI dari seluruh parameter yang masih tersisa pada putaran analisis berikutnya.</p><p style="text-align: justify;">Selain memeriksa besaran nilai MI, analisis diagnostik harus dibantu dengan pengamatan matriks <em>Standardized Residual Covariances</em>. Pada matriks persilangan ini, nilai residu observasi yang menembus batas deviasi mutlak 2,58 bertindak sebagai lampu merah. Angka tinggi ini mengonfirmasi bahwa terdapat penyimpangan spesifikasi model yang tajam pada pasangan indikator-indikator spesifik tersebut, yang perlu ditangani melalui modifikasi lanjutan atau eliminasi item.</p><p style="text-align: justify;">Apabila langkah penggabungan <em>error</em> pada satu dimensi konstruk telah ditarik secara maksimal namun nilai GFI, RMSEA, atau CFI tetap berkeras di area kurva di bawah standar, kemungkinan besar masalah berpusat pada indikasi gejala multikolinearitas antar instrumen observasi. Indikator dengan kemiripan redaksional pertanyaan yang tinggi kerap menggelembungkan residu data, dan menyingkirkan salah satu dari item kembar tersebut (<em>model trimming</em>) adalah solusi teknis final demi mereduksi kompleksitas beban matriks.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #28a745; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.2);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #333; padding-bottom: 5px;">Output AMOS: Modification Indices (Solusi Covariances)</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #000000;">Covariances: (Group number 1 - Default model)
+
+                        M.I.      Par Change
+e6      &lt;--&gt;    e8      12.435    0.045
+e4      &lt;--&gt;    e7      8.120     0.032</span>
+<span style="color: #169179; font-weight: bold;">e1      &lt;--&gt;    e2      58.672    0.215</span>
+<span style="color: #000000;">e3      &lt;--&gt;    e4      15.340    0.068</span>
+
+<span style="color: #169179;"><span style="font-style: italic;">* Solusi Eksekusi: Tarik garis korelasi ganda antara measurement error e1 
+dan e2 pada path diagram. Angka M.I. (58.672) adalah yang tertinggi, 
+artinya menghubungkan e1 dan e2 akan menurunkan nilai chi-square 
+secara signifikan dan mengatrol nilai kecocokan (Fit) model Anda. 
+(Syarat: e1 dan e2 harus berasal dari konstruk laten yang sama). *</span>
+            </span></pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Pembahasan Ilmiah: Justifikasi dan Risiko Respesifikasi Model</h2><p style="text-align: justify;">Dari sudut pandang filosofi metodologi, keputusan taktis untuk menarik garis korelasi pada varians kesalahan menafsirkan asumsi yang mendalam. Korelasi <em>error</em> merepresentasikan sebuah klaim bahwa ada satu atau lebih varians sistematis tak terukur, di luar cakupan konstruk laten utama, yang menjadi penyebab respon responden pada kedua item tersebut berhubungan paralel. Hermida (2015) menyumbangkan pemikiran kritisnya bahwa manipulasi semacam ini tidak semestinya dioperasikan tanpa kendali murni hanya untuk mengejar kelayakan batas angka yang disyaratkan secara <em>data-driven</em>.</p><p style="text-align: justify;">Pembenaran ilmiah yang sah dalam merekatkan korelasi antara istilah pengukuran sisa bersandar pada beberapa premis kuat. Parameter <em>error covariance</em> dinilai rasional dan logis jika dua variabel observasi memiliki kesamaan struktur wujud (misalnya, dua-duanya adalah butir pertanyaan konfirmasi berlawanan atau <em>reverse-wording</em>). Pembenaran ini juga berlaku ketika instrumen observasi letaknya terlampau berdekatan dalam kuesioner sehingga memicu kejenuhan pola tanggapan (<em>response set effect</em>), atau apabila ada muatan tumpang-tindih makna semantik yang sangat lekat dari kalimat indikatornya (Byrne, 2016).</p><p style="text-align: justify;">Mencoba menyuntikkan jalur-jalur modifikasi baru dengan memaksakan korelasi <em>error</em> acak tanpa sandaran dasar logika teori akan menggiring penelitian Anda masuk ke dalam jurang <em>overfitting</em> model empiris. Fenomena <em>overfitting</em> mengartikan bahwa struktur model SEM Anda menjadi terlalu spesifik, buatan, dan disesuaikan kaku hanya agar sukses cocok (<em>fit</em>) dengan spesifikasi set data sampel yang Anda kumpulkan saat ini. Model artifisial seperti ini (Kline, 2015) hampir dipastikan akan selalu hancur keabsahannya manakala diuji menggunakan kerangka replikasi pada demografi sampel baru.</p><p style="text-align: justify;">Di dalam alam pengujian <em>Structural Equation Modeling</em>, arsitektur pikiran peneliti senantiasa meniti keseimbangan pada seutas tali antara batas konfirmatori teori mutlak dan batas eksploratori penemuan data. Saat spesifikasi fondasi model bawaan tumbang oleh uji batas hipotesis awal dan penggunaan fungsi komputasi <em>Modification Indices</em> dimulai, sejatinya pendekatan esensi penelitian otomatis bergeser fungsi teknisnya, bermutasi dari tahapan uji hipotesis konfirmasi (<em>theory testing</em>) menjadi penciptaan pembaharuan struktur hipotesis (<em>model generation</em>) (Hair et al., 2019).</p><p style="text-align: justify;">Berdasarkan rasionalisasi metodologis di atas, segala bentuk modifikasi dan pembentukan ulang model (respesifikasi) mesti terus didampingi pertimbangan logika substantif terhadap cakupan <em>Grand Theory</em> rujukan Anda. Bilamana langkah perubahan komputasi memaksa munculnya deviasi konseptual yang menodai makna esensial struktur instrumen, maka menempuh jalan mitigasi berupa penguatan ukuran kuantitas data (menambah jumlah sampel survei) atau merevisi kalibrasi redaksi butir pertanyaan lazimnya adalah sebuah manuver metodologis yang jauh lebih elegan.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Kesimpulan</h2><p style="text-align: justify;">Menangani polemik ketidakcocokan parameter mutlak <em>Goodness of Fit</em> pada perangkat lunak AMOS mutlak meminta ketelitian matematis yang bersandar kokoh pada justifikasi metodologi kausal. Serangkaian manuver perbaikan yang umum dipakai berkisar pada upaya eliminasi terhadap peranan <em>loading factor</em> porsi terendah dan memfungsikan alat pelacak komputasi matematis berupa <em>Modification Indices</em> guna mengakomodir korelasi antar residual kesalahan pengamatan. Praktik perombakan yang bertumpu pada perilaku data lapangan ini sepatutnya diaplikasikan melalui iterasi tunggal secara bertahap dan wajib dibarengi pelaporan deskriptif yang transparan di dalam penulisan manuskrip ilmiah untuk meminimalisasi hadirnya bias temuan model yang diada-adakan atau <em>overfitting</em>.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Daftar Pustaka</h2><ul style="line-height: 1.8; text-align: justify; padding-left: 20px;"><li>Byrne, B. M. (2016). <em>Structural Equation Modeling with AMOS: Basic Concepts, Applications, and Programming</em> (3rd ed.). Routledge.</li><li>Hair, J. F., Black, W. C., Babin, B. J., &amp; Anderson, R. E. (2019). <em>Multivariate Data Analysis</em> (8th ed.). Cengage Learning.</li><li>Hermida, R. (2015). <em>The Problem of Allowing Correlated Errors in Structural Equation Modeling: Concerns and Considerations</em>. Computational Methods in Social Sciences, 3(1), 5-17.</li><li>Kline, R. B. (2015). <em>Principles and Practice of Structural Equation Modeling</em> (4th ed.). Guilford Publications.</li></ul></article></div><footer class="content__footer"><div class="content__last-updated">This article was updated on <time datetime="2026-09-06T20:53">Sep 6, 2026</time></div><div class="content__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstatistikian.net%2Fsolusi-nilai-goodness-of-fit-rmsea-cfi-tli-dll-tidak-memenuhi-kriteria-batas%2F" class="js-share facebook tltp tltp--top" aria-label="Facebook" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://api.whatsapp.com/send?text=Solusi%20Nilai%20Goodness%20of%20Fit%20(RMSEA%2C%20CFI%2C%20TLI%2C%20dll)%20Tidak%20Memenuhi%20Kriteria%20Batas https%3A%2F%2Fstatistikian.net%2Fsolusi-nilai-goodness-of-fit-rmsea-cfi-tli-dll-tidak-memenuhi-kriteria-batas%2F" class="js-share whatsapp tltp tltp--top" title="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></footer></div></article><div class="content__section post__related"><div class="main__inner"><h3 class="content__section__title">Related post</h3><div class="post__related__wrap"><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:41">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/langkah-uji-asumsi-autokorelasi-ar1-dan-ar2-pada-gmm-stata-dan-solusi-jika-ada-pelanggaran/">Langkah Uji Asumsi Autokorelasi AR(1) dan AR(2) pada GMM STATA dan Solusi Jika Ada Pelanggaran</a></h2><p>Bagi peneliti yang mengolah data panel dinamis, momen evaluasi diagnostik adalah fase&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:18">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></h2><p>Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:08">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/solusi-mengatasi-endogenitas-model-menggunakan-gmm-stata/">Solusi Mengatasi Endogenitas Model Menggunakan GMM STATA</a></h2><p>Momen paling memfrustasikan bagi seorang peneliti kuantitatif adalah ketika variabel independen kunci&hellip;</p></header></article></div></div></div><div class="content__section banner"><div class="main__inner"><style>.banner-statistik {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 760px;
+    height: 250px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Menggelapkan gambar agar teks terbaca jelas */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .banner-statistik:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #facc15;
+    line-height: 1.2;
+  }
+
+  .banner-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .banner-btn {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Pengaturan Khusus Layar Mobile (Lebar Maksimal 300px) */
+  @media screen and (max-width: 768px) {
+    .banner-statistik {
+      max-width: 300px;
+      height: 250px;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .banner-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }</style><a href="https://wa.me/6281515699060?text=Halo%2C%20saya%20butuh%20bantuan%20analisis%20statistik" target="_blank" rel="noopener noreferrer" class="banner-statistik"><div class="banner-title">Butuh Bantuan Analisis Statistik?</div><div class="banner-text">Jangan ragu bertanya pada kami, biaya <strong>100 sd 300 IDR</strong>.<br>Tim kami siap membantu dengan aplikasi SPSS, Eviews, STATA, SmartPLS, Lisrel, AMOS, R-Studio, Minitab dan Excel.<br><em>Berpengalaman sejak 2012.</em> <strong>.... KLIK DISINI !</strong></div><div class="banner-btn">WhatsApp: 081515699060</div></a></div></div></main><div class="right-bar"><div class="right-bar__inner"><div class="sidebar"><section class="box featured"><h3 class="box__title">Featured Posts</h3><ul class="featured__container"><li class="featured__item"><div><a href="https://statistikian.net/cara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata/" class="featured__title">Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/sebab-dan-cara-mengatasi-masalah-model-not-positive-definite-dan-under-identified-pada-cb-sem-lisrel/" class="featured__title">Sebab dan Cara Mengatasi Masalah Model Not Positive Definite dan Under-Identified Pada CB SEM Lisrel</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/" class="featured__title">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/" class="featured__title">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/" class="featured__title">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-dan-hansen-untuk-mengevaluasi-overidentifying-restrictions-dan-solusinya-pada-stata/" class="featured__title">Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions dan Solusinya pada STATA</a></div></li></ul></section><section class="box tags"><h3 class="box__title">Recommended Topics</h3><ul class="tags__list"><li class="tags__item"><a href="https://statistikian.net/tags/amos/" class="btn btn--gray">AMOS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/eviews/" class="btn btn--gray">Eviews</a></li><li class="tags__item"><a href="https://statistikian.net/tags/jasp/" class="btn btn--gray">JASP</a></li><li class="tags__item"><a href="https://statistikian.net/tags/lisrel/" class="btn btn--gray">Lisrel</a></li><li class="tags__item"><a href="https://statistikian.net/tags/minitab/" class="btn btn--gray">Minitab</a></li><li class="tags__item"><a href="https://statistikian.net/tags/r-studio/" class="btn btn--gray">R Studio</a></li><li class="tags__item"><a href="https://statistikian.net/tags/smartpls/" class="btn btn--gray">SmartPLS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/spss/" class="btn btn--gray">SPSS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/stata/" class="btn btn--gray">STATA</a></li></ul></section><div class="box copyright">Powered by Anwar Hidayat - Alright Reserved</div></div></div></div></div><script defer="defer" src="https://statistikian.net/assets/js/scripts.min.js?v&#x3D;b2d91bcadbf5db401b76eb5bb3092eb7"></script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 60px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060.<strong>.... KLIK DISINI !</strong></p></a></div><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 13 paragraf
+    if (paragraphs.length >= 13) {
+        const ctaHTML = `
+	<!-- CTA 1 BOX (WhatsApp) -->
+	<div style="background-color: #f0f7ff; padding: 25px; text-align: center; border: 2px dashed #0056b3; border-radius: 8px; margin: 35px 0;">
+		<p style="font-size: 16px; font-weight: bold; margin-bottom: 20px; color: #333; line-height: 1.5; text-align: center;">Sudah mencoba langkah di atas tapi model data Anda masih error atau deadline sidang makin dekat? Konsultasikan langsung masalah olah data Anda bersama tim ahli kami via WhatsApp.</p>
+		<a href="https://wa.me/6281515699060" target="_blank" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" rel="noopener">WhatsApp 081515699060</a>
+	</div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-12 (index 12)
+        paragraphs[11].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 21 paragraf
+    if (paragraphs.length >= 21) {
+        const ctaHTML = `
+            <!-- CTA BOX Instagram -->
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 30px; border-radius: 10px; margin: 40px 0; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); text-align: center;">
+                <h3 style="margin-top: 0; font-size: 24px; margin-bottom: 15px; color: white; text-align: center;">Dapatkan Update &amp; Tips Olah Data dan Lihat Testimoni!</h3>
+                <p style="font-size: 16px; margin-bottom: 25px; line-height: 1.6; text-align: center;">Dapatkan Update &amp; Tips Olah Data atau Testimoni Klien Kami! Ingin panduan visual yang ringkas dan tips cepat seputar pengujian STATA, EViews, SPSS, dll serta metodologi penelitian lainnya? Ikuti Instagram kami untuk konten edukatif yang di-update secara berkala. Anda juga bisa lihat testimoni klien kami yang sudah menggunakan jasa analisis statistik tim kami.</p>
+                <a href="https://www.instagram.com/statistikian" target="_blank" style="background-color: white; color: #dc2743; padding: 14px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" rel="noopener">
+                    <!-- Icon Instagram SVG --> 
+                    <svg style="width: 22px; height: 22px; margin-right: 10px; fill: currentColor;" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg> Follow @statistikian 
+                </a>
+            </div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-20 (index 20)
+        paragraphs[19].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script></body></html>

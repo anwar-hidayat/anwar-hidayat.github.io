@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA - Statistikian Net</title><meta name="description" content="Panduan teknis cara mengatasi masalah asumsi parallel lines regresi ordinal dengan STATA dan Alternatif Uji Statistik Lain. Pelajari solusi lengkap komprehensif"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://statistikian.net/cara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata/"><link rel="alternate" type="application/atom+xml" href="https://statistikian.net/feed.xml" title="Statistikian Net - RSS"><link rel="alternate" type="application/json" href="https://statistikian.net/feed.json" title="Statistikian Net - JSON"><link rel="shortcut icon" href="https://statistikian.net/media/website/favicon-statistikian.svg" type="image/x-icon"><link rel="stylesheet" href="https://statistikian.net/assets/css/style.css?v&#x3D;f5bf14394894a7f3d49ce26d5330f826"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://statistikian.net/cara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata/"},"headline":"Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA","datePublished":"2026-09-06T20:32+07:00","dateModified":"2026-09-06T20:32+07:00","image":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250},"description":"Panduan teknis cara mengatasi masalah asumsi parallel lines regresi ordinal dengan STATA dan Alternatif Uji Statistik Lain. Pelajari solusi lengkap komprehensif","author":{"@type":"Person","name":"Anwar Hidayat","url":"https://statistikian.net/authors/anwar-hidayat/"},"publisher":{"@type":"Organization","name":"Anwar Hidayat","logo":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-NEYCRECVPF"></script><script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NEYCRECVPF');</script></head><body class="post-template"><div class="container"><div class="left-bar"><div class="left-bar__inner"><header class="header"><a class="logo" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle__box"><span class="navbar__toggle__inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://statistikian.net/" target="_self" aria-label="Home"><span>Home</span></a></li><li><a href="https://statistikian.net/jasa-olah-data-and-analisis-statistik-profesional-bergaransi-or-statistikiannet/" target="_self" aria-label="Jasa Analisis Statistik"><span>Jasa Analisis Statistik</span></a></li><li><a href="https://statistikian.com" target="_self" aria-label="statistikian.com"><span>statistikian.com</span></a></li><li><a href="https://statistikian.net/tags/" target="_self" aria-label="Artikel By Aplikasi"><span>Artikel By Aplikasi</span></a></li><li><a href="https://statistikian.net/about-us/" target="_self" aria-label="About Us"><span>About Us</span></a></li><li><a href="https://statistikian.net/contact-us/" target="_self" aria-label="Contact Us"><span>Contact Us</span></a></li><li><a href="https://statistikian.net/disclaimer/" target="_self" aria-label="Disclaimer"><span>Disclaimer</span></a></li><li><a href="https://statistikian.net/privacy-policy-kebijakan-privasi/" target="_self" aria-label="Privacy Policy"><span>Privacy Policy</span></a></li></ul></nav><a class="logo logo--atbottom" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a></header></div></div><main class="main post"><article class="content"><div class="content__meta content__meta--attop"><div class="content__meta--attop__inner"><div class="content__maintag"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#tag"/></svg> Published in <a href="https://statistikian.net/tags/stata/" class="metadata__maintag">STATA</a></div></div></div><div class="main__inner"><div class="content__meta"><div class="content__author"><div><a href="https://statistikian.net/authors/anwar-hidayat/" class="content__author__name">Anwar Hidayat</a><p>Anwar Hidayat</p></div></div><div class="content__date"><time datetime="2026-09-06T20:32">Sep 6, 2026</time></div></div><header class="content__header"><h1 class="content__title">Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</h1></header><div class="content__entry"><article><p style="text-align: justify;">Bagi para analis data, momen yang paling menjengkelkan saat menjalankan pemodelan regresi logistik ordinal di STATA adalah ketika mengeksekusi perintah <code>brant</code> pasca estimasi <code>ologit</code>. Peringatan <em>"A significant test statistic provides evidence that the parallel regression assumption has been violated"</em> muncul dengan <em>p-value</em> di bawah 0.05. Pesan <em>error</em> ini menandakan bahwa model Anda cacat secara asumsi. Jika Anda sedang kebingungan mencari <strong>Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</strong>, Anda berada di tempat yang tepat. Kegagalan uji ini membuat nilai koefisien (beta) tunggal yang dihasilkan oleh STATA menjadi tidak valid untuk diinterpretasikan secara keseluruhan melintasi kategori variabel dependen.</p><p style="text-align: justify;">Pelanggaran asumsi <em>parallel lines</em> (garis sejajar) mengindikasikan bahwa efek dari variabel independen (prediktor) sebenarnya tidak konstan pada setiap titik potong (<em>cut-off</em>) kategori variabel dependen. Memaksakan pembacaan <em>output</em> <code>ologit</code> standar pada kondisi ini sama dengan menarik kesimpulan bias yang dapat menyesatkan kebijakan atau temuan riset. Banyak mahasiswa dan peneliti yang panik dan langsung mengganti metode ke multinomial logistik, padahal langkah tersebut justru membuang informasi berharga dari sifat ordinal data tersebut.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #d73a49; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.2);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #333; padding-bottom: 5px;">. brant, detail</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #000000;">Brant Test of Parallel Regression Assumption
+
+    Variable |      chi2   p&gt;chi2    df
+-------------+--------------------------
+         All |     34.52    0.000     6
+-------------+--------------------------
+          x1 |      2.14    0.343     2
+          x2 |     21.87    0.000     2
+          x3 |     10.51    0.005     2
+----------------------------------------</span>
+<span style="color: #f44336; font-weight: bold;">A significant test statistic provides evidence that the parallel
+regression assumption has been violated.</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Konsep Teori Asumsi Parallel Lines (Proportional Odds)</h2><p style="text-align: justify;">Dalam ekonometrika dan statistika, regresi logistik ordinal berakar pada model <em>Proportional Odds</em> yang pertama kali diformulasikan oleh McCullagh (1980). Model ini mengasumsikan bahwa koefisien kemiringan (<em>slope</em> atau <em>beta</em>) adalah identik pada setiap persamaan logit biner yang dibentuk dari kategori respons. Inilah yang secara harfiah disebut sebagai asumsi <em>Parallel Lines</em>; jika Anda menggambar probabilitas kumulatif pada grafik, kurva-kurvanya akan terlihat sejajar satu sama lain dengan jarak yang ditentukan oleh parameter titik potong (<em>cut-points</em> atau <em>thresholds</em>).</p><p style="text-align: justify;">Konsekuensi logis dari teori ini adalah, perangkat lunak seperti STATA melalui perintah <code>ologit</code> hanya akan mengestimasi satu set koefisien variabel independen yang berlaku universal untuk seluruh transisi kategori Y (misalnya dari kategori 1 ke 2, dan 2 ke 3). Jika efek dari variabel X terhadap transisi kategori terbawah berbeda dengan efeknya pada transisi kategori teratas, maka asumsi proporsionalitas ini runtuh (Long &amp; Freese, 2014).</p><p style="text-align: justify;">Brant (1990) mengembangkan uji statistik berbasis Wald untuk mengevaluasi apakah koefisien prediktor secara individual maupun simultan benar-benar konsisten antar ambang batas. Uji Brant membandingkan koefisien dari sejumlah regresi logistik biner yang dipecah dari data ordinal. Jika terdapat disparitas koefisien yang signifikan secara statistik, nilai <em>chi-square</em> akan membesar, dan <em>p-value</em> akan jatuh di bawah taraf signifikansi alfa.</p><p style="text-align: justify;">Bagi pembaca yang ingin menelusuri fondasi matematis, derivasi log-likelihood, dan dasar teori uji asumsi secara komprehensif tanpa pusing memikirkan teknis <em>software</em>, kami sangat menyarankan Anda untuk mempelajari seri teori ekonometrik di <a href="https://www.statistikian.com" target="_blank" style="color: #0366d6; font-weight: bold; text-decoration: none;" rel="noopener">statistikian.com</a>. Memahami filosofi matematika di balik model logit sangat krusial sebelum Anda mengaplikasikan trik penyelesaian <em>error</em> di STATA pada artikel ini.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Langkah Perbaikan Teknis di STATA: Pendekatan Generalized Ordered Logit</h2><p style="text-align: justify;">Langkah pertama saat menghadapi kegagalan uji Brant <strong>bukanlah</strong> beralih ke <em>Multinomial Logistic Regression</em> (<code>mlogit</code>). Penggunaan <code>mlogit</code> pada data ordinal akan mengorbankan <em>power</em> statistik karena model multinomial menganggap kategori sebagai nominal murni tanpa ada urutan (hierarki). Solusi teknis paling presisi dan elegan di STATA adalah menggunakan <strong>Generalized Ordered Logit Model</strong> (GOLM).</p><p style="text-align: justify;">STATA menyediakan <em>package</em> eksternal bernama <code>gologit2</code> yang dikembangkan oleh Richard Williams (2006). Model ini sangat revolusioner karena memungkinkan parameter (koefisien) untuk bervariasi melintasi titik potong kategori hanya pada variabel yang melanggar asumsi, sambil mempertahankan parameter tunggal untuk variabel yang mematuhi asumsi. Konsep ini dikenal sebagai <strong>Partial Proportional Odds</strong> (PPO).</p><p style="text-align: justify;">Langkah teknis 1: Anda wajib menginstal <em>package</em> ini secara daring melalui konsol STATA. Ketikkan perintah <code>ssc install gologit2</code>. Pastikan komputer atau laptop Anda terhubung dengan internet. Proses instalasi ini hanya perlu dilakukan satu kali.</p><p style="text-align: justify;">Langkah teknis 2: Jangan menjalankan <code>gologit2</code> secara kosongan. Jika Anda hanya mengetik <code>gologit2 y x1 x2 x3</code>, STATA akan menghasilkan koefisien yang berbeda untuk <strong>semua</strong> variabel pada setiap kategori. Ini akan membuat model Anda kehilangan parsimoni (kesederhanaan) dan berisiko mengalami <em>overfitting</em> yang parah (Williams, 2016).</p><p style="text-align: justify;">Langkah teknis 3: Gunakan opsi <em>magic</em> bernama <code>autofit</code>. Sintaks yang benar adalah <code>gologit2 y x1 x2 x3, autofit</code>. Opsi <code>autofit</code> memerintahkan algoritma STATA untuk melakukan iterasi pengujian berulang menggunakan uji Wald pada setiap variabel. STATA akan secara otomatis memilah mana variabel yang boleh diikat koefisiennya (karena lolos uji parallel) dan mana yang harus dilepas koefisiennya (karena gagal uji).</p><p style="text-align: justify;">Sebagai ilustrasi, jika variabel <code>x1</code> memenuhi asumsi sedangkan <code>x2</code> melanggar, maka <em>output</em> <code>gologit2, autofit</code> akan menampilkan koefisien <code>x1</code> yang sama persis di setiap transisi kategori, sedangkan koefisien <code>x2</code> akan memiliki nilai yang berbeda pada Panel 1, Panel 2, dan seterusnya. Ini mengamankan validitas statistik Anda tanpa merusak keseluruhan hierarki model.</p><p style="text-align: justify;">Langkah teknis 4: Periksa <em>output</em> iterasi <code>autofit</code>. STATA akan melaporkan variabel mana saja yang "dilepaskan" dari batasan <em>parallel lines</em>. Nilai signifikansi yang digunakan secara <em>default</em> oleh <code>autofit</code> adalah p &lt; 0.05. Jika Anda ingin lebih ketat (misalnya karena sampel Anda sangat besar), Anda bisa memodifikasi tingkat alfa-nya dengan perintah <code>gologit2 y x1 x2 x3, autofit(0.01)</code>.</p><p style="text-align: justify;">Alternatif teknis lain jika Anda tidak ingin menggunakan <code>gologit2</code> adalah dengan <strong>melakukan penggabungan kategori (collapsing categories)</strong>. Terkadang, uji Brant gagal sekadar karena ada selisih kategori yang memiliki jumlah frekuensi (N) terlalu sedikit, atau terdapat <em>zero-cell count</em> pada tabulasi silang antara prediktor dan respons.</p><p style="text-align: justify;">Anda bisa menggunakan perintah <code>recode</code>. Misalnya, jika variabel dependen <code>y</code> memiliki 5 kategori Likert (1=Sangat Tidak Setuju hingga 5=Sangat Setuju), namun kategori 1 dan 5 hanya diisi oleh 2 responden, model akan goyah. Anda bisa merekode menjadi 3 kategori: <code>recode y (1/2=1) (3=2) (4/5=3), gen(y_baru)</code>. Setelah itu, jalankan kembali <code>ologit</code> dan uji ulang menggunakan <code>brant</code>.</p><p style="text-align: justify;">Namun, harus digarisbawahi bahwa penggabungan kategori berpotensi menghilangkan presisi varians data. Oleh karena itu, pendekatan <strong>Partial Proportional Odds</strong> dengan <code>gologit2</code> tetap menjadi standar emas atau rujukan primer dalam publikasi jurnal ilmiah kuantitatif bereputasi tinggi saat asumsi regresi ordinal tidak terpenuhi.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #28a745; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.2);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #333; padding-bottom: 5px;">. gologit2 y x1 x2 x3, autofit</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #000000;">Testing parallel lines assumption using the .05 level of significance...
+Step 1: Constraints for x1 are not rejected (p = 0.3430)
+Step 2: Constraints for x2 are rejected (p = 0.0001)
+Step 3: Constraints for x3 are rejected (p = 0.0052)
+...
+Generalized Ordered Logit Estimates             Number of obs   =        500
+                                                LR chi2(5)      =     145.20
+                                                Prob &gt; chi2     =     0.0000
+Log likelihood = -410.1234                      Pseudo R2       =     0.1503
+
+------------------------------------------------------------------------------
+           y |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------</span>
+<span style="color: #4caf50;">y &gt; 1        |</span>
+          <span style="color: #4caf50;">x1 |   1.245021   .142012     8.77   0.000      .966682   1.523359</span>
+         <span style="color: #000000;"> x2 |   2.103045   .340212     6.18   0.000     1.436242   2.769848
+          x3 |  -.450123    .210450    -2.14   0.032    -.862597   -.037648
+       _cons |   3.104230   .451020     6.88   0.000     2.220247   3.988213
+-------------+----------------------------------------------------------------</span>
+<span style="color: #4caf50;">y &gt; 2        |</span>
+          <span style="color: #4caf50;">x1 |   1.245021   .142012     8.77   0.000      .966682   1.523359</span>
+   <span style="color: #000000;">       x2 |   4.560120   .420120    10.85   0.000     3.736700   5.383540
+          x3 |   1.120401   .310245     3.61   0.000      .512332   1.728470
+       _cons |   1.450231   .401200     3.61   0.000      .663893   2.236568
+------------------------------------------------------------------------------</span>
+<span style="color: #4caf50; font-style: italic;">* Perhatikan bahwa koefisien x1 tetap konstan (1.245), 
+sementara x2 dan x3 dibiarkan bervariasi antar kategori.*</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Pembahasan Ilmiah: Mengapa Asumsi Proporsionalitas Sering Gagal?</h2><p style="text-align: justify;">Dalam praktik statistika terapan modern, fenomena gagalnya asumsi <em>proportional odds</em> adalah hal yang sangat lumrah. Para ahli ekonometrika menyadari bahwa perilaku manusia—yang seringkali menjadi subjek variabel prediktor dalam kuesioner—tidak bersifat linear secara kaku. Misalnya, efek peningkatan pendapatan (X) terhadap kebahagiaan (Y). Pendapatan mungkin berdampak sangat ekstrem saat mengangkat seseorang dari kategori "Sangat Tidak Bahagia" ke "Biasa Saja", namun dampaknya menyusut drastis saat memindahkannya dari kategori "Bahagia" ke "Sangat Bahagia". Heterogenitas efek inilah yang dibaca oleh uji Brant sebagai pelanggaran asumsi.</p><p style="text-align: justify;">Selain faktor sifat alami variabel, sensitivitas uji Brant (Brant, 1990) terhadap ukuran sampel (N) adalah diskursus ilmiah yang patut dicermati. Layaknya uji normalitas Kolmogorov-Smirnov atau uji spesifikasi Hausman, uji statistik berbasis <em>chi-square</em> memiliki kelemahan inheren: seiring dengan membesarnya jumlah sampel, deviasi mikroskopis yang secara praktis tidak bermakna akan divonis signifikan secara statistik (<em>p-value</em> mengecil).</p><p style="text-align: justify;">Menurut Williams (2016), peneliti yang memiliki sampel observasi di atas 1.000 hampir bisa dipastikan akan selalu gagal dalam uji asumsi <em>parallel lines</em>. Oleh sebab itu, memaksakan penggunaan <code>ologit</code> murni pada sampel masif sering kali tidak realistis. <strong>Partial Proportional Odds</strong> (PPO) yang ditawarkan oleh <code>gologit2</code> memberikan jalan tengah teoritis: kita menghormati prinsip ordinalitas pada prediktor yang patuh, dan kita membebaskan efek pada prediktor yang memang secara empiris memiliki dampak asimetris.</p><p style="text-align: justify;">Namun, pendekatan PPO bukan tanpa risiko secara kalkulus. Ketika kita melepaskan konstrain pada sebuah variabel (membiarkannya memiliki beta ganda), kita menambah jumlah parameter yang harus diestimasi oleh fungsi <em>Maximum Likelihood</em>. Hal ini menguras derajat kebebasan (<em>degree of freedom</em>). Selain itu, relaksasi asumsi yang sembarangan tanpa opsi <code>autofit</code> kadang memicu anomali matematis berupa probabilitas terprediksi yang bernilai negatif—sebuah kemustahilan yang merusak validitas model probit maupun logit.</p><p style="text-align: justify;">Oleh sebab itu, eksekusi model GOLM membutuhkan penilaian dari sang analis analitik (<em>research judgment</em>). STATA menyediakan alat komputasi matematisnya, tetapi peneliti yang harus menafsirkan apakah perbedaan koefisien antar kategori pada <code>gologit2</code> memiliki justifikasi teoritis yang masuk akal di dunia nyata. Jika perbedaannya terlalu acak dan tidak bisa dijelaskan secara logis, maka mengevaluasi kembali instrumen atau melakukan pengelompokan ulang kategori (<em>re-categorization</em>) mungkin merupakan langkah mitigasi yang lebih purist secara metodologis.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Kesimpulan</h2><p style="text-align: justify;">Menjumpai <em>error</em> uji Brant yang signifikan bukanlah akhir dari riset Anda. <strong>Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</strong> bermuara pada keputusan taktis untuk meninggalkan model ekstrim, yakni menghindari bertahannya <code>ologit</code> yang cacat dan menolak lari ke <code>mlogit</code> yang mereduksi data. Instalasi dan eksekusi sintaks <code>gologit2, autofit</code> merupakan solusi termutakhir yang diakui oleh komunitas statistik global. Dengan model <em>Partial Proportional Odds</em>, Anda mampu mempertahankan kekuatan hirarki variabel dependen sekaligus memfasilitasi prediktor membandel agar parameter estimasinya menjadi valid, tidak bias, dan dapat dipertanggungjawabkan dalam sidang akademik maupun diskursus riset profesional.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Daftar Pustaka</h2><ul style="line-height: 1.8; text-align: justify; padding-left: 20px;"><li>Brant, R. (1990). <em>Assessing proportionality in the proportional odds model for ordinal logistic regression</em>. Biometrics, 46(4), 1171-1178.</li><li>Long, J. S., &amp; Freese, J. (2014). <em>Regression Models for Categorical Dependent Variables Using Stata</em> (3rd ed.). Stata Press.</li><li>McCullagh, P. (1980). <em>Regression models for ordinal data</em>. Journal of the Royal Statistical Society: Series B (Methodological), 42(2), 109-127.</li><li>Williams, R. (2006). <em>Generalized ordered logit/partial proportional odds models for ordinal dependent variables</em>. The Stata Journal, 6(1), 58-82.</li><li>Williams, R. (2016). <em>Understanding and interpreting generalized ordered logit models</em>. The Journal of Mathematical Sociology, 40(1), 7-20.</li></ul></article></div><footer class="content__footer"><div class="content__last-updated">This article was updated on <time datetime="2026-09-06T20:32">Sep 6, 2026</time></div><div class="content__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstatistikian.net%2Fcara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata%2F" class="js-share facebook tltp tltp--top" aria-label="Facebook" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://api.whatsapp.com/send?text=Cara%20Mengatasi%20Masalah%20Asumsi%20Parallel%20Lines%20Regresi%20Ordinal%20dengan%20STATA https%3A%2F%2Fstatistikian.net%2Fcara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata%2F" class="js-share whatsapp tltp tltp--top" title="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></footer></div></article><div class="content__section post__related"><div class="main__inner"><h3 class="content__section__title">Related post</h3><div class="post__related__wrap"><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:34">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/perbedaan-system-gmm-vs-difference-gmm-panduan-memilih-model-simulasi-pada-stata/">Perbedaan System GMM vs Difference GMM: Panduan Memilih Model (Simulasi pada STATA)</a></h2><p>Ketika menganalisis data panel dinamis menggunakan STATA, peneliti sering dihadapkan pada dilema&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:18">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></h2><p>Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:08">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/solusi-mengatasi-endogenitas-model-menggunakan-gmm-stata/">Solusi Mengatasi Endogenitas Model Menggunakan GMM STATA</a></h2><p>Momen paling memfrustasikan bagi seorang peneliti kuantitatif adalah ketika variabel independen kunci&hellip;</p></header></article></div></div></div><div class="content__section banner"><div class="main__inner"><style>.banner-statistik {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 760px;
+    height: 250px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Menggelapkan gambar agar teks terbaca jelas */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .banner-statistik:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #facc15;
+    line-height: 1.2;
+  }
+
+  .banner-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .banner-btn {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Pengaturan Khusus Layar Mobile (Lebar Maksimal 300px) */
+  @media screen and (max-width: 768px) {
+    .banner-statistik {
+      max-width: 300px;
+      height: 250px;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .banner-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }</style><a href="https://wa.me/6281515699060?text=Halo%2C%20saya%20butuh%20bantuan%20analisis%20statistik" target="_blank" rel="noopener noreferrer" class="banner-statistik"><div class="banner-title">Butuh Bantuan Analisis Statistik?</div><div class="banner-text">Jangan ragu bertanya pada kami, biaya <strong>100 sd 300 IDR</strong>.<br>Tim kami siap membantu dengan aplikasi SPSS, Eviews, STATA, SmartPLS, Lisrel, AMOS, R-Studio, Minitab dan Excel.<br><em>Berpengalaman sejak 2012.</em> <strong>.... KLIK DISINI !</strong></div><div class="banner-btn">WhatsApp: 081515699060</div></a></div></div></main><div class="right-bar"><div class="right-bar__inner"><div class="sidebar"><section class="box featured"><h3 class="box__title">Featured Posts</h3><ul class="featured__container"><li class="featured__item"><div><a href="https://statistikian.net/cara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata/" class="featured__title">Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/sebab-dan-cara-mengatasi-masalah-model-not-positive-definite-dan-under-identified-pada-cb-sem-lisrel/" class="featured__title">Sebab dan Cara Mengatasi Masalah Model Not Positive Definite dan Under-Identified Pada CB SEM Lisrel</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/" class="featured__title">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/" class="featured__title">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/" class="featured__title">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-dan-hansen-untuk-mengevaluasi-overidentifying-restrictions-dan-solusinya-pada-stata/" class="featured__title">Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions dan Solusinya pada STATA</a></div></li></ul></section><section class="box tags"><h3 class="box__title">Recommended Topics</h3><ul class="tags__list"><li class="tags__item"><a href="https://statistikian.net/tags/amos/" class="btn btn--gray">AMOS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/eviews/" class="btn btn--gray">Eviews</a></li><li class="tags__item"><a href="https://statistikian.net/tags/jasp/" class="btn btn--gray">JASP</a></li><li class="tags__item"><a href="https://statistikian.net/tags/lisrel/" class="btn btn--gray">Lisrel</a></li><li class="tags__item"><a href="https://statistikian.net/tags/minitab/" class="btn btn--gray">Minitab</a></li><li class="tags__item"><a href="https://statistikian.net/tags/r-studio/" class="btn btn--gray">R Studio</a></li><li class="tags__item"><a href="https://statistikian.net/tags/smartpls/" class="btn btn--gray">SmartPLS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/spss/" class="btn btn--gray">SPSS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/stata/" class="btn btn--gray">STATA</a></li></ul></section><div class="box copyright">Powered by Anwar Hidayat - Alright Reserved</div></div></div></div></div><script defer="defer" src="https://statistikian.net/assets/js/scripts.min.js?v&#x3D;b2d91bcadbf5db401b76eb5bb3092eb7"></script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 60px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060.<strong>.... KLIK DISINI !</strong></p></a></div><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 13 paragraf
+    if (paragraphs.length >= 13) {
+        const ctaHTML = `
+	<!-- CTA 1 BOX (WhatsApp) -->
+	<div style="background-color: #f0f7ff; padding: 25px; text-align: center; border: 2px dashed #0056b3; border-radius: 8px; margin: 35px 0;">
+		<p style="font-size: 16px; font-weight: bold; margin-bottom: 20px; color: #333; line-height: 1.5; text-align: center;">Sudah mencoba langkah di atas tapi model data Anda masih error atau deadline sidang makin dekat? Konsultasikan langsung masalah olah data Anda bersama tim ahli kami via WhatsApp.</p>
+		<a href="https://wa.me/6281515699060" target="_blank" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" rel="noopener">WhatsApp 081515699060</a>
+	</div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-12 (index 12)
+        paragraphs[11].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 21 paragraf
+    if (paragraphs.length >= 21) {
+        const ctaHTML = `
+            <!-- CTA BOX Instagram -->
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 30px; border-radius: 10px; margin: 40px 0; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); text-align: center;">
+                <h3 style="margin-top: 0; font-size: 24px; margin-bottom: 15px; color: white; text-align: center;">Dapatkan Update &amp; Tips Olah Data dan Lihat Testimoni!</h3>
+                <p style="font-size: 16px; margin-bottom: 25px; line-height: 1.6; text-align: center;">Dapatkan Update &amp; Tips Olah Data atau Testimoni Klien Kami! Ingin panduan visual yang ringkas dan tips cepat seputar pengujian STATA, EViews, SPSS, dll serta metodologi penelitian lainnya? Ikuti Instagram kami untuk konten edukatif yang di-update secara berkala. Anda juga bisa lihat testimoni klien kami yang sudah menggunakan jasa analisis statistik tim kami.</p>
+                <a href="https://www.instagram.com/statistikian" target="_blank" style="background-color: white; color: #dc2743; padding: 14px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" rel="noopener">
+                    <!-- Icon Instagram SVG --> 
+                    <svg style="width: 22px; height: 22px; margin-right: 10px; fill: currentColor;" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg> Follow @statistikian 
+                </a>
+            </div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-20 (index 20)
+        paragraphs[19].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script></body></html>

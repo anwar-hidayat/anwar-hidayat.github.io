@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solusi Mengatasi Masalah White Noise (Ljung-Box) Kelayakan Residual Model ARIMA pada Minitab - Statistikian Net</title><meta name="description" content="Cara atasi p-value Ljung-Box &lt; 0,05 di Minitab dengan panduan perbaikan model ARIMA. Pelajari respesifikasi ordo AR MA agar residual memenuhi asumsi white noise"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://statistikian.net/solusi-mengatasi-masalah-white-noise-ljung-box-kelayakan-residual-model-arima-pada-minitab/"><link rel="alternate" type="application/atom+xml" href="https://statistikian.net/feed.xml" title="Statistikian Net - RSS"><link rel="alternate" type="application/json" href="https://statistikian.net/feed.json" title="Statistikian Net - JSON"><link rel="shortcut icon" href="https://statistikian.net/media/website/favicon-statistikian.svg" type="image/x-icon"><link rel="stylesheet" href="https://statistikian.net/assets/css/style.css?v&#x3D;f5bf14394894a7f3d49ce26d5330f826"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://statistikian.net/solusi-mengatasi-masalah-white-noise-ljung-box-kelayakan-residual-model-arima-pada-minitab/"},"headline":"Solusi Mengatasi Masalah White Noise (Ljung-Box) Kelayakan Residual Model ARIMA pada Minitab","datePublished":"2026-09-06T21:02+07:00","dateModified":"2026-09-06T21:02+07:00","image":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250},"description":"Cara atasi p-value Ljung-Box \u003c 0,05 di Minitab dengan panduan perbaikan model ARIMA. Pelajari respesifikasi ordo AR MA agar residual memenuhi asumsi white noise","author":{"@type":"Person","name":"Anwar Hidayat","url":"https://statistikian.net/authors/anwar-hidayat/"},"publisher":{"@type":"Organization","name":"Anwar Hidayat","logo":{"@type":"ImageObject","url":"https://statistikian.net/media/website/logo-statistikian.svg.svg","height":60,"width":250}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-NEYCRECVPF"></script><script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NEYCRECVPF');</script></head><body class="post-template"><div class="container"><div class="left-bar"><div class="left-bar__inner"><header class="header"><a class="logo" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle__box"><span class="navbar__toggle__inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://statistikian.net/" target="_self" aria-label="Home"><span>Home</span></a></li><li><a href="https://statistikian.net/jasa-olah-data-and-analisis-statistik-profesional-bergaransi-or-statistikiannet/" target="_self" aria-label="Jasa Analisis Statistik"><span>Jasa Analisis Statistik</span></a></li><li><a href="https://statistikian.com" target="_self" aria-label="statistikian.com"><span>statistikian.com</span></a></li><li><a href="https://statistikian.net/tags/" target="_self" aria-label="Artikel By Aplikasi"><span>Artikel By Aplikasi</span></a></li><li><a href="https://statistikian.net/about-us/" target="_self" aria-label="About Us"><span>About Us</span></a></li><li><a href="https://statistikian.net/contact-us/" target="_self" aria-label="Contact Us"><span>Contact Us</span></a></li><li><a href="https://statistikian.net/disclaimer/" target="_self" aria-label="Disclaimer"><span>Disclaimer</span></a></li><li><a href="https://statistikian.net/privacy-policy-kebijakan-privasi/" target="_self" aria-label="Privacy Policy"><span>Privacy Policy</span></a></li></ul></nav><a class="logo logo--atbottom" href="https://statistikian.net/"><img src="https://statistikian.net/media/website/logo-statistikian.svg.svg" alt="Statistikian Net" width="250" height="60"></a></header></div></div><main class="main post"><article class="content"><div class="content__meta content__meta--attop"><div class="content__meta--attop__inner"><div class="content__maintag"><svg width="20" height="20" aria-hidden="true" focusable="false"><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#tag"/></svg> Published in <a href="https://statistikian.net/tags/minitab/" class="metadata__maintag">Minitab</a></div></div></div><div class="main__inner"><div class="content__meta"><div class="content__author"><div><a href="https://statistikian.net/authors/anwar-hidayat/" class="content__author__name">Anwar Hidayat</a><p>Anwar Hidayat</p></div></div><div class="content__date"><time datetime="2026-09-06T21:02">Sep 6, 2026</time></div></div><header class="content__header"><h1 class="content__title">Solusi Mengatasi Masalah White Noise (Ljung-Box) Kelayakan Residual Model ARIMA pada Minitab</h1></header><div class="content__entry"><article><p style="text-align: justify;">Dalam analisis deret waktu (<em>time series</em>) menggunakan perangkat lunak Minitab, kendala utama yang sering menggagalkan uji diagnostik kelayakan model adalah kegagalan residual memenuhi syarat kelinearan linier murni. Ketika melakukan estimasi, Anda mungkin menemukan solusi mengatasi <strong>masalah white noise (Ljung-Box) kelayakan residual model ARIMA pada Minitab</strong> menjadi krusial karena nilai <em>p-value</em> pada tabel <em>Modified Box-Pierce (Ljung-Box) Chi-Square statistic</em> menunjukkan angka di bawah tingkat signifikansi 0,05 (p &lt; 0,05). Hasil ini mengonfirmasi bahwa residual yang dihasilkan oleh model ARIMA yang Anda bentuk belum terbebas dari masalah autokorelasi, sehingga sisa galat masih menyimpan pola informasi yang belum terekstraksi secara sempurna.</p><p style="text-align: justify;">Gejala kegagalan ini ditandai dengan munculnya nilai <em>p-value</em> Ljung-Box yang signifikan pada lag awal maupun lag panjang (seperti lag 12, 24, atau 36) di jendela <em>session window</em> Minitab. Konsekuensinya, model ARIMA yang telah diestimasi dianggap tidak layak (<em>invalid</em>) untuk digunakan dalam peramalan (<em>forecasting</em>). Memaksa memakai model yang residualnya tidak <em>white noise</em> akan menghasilkan standar eror peramalan yang bias dan interval konfidensi yang tidak akurat. Oleh sebab itu, diperlukan perbaikan spesifikasi ordo model secara terstruktur agar residual benar-benar bersifat acak (independen dan berdistribusi identik).</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #d73a49; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.2);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #333; padding-bottom: 5px;">Minitab Output: Modified Box-Pierce (Ljung-Box) Chi-Square Statistic (Gagal / Tidak White Noise)</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #000000;">Final Estimates of Parameters
+Type       Coef  SE Coef    T-Value    P-Value
+AR 1     0.7420   0.0812       9.14      0.000
+
+Modified Box-Pierce (Ljung-Box) Chi-Square statistic
+Lag         12      24      36      48
+Chi-Square  28.45   45.12   62.89   78.34
+DF          10      22      34      46
+P-Value </span>    <span style="color: #f44336; font-weight: bold;">0.002   0.003   0.002   0.002</span>
+
+<span style="color: #f44336; font-style: italic;">* Keterangan: Nilai P-Value &lt; 0.05 pada seluruh lag menandakan residual 
+masih memiliki autokorelasi (Model ARIMA TIDAK WHITE NOISE). *</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Konsep Dasar Teori Asumsi White Noise dan Uji Ljung-Box</h2><p style="text-align: justify;">Tahapan diagnostik residual merupakan pilar ketiga dalam metodologi Box-Jenkins yang terdiri dari Identifikasi, Estimasi, Diagnostik, dan Peramalan (Box &amp; Jenkins, 1976). Residual dalam model ARIMA idealnya bersikap seperti <em>white noise</em>, yakni suatu proses acak stasioner yang memiliki nilai harapan nol, varians konstan, dan tidak memiliki korelasi antar observasi pada rentang waktu yang berbeda.</p><p style="text-align: justify;">Statistik uji Ljung-Box dihitung untuk menguji hipotesis nihil bahwa seluruh autokorelasi hingga lag k bernilai nol secara simultan (Ljung &amp; Box, 1978). Jika hipotesis nihil ditolak karena nilai <em>p-value</em> lebih kecil dari 0,05, hal tersebut membuktikan bahwa residual tidak independen satu sama lain dan masih terdapat struktur autokorelasi sistematis yang tertinggal dalam data galat.</p><p style="text-align: justify;">Untuk memahami secara komprehensif mengenai kalkulasi sistematis, formulasi matematis, serta filosofi pengujian ini, Anda dapat mempelajari kajian teoretis lengkap mengenai <a href="https://www.statistikian.com" target="_blank" style="color: #0366d6; font-weight: bold; text-decoration: none;" rel="noopener">konsep dan rumus uji Ljung-Box ARIMA</a>. Penguasaan teoretis dasar sangat penting agar tindakan perubahan ordo parameter pada perangkat lunak tidak dilakukan secara spekulatif semata.</p><p style="text-align: justify;">Montgomery et al. (2015) menegaskan bahwa residual yang gagal memenuhi kriteria <em>white noise</em> mengindikasikan bahwa struktur ordo <em>Autoregressive</em> (AR) atau <em>Moving Average</em> (MA) yang dimasukkan ke dalam model belum cukup memadai untuk menyerap dinamika ketergantungan temporal antar data.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Langkah Teknis Memperbaiki Residual ARIMA di Minitab</h2><p style="text-align: justify;">Langkah pertama dalam mengatasi masalah ini pada Minitab adalah melakukan evaluasi terhadap grafik <em>Autocorrelation Function</em> (ACF) dan <em>Partial Autocorrelation Function</em> (PACF) khusus dari variabel residual. Akses menu <strong>Stat &gt; Time Series &gt; ARIMA</strong>, lalu pada opsi <strong>Storage</strong> centang pilihan <strong>Residuals</strong> untuk menyimpan nilai galat ke dalam kolom lembar kerja.</p><p style="text-align: justify;">Langkah kedua, buat grafik ACF dan PACF dari kolom residual yang telah disimpan menggunakan menu <strong>Stat &gt; Time Series &gt; Autocorrelation / Partial Autocorrelation</strong>. Amati lag mana saja yang garis grafiknya menembus batas garis merah (interval kepercayaan signifikansi).</p><p style="text-align: justify;">Jika pada grafik ACF residual terlihat lonjakan signifikan (<em>spike</em>) pada lag awal (misalnya lag 1 atau lag 2), hal ini memberikan petunjuk teknis bahwa ordo <em>Moving Average</em> (q) perlu ditingkatkan. Tambahkan 1 tingkat ordo MA pada menu ARIMA di Minitab (misalnya mengubah ARIMA(1,0,0) menjadi ARIMA(1,0,1)).</p><p style="text-align: justify;">Sebaliknya, apabila lonjakan signifikan muncul pada grafik PACF residual, hal tersebut mengindikasikan bahwa ordo <em>Autoregressive</em> (p) dalam model belum mencukupi. Penambahan ordo AR (misalnya dari ARIMA(0,0,1) menjadi ARIMA(1,0,1)) akan menyerap sisa keterikatan parsial pada galat.</p><p style="text-align: justify;">Hyndman &amp; Athanasopoulos (2021) merekomendasikan prosedur respesifikasi berulang: bandingkan beberapa alternatif kombinasi ordo ARIMA terdekat menggunakan nilai kriteria kebaikan model seperti <em>Akaike Information Criterion</em> (AIC) atau <em>Mean Square Error</em> (MSE) terkecil di Minitab, dengan syarat utama nilai <em>p-value</em> Ljung-Box telah berada di atas 0,05 pada seluruh lag.</p><p style="text-align: justify;">Apabila lonjakan autokorelasi pada residual berulang secara teratur pada kelipatan lag musiman (seperti lag 12, 24, atau 36 untuk data bulanan), perbaikan tidak cukup dilakukan pada ordo non-musiman. Anda perlu menambahkan komponen musiman <em>Seasonal ARIMA</em> (SARIMA) berupa ordo (P,D,Q)s pada antarmuka Minitab.</p><div style="background-color: #1e1e1e; color: #d4d4d4; font-family: 'Courier New', Courier, monospace; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #28a745; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.2);"><p style="margin: 0 0 10px 0; font-weight: bold; color: #569cd6; border-bottom: 1px solid #333; padding-bottom: 5px;">Minitab Output: Modified Box-Pierce (Ljung-Box) Chi-Square Statistic (Solusi / White Noise)</p><pre style="margin: 0; font-size: 14px; line-height: 1.5;"><span style="color: #000000;">Final Estimates of Parameters
+Type       Coef  SE Coef    T-Value    P-Value
+AR 1     0.6120   0.0741       8.26      0.000
+MA 1     0.3845   0.0892       4.31      0.000
+
+Modified Box-Pierce (Ljung-Box) Chi-Square statistic
+Lag         12      24      36      48
+Chi-Square  8.12    16.45   24.10   31.85
+DF           9      21      33      45
+P-Value     </span><span style="color: #4caf50; font-weight: bold;">0.522   0.744   0.873   0.931</span>
+
+<span style="color: #4caf50; font-style: italic;">* Solusi Eksekusi: Setelah menambahkan komponen MA(1) menjadi ARIMA(1,0,1), 
+seluruh P-Value Ljung-Box &gt; 0.05. Residual kini terbukti WHITE NOISE 
+dan model siap digunakan untuk forecasting. *</span>
+            </pre></div><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Pembahasan Ilmiah: Riset Diagnostik dan Risiko Overfitting</h2><p style="text-align: justify;">Secara metodologis, kegagalan residual mencapai kriteria <em>white noise</em> bersumber dari permasalahan spesifikasi model yang terlalu sederhana (<em>under-parameterization</em>). Ketika ordo p atau q dipilih terlalu rendah, persamaan diferensial linier tidak mampu mengekstraksi seluruh linieritas dalam deret waktu, sehingga sisa struktur korelasi terlempar ke dalam komponen galat.</p><p style="text-align: justify;">Wei (2006) menjelaskan bahwa membiarkan residual terautokorelasi melanggar asumsi dasar estimasi parameter pada Minitab. Keadaan ini mengakibatkan estimasi varians koefisien menjadi terdistorsi, sehingga pengujian signifikansi t-statistik menjadi tidak sahih.</p><p style="text-align: justify;">Kendati menambahkan ordo AR dan MA secara berlebihan dapat dengan mudah meloloskan <em>p-value</em> Ljung-Box menjadi di atas 0,05, peneliti harus menghindari jebakan <em>over-parameterization</em>. Model dengan parameter berlebihan akan mengalami masalah pembatalan akar (<em>root cancellation</em>) dan menurunkan keakuratan prediksi pada data di luar sampel (Enders, 2014).</p><p style="text-align: justify;">Oleh karena itu, penyesuaian model harus berpegang pada prinsip parsimoni (<em>parsimony principle</em>). Pilihlah struktur model dengan jumlah parameter paling sedikit yang sudah mampu menghasilkan residual berdistribusi <em>white noise</em> dan seluruh parameternya signifikan secara statistik.</p><p style="text-align: justify;">Selain respesifikasi ordo, jika perbaikan ordo AR/MA tidak kunjung meloloskan uji Ljung-Box, peneliti perlu memeriksa keberadaan pencilan (<em>outliers</em>) atau melakukan transformasi data (seperti Box-Cox) pada Minitab untuk menstabilkan varians yang tidak konstan (Tsay, 2010).</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Kesimpulan</h2><p style="text-align: justify;">Mengatasi masalah residual yang tidak <em>white noise</em> pada analisis ARIMA di Minitab membutuhkan prosedur diagnostik yang terstruktur. Dengan memeriksa plot ACF dan PACF dari variabel residual, peneliti dapat mengidentifikasi kebutuhan penambahan ordo <em>Autoregressive</em> (p), <em>Moving Average</em> (q), maupun komponen musiman. Penyesuaian ordo yang tepat akan menaikkan nilai <em>p-value</em> uji Ljung-Box di atas 0,05, sehingga model terbebas dari autokorelasi dan valid digunakan untuk proyeksi peramalan deret waktu secara akurat.</p><h2 style="text-align: left; color: #2c3e50; margin-top: 30px;">Daftar Pustaka</h2><ul style="line-height: 1.8; text-align: justify; padding-left: 20px;"><li>Box, G. E. P., &amp; Jenkins, G. M. (1976). <em>Time Series Analysis: Forecasting and Control</em>. Holden-Day.</li><li>Enders, W. (2014). <em>Applied Econometric Time Series</em> (4th ed.). John Wiley &amp; Sons.</li><li>Hyndman, R. J., &amp; Athanasopoulos, G. (2021). <em>Forecasting: Principles and Practice</em> (3rd ed.). OTexts.</li><li>Ljung, G. M., &amp; Box, G. E. P. (1978). <em>On a Measure of Lack of Fit in Time Series Models</em>. Biometrika, 65(2), 297–303.</li><li>Montgomery, D. C., Jennings, C. L., &amp; Kulahci, M. (2015). <em>Introduction to Time Series Analysis and Forecasting</em> (2nd ed.). John Wiley &amp; Sons.</li><li>Tsay, R. S. (2010). <em>Analysis of Financial Time Series</em> (3rd ed.). John Wiley &amp; Sons.</li><li>Wei, W. W. S. (2006). <em>Time Series Analysis: Univariate and Multivariate Methods</em> (2nd ed.). Pearson Addison Wesley.</li></ul></article></div><footer class="content__footer"><div class="content__last-updated">This article was updated on <time datetime="2026-09-06T21:02">Sep 6, 2026</time></div><div class="content__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstatistikian.net%2Fsolusi-mengatasi-masalah-white-noise-ljung-box-kelayakan-residual-model-arima-pada-minitab%2F" class="js-share facebook tltp tltp--top" aria-label="Facebook" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://api.whatsapp.com/send?text=Solusi%20Mengatasi%20Masalah%20White%20Noise%20(Ljung-Box)%20Kelayakan%20Residual%20Model%20ARIMA%20pada%20Minitab https%3A%2F%2Fstatistikian.net%2Fsolusi-mengatasi-masalah-white-noise-ljung-box-kelayakan-residual-model-arima-pada-minitab%2F" class="js-share whatsapp tltp tltp--top" title="Share with LinkedIn" rel="nofollow noopener noreferrer"><svg><use xlink:href="https://statistikian.net/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></footer></div></article><div class="content__section post__related"><div class="main__inner"><h3 class="content__section__title">Related post</h3><div class="post__related__wrap"><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-05T20:08">Sep 5, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/solusi-mengatasi-endogenitas-model-menggunakan-gmm-stata/">Solusi Mengatasi Endogenitas Model Menggunakan GMM STATA</a></h2><p>Momen paling memfrustasikan bagi seorang peneliti kuantitatif adalah ketika variabel independen kunci&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-01T03:11">Sep 1, 2026 </time><a href="https://statistikian.net/tags/smartpls/" class="c-card-tag">SmartPLS</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></h2><p>Saat pertama kali mengeklik tombol "Calculate &gt; PLS-SEM Algorithm" di SmartPLS 4,&hellip;</p></header></article><article class="c-card"><div class="c-card__meta"><div class="c-card__author"><a href="https://statistikian.net/authors/anwar-hidayat/">Anwar Hidayat</a></div><time datetime="2026-09-01T02:46">Sep 1, 2026 </time><a href="https://statistikian.net/tags/stata/" class="c-card-tag">STATA</a></div><header class="c-card__header"><h2 class="c-card__title"><a href="https://statistikian.net/interpretasi-uji-sargan-dan-hansen-untuk-mengevaluasi-overidentifying-restrictions-dan-solusinya-pada-stata/">Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions dan Solusinya pada STATA</a></h2><p>Kepanikan terbesar saat merunning model Generalized Method of Moments (GMM) atau Instrumental&hellip;</p></header></article></div></div></div><div class="content__section banner"><div class="main__inner"><style>.banner-statistik {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 760px;
+    height: 250px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #0f172a;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay; /* Menggelapkan gambar agar teks terbaca jelas */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+  }
+  
+  .banner-statistik:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .banner-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #facc15;
+    line-height: 1.2;
+  }
+
+  .banner-text {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .banner-btn {
+    background-color: #25D366;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Pengaturan Khusus Layar Mobile (Lebar Maksimal 300px) */
+  @media screen and (max-width: 768px) {
+    .banner-statistik {
+      max-width: 300px;
+      height: 250px;
+      padding: 12px 10px;
+    }
+    .banner-title {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .banner-text {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .banner-btn {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }</style><a href="https://wa.me/6281515699060?text=Halo%2C%20saya%20butuh%20bantuan%20analisis%20statistik" target="_blank" rel="noopener noreferrer" class="banner-statistik"><div class="banner-title">Butuh Bantuan Analisis Statistik?</div><div class="banner-text">Jangan ragu bertanya pada kami, biaya <strong>100 sd 300 IDR</strong>.<br>Tim kami siap membantu dengan aplikasi SPSS, Eviews, STATA, SmartPLS, Lisrel, AMOS, R-Studio, Minitab dan Excel.<br><em>Berpengalaman sejak 2012.</em> <strong>.... KLIK DISINI !</strong></div><div class="banner-btn">WhatsApp: 081515699060</div></a></div></div></main><div class="right-bar"><div class="right-bar__inner"><div class="sidebar"><section class="box featured"><h3 class="box__title">Featured Posts</h3><ul class="featured__container"><li class="featured__item"><div><a href="https://statistikian.net/cara-mengatasi-masalah-asumsi-parallel-lines-regresi-ordinal-dengan-stata/" class="featured__title">Cara Mengatasi Masalah Asumsi Parallel Lines Regresi Ordinal dengan STATA</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/sebab-dan-cara-mengatasi-masalah-model-not-positive-definite-dan-under-identified-pada-cb-sem-lisrel/" class="featured__title">Sebab dan Cara Mengatasi Masalah Model Not Positive Definite dan Under-Identified Pada CB SEM Lisrel</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/perbedaan-model-ar-ma-arma-dan-arima-berdasarkan-pola-korelogram-data-dan-cara-analisis-di-r-studio/" class="featured__title">Perbedaan Model AR, MA, ARMA, dan ARIMA Berdasarkan Pola Korelogram Data dan cara analisis di R-Studio</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-hansen-untuk-mengevaluasi-overidentifying-restrictions-pada-stata-dan-solusi-pelanggaran-asumsi-tersebut/" class="featured__title">Interpretasi Uji Sargan Hansen untuk Mengevaluasi Overidentifying Restrictions pada STATA dan Solusi Pelanggaran Asumsi Tersebut</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/solusi-nilai-loading-factor-kurang-dari-07-pada-analisis-pls-sem-simulasi-smartpls-4/" class="featured__title">Solusi Nilai Loading Factor Kurang dari 0.7 pada Analisis PLS SEM (Simulasi SmartPLS 4)</a></div></li><li class="featured__item"><div><a href="https://statistikian.net/interpretasi-uji-sargan-dan-hansen-untuk-mengevaluasi-overidentifying-restrictions-dan-solusinya-pada-stata/" class="featured__title">Interpretasi Uji Sargan dan Hansen untuk Mengevaluasi Overidentifying Restrictions dan Solusinya pada STATA</a></div></li></ul></section><section class="box tags"><h3 class="box__title">Recommended Topics</h3><ul class="tags__list"><li class="tags__item"><a href="https://statistikian.net/tags/amos/" class="btn btn--gray">AMOS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/eviews/" class="btn btn--gray">Eviews</a></li><li class="tags__item"><a href="https://statistikian.net/tags/jasp/" class="btn btn--gray">JASP</a></li><li class="tags__item"><a href="https://statistikian.net/tags/lisrel/" class="btn btn--gray">Lisrel</a></li><li class="tags__item"><a href="https://statistikian.net/tags/minitab/" class="btn btn--gray">Minitab</a></li><li class="tags__item"><a href="https://statistikian.net/tags/r-studio/" class="btn btn--gray">R Studio</a></li><li class="tags__item"><a href="https://statistikian.net/tags/smartpls/" class="btn btn--gray">SmartPLS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/spss/" class="btn btn--gray">SPSS</a></li><li class="tags__item"><a href="https://statistikian.net/tags/stata/" class="btn btn--gray">STATA</a></li></ul></section><div class="box copyright">Powered by Anwar Hidayat - Alright Reserved</div></div></div></div></div><script defer="defer" src="https://statistikian.net/assets/js/scripts.min.js?v&#x3D;b2d91bcadbf5db401b76eb5bb3092eb7"></script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><style>/* Kontainer Banner Melayang */
+    .flying-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 760px;
+        height: 50px;
+        background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-radius: 8px;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Penyesuaian Khusus Tampilan Mobile (Lebar max 300px) */
+    @media (max-width: 767px) {
+        .flying-banner {
+            max-width: 300px;
+            height: auto;
+            min-height: 60px;
+            padding: 8px 10px;
+            bottom: 15px;
+        }
+        .banner-content {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    /* Area Klik (Call-to-Action) */
+    .flying-banner a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #ffffff;
+        padding: 0 20px;
+    }
+
+    /* Gaya Teks Iklan */
+    .banner-content {
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* Tombol Tutup (Close Button) */
+    .close-banner {
+        position: absolute;
+        top: 4px;
+        right: 6px;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        background: rgba(0,0,0,0.15);
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s ease;
+    }
+    
+    .close-banner:hover {
+        background: rgba(0,0,0,0.4);
+    }</style><div id="promo-banner" class="flying-banner"><span class="close-banner" onclick="document.getElementById('promo-banner').style.display='none'" title="Tutup Iklan">&times;</span> <a href="https://wa.me/6281515699060" target="_blank" title="Hubungi via WhatsApp"><p class="banner-content">Butuh Bantuan Analisis Statistik? Jangan ragu bertanya pada kami, biaya 100 sd 300 IDR, WhatsApp: 081515699060.<strong>.... KLIK DISINI !</strong></p></a></div><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 13 paragraf
+    if (paragraphs.length >= 13) {
+        const ctaHTML = `
+	<!-- CTA 1 BOX (WhatsApp) -->
+	<div style="background-color: #f0f7ff; padding: 25px; text-align: center; border: 2px dashed #0056b3; border-radius: 8px; margin: 35px 0;">
+		<p style="font-size: 16px; font-weight: bold; margin-bottom: 20px; color: #333; line-height: 1.5; text-align: center;">Sudah mencoba langkah di atas tapi model data Anda masih error atau deadline sidang makin dekat? Konsultasikan langsung masalah olah data Anda bersama tim ahli kami via WhatsApp.</p>
+		<a href="https://wa.me/6281515699060" target="_blank" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" rel="noopener">WhatsApp 081515699060</a>
+	</div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-12 (index 12)
+        paragraphs[11].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script><script>document.addEventListener("DOMContentLoaded", function() {
+    // Menargetkan semua elemen paragraf di dalam tag article
+    const paragraphs = document.querySelectorAll('article p');
+
+    // Mengecek apakah artikel memiliki minimal 21 paragraf
+    if (paragraphs.length >= 21) {
+        const ctaHTML = `
+            <!-- CTA BOX Instagram -->
+            <div style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); padding: 30px; border-radius: 10px; margin: 40px 0; color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.15); text-align: center;">
+                <h3 style="margin-top: 0; font-size: 24px; margin-bottom: 15px; color: white; text-align: center;">Dapatkan Update &amp; Tips Olah Data dan Lihat Testimoni!</h3>
+                <p style="font-size: 16px; margin-bottom: 25px; line-height: 1.6; text-align: center;">Dapatkan Update &amp; Tips Olah Data atau Testimoni Klien Kami! Ingin panduan visual yang ringkas dan tips cepat seputar pengujian STATA, EViews, SPSS, dll serta metodologi penelitian lainnya? Ikuti Instagram kami untuk konten edukatif yang di-update secara berkala. Anda juga bisa lihat testimoni klien kami yang sudah menggunakan jasa analisis statistik tim kami.</p>
+                <a href="https://www.instagram.com/statistikian" target="_blank" style="background-color: white; color: #dc2743; padding: 14px 35px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 50px; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" rel="noopener">
+                    <!-- Icon Instagram SVG --> 
+                    <svg style="width: 22px; height: 22px; margin-right: 10px; fill: currentColor;" viewbox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                    </svg> Follow @statistikian 
+                </a>
+            </div>
+        `;
+        
+        // Menyisipkan kode CTA tepat setelah paragraf ke-20 (index 20)
+        paragraphs[19].insertAdjacentHTML('afterend', ctaHTML);
+    }
+});</script></body></html>
